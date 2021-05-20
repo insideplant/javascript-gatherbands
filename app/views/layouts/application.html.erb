@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <head>
+    <% if user_signed_in? %>
+    <%= link_to "Log out",new_user_registration_path %>
+    <% elsif admin_signed_in? %>
+    <%= link_to "Log out",new_user_registration_path %>
+     <% else %>
+    <%= link_to "Sign up",new_user_registration_path %>
+    <%= link_to "Log in",new_user_session_path %>
+    <%= link_to "About",about_path %>
+    <% end %>
+    </head>
     <%= yield %>
   </body>
 </html>
