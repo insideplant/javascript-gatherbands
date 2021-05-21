@@ -1,2 +1,7 @@
 <h1>Public::UserBands#index</h1>
 <p>Find me in app/views/public/user_bands/index.html.erb</p>
+
+<% @bands.each do |band| %>
+<% band.band_name%>
+<% band.user.user_name%>
+<% end %>

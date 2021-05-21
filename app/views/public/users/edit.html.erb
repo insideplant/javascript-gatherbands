@@ -1,2 +1,36 @@
 <h1>Public::Users#edit</h1>
 <p>Find me in app/views/public/users/edit.html.erb</p>
+
+<%= form_with model:@user, url:users_mypage_update_path, local:true do |f| %>
+<%= f.label :user_name, "ユーザー名" %>
+<%= f.text_field :user_name %>
+
+<%= f.label :band_name, "バンド名" %>
+<%= f.text_field :band_name %>
+
+<%= f.label :last_name, "姓" %>
+<%= f.text_field :last_name %>
+
+<%= f.label :first_name, "名" %>
+<%= f.text_field :first_name %>
+
+<%= f.label :last_name_kana, "セイ" %>
+<%= f.text_field :last_name_kana %>
+
+<%= f.label :last_name_kana, "メイ" %>
+<%= f.text_field :first_name_kana %>
+
+<%= f.label :postal_code, "郵便番号" %>
+<%= f.text_field :postal_code %>
+
+<%= f.label :postal_code, "住所" %>
+<%= f.text_field :address %>
+
+<%= f.label :telephone_number, "電話番号" %>
+<%= f.text_field :telephone_number %>
+
+<%= f.label :email, "email" %>
+<%= f.text_field :email %>
+
+<%= f.submit "update"%>
+<% end %>

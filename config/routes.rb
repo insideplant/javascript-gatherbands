@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     resources :live_organaizaitions, only: [:index, :create, :show, :edit, :update]
     resources :members, only:[:show, :edit, :update, :create]
-    resources :bands, only:[:index, :show, :edit, :update]
-    resource :users, only:[:show, :edit, :update]
+    resources :user_bands, only:[:index, :show, :edit, :update]
+    get 'users/mypage' => 'users#show'
+    get 'users/mypage/edit' => 'users#edit'
     get 'users/confirmation' => 'users#is_active'
+    patch 'users/mypage/update' => 'users#update'
   end
 
   namespace :admin do

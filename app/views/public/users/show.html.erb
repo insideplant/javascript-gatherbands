@@ -1,2 +1,15 @@
 <h1>Public::Users#show</h1>
 <p>Find me in app/views/public/users/show.html.erb</p>
+
+<%= @user.user_name%>
+<%= @user.last_name%>
+<%= @user.first_name%>
+<%= @user.last_name_kana%>
+<%= @user.first_name_kana%>
+<%= @user.email%>
+<%= @user.postal_code%>
+<%= @user.address%>
+<%= @user.telephone_number%>
+
+<%= link_to "Edit",users_mypage_edit_path %>
+

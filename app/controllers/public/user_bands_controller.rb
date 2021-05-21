@@ -1,5 +1,6 @@
 class Public::UserBandsController < ApplicationController
   def index
+    @bands = UserBand.all
   end
 
   def show
