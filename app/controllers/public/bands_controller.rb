@@ -1,4 +1,4 @@
-class Public::UserBandsController < ApplicationController
+class Public::BandsController < ApplicationController
   def index
     @bands = UserBand.all
   end

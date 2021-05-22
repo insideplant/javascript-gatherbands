@@ -1,2 +1,0 @@
-class UserBand < ApplicationRecord
-end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_122215) do
+ActiveRecord::Schema.define(version: 2021_05_22_135746) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,9 +24,34 @@ ActiveRecord::Schema.define(version: 2021_05_21_122215) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "user_bands", force: :cascade do |t|
+  create_table "articles", force: :cascade do |t|
+    t.text "content"
+    t.integer "band_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bands", force: :cascade do |t|
     t.integer "user_id"
     t.string "band_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "band_id"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["band_id"], name: "index_comments_on_band_id"
+  end
+
+  create_table "menbers", force: :cascade do |t|
+    t.string "name"
+    t.string "role"
+    t.integer "band_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,7 +63,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_122215) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "user_name"
-    t.string "band_name"
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"
@@ -49,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_05_21_122215) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "band_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

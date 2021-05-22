@@ -1,0 +1,14 @@
+<h1>Public::Posts#show</h1>
+<p>Find me in app/views/public/posts/show.html.erb</p>
+
+<%= @article.content %>
+<% @comments.each do |comment|%>
+  <%= comment.content%>
+<% end %>
+
+<%= form_with(model: [@article, @comment], local: true) do |f|%>
+  <%= f.text_area :content%>
+  <%= f.submit "コメントする"%>
+<% end %>
+
+

@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
+    @band = Band.find_by(id: @user.band_id)
   end
 
   def update
