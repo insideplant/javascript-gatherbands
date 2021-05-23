@@ -3,15 +3,16 @@
 
 <%= javascript_include_tag "javascript.js" %>
 
-<%= form_with model:[@band,@member], url: band_member_path(@band.id), local:true do |f| %>
+<%= form_with model: @band, url: band_members_path(@band), local:true do |f| %>
 <%= f.label :band_name %>
 <%= f.text_field :band_name %>
 
-<%= f.label :name %>
-<%= f.text_field :name %>
-
-<%= f.label :role %>
-<%= f.text_field :role %>
+<%= f.fields_for :member, @band.members.build do |member| %>
+  <%= member.label :role %>
+  <%= member.text_field :role %>
+  <%= member.label :name %>
+  <%= member.text_field :name %>
+<% end %>
 
 <%= f.submit "create" %>
 <% end %>

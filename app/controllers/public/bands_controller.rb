@@ -12,9 +12,13 @@ class Public::BandsController < ApplicationController
   def edit
     @user = current_user
     @band = current_user.band
-    @member = @band.members.build
+    @band.members.build
   end
 
   def update
   end
+
+  def create
+  end
+
 end

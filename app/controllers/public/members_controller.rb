@@ -9,5 +9,11 @@ class Public::MembersController < ApplicationController
   end
 
   def create
+    Member.create(member_params)
   end
+  
+    private
+    def member_params
+      params.require(:member).permit(:band_name,member_attributes:[:role,:name]).merge(user_id: current_user.id)
+    end
 end
