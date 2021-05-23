@@ -2,7 +2,7 @@ class Public::ArticlesController < ApplicationController
   def index
     @article = Article.new
     @articles = Article.all
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def show

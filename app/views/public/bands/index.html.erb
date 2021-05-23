@@ -1,7 +1,17 @@
 <h1>Public::UserBands#index</h1>
 <p>Find me in app/views/public/user_bands/index.html.erb</p>
 
+バンド名：<%= @band.band_name%>
+ユーザー：<%= @user.user_name%>
+メンバー：
+<%#= @menbers.each do |menber|%>
+<%#= menber.name%>
+<%#= menber.role%>
+<%# end %>
+
+<%= link_to "Edit",edit_band_path(@band) %>
+
 <% @bands.each do |band| %>
-<% band.band_name%>
-<% band.user.user_name%>
+<%= band.band_name%>
+<%= band.user.user_name%>
 <% end %>

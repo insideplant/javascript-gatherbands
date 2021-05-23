@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_135746) do
+ActiveRecord::Schema.define(version: 2021_05_23_074134) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_135746) do
     t.index ["band_id"], name: "index_comments_on_band_id"
   end
 
-  create_table "menbers", force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.string "name"
     t.string "role"
     t.integer "band_id"

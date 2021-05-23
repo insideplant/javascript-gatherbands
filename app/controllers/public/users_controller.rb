@@ -1,10 +1,10 @@
 class Public::UsersController < ApplicationController
   def show
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def edit
-    @user = User.find(current_user.id)
+    @user = current_user
     @band = Band.find_by(id: @user.band_id)
   end
 

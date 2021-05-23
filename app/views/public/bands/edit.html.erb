@@ -1,2 +1,17 @@
 <h1>Public::UserBands#edit</h1>
 <p>Find me in app/views/public/user_bands/edit.html.erb</p>
+
+<%= javascript_include_tag "javascript.js" %>
+
+<%= form_with model:[@band,@member], url: band_member_path(@band.id), local:true do |f| %>
+<%= f.label :band_name %>
+<%= f.text_field :band_name %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :role %>
+<%= f.text_field :role %>
+
+<%= f.submit "create" %>
+<% end %>

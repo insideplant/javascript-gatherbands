@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :live_organaizaitions, only: [:index, :create, :show, :edit, :update]
-    resources :members, only:[:show, :edit, :update, :create]
-    resources :bands, only:[:index, :show, :edit, :update]
+    resources :bands, only:[:index, :show, :edit, :update] do
+      resources :members, only:[:show, :edit, :update, :create]
+    end
     resources :articles do
       resources :comments, only: [:create]
     end
