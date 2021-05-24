@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(current_user.id)
+    user = current_user
     user.update(user_params)
     redirect_to users_mypage_path
   end

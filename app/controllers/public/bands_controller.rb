@@ -3,7 +3,7 @@ class Public::BandsController < ApplicationController
     @user = current_user
     @band = current_user.band
     @bands = Band.all
-    @mambers = Member.all.where(band_id: @band.id)
+    @members = Member.all.where(band_id: @band.id)
   end
 
   def show
@@ -12,13 +12,8 @@ class Public::BandsController < ApplicationController
   def edit
     @user = current_user
     @band = current_user.band
-    @band.members.build
+    @member = @band.members&.first
   end
 
-  def update
-  end
-
-  def create
-  end
 
 end
