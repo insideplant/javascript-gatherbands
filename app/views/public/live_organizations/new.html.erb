@@ -1,10 +1,14 @@
 <h1>Public::LiveOrganizations#new</h1>
 <p>Find me in app/views/public/live_organizations/new.html.erb</p>
 
-<%= form_with model:live_organization, url:live_organizations_path,local:true do |f| %>
-バンド名：<%= @user.band.band_name%>
-<label class="control-label" for="">講演予定日時</label>
-  <%= f.datetime_select :lecture_at, {}, class: 'form-control' %>
+<%= form_with model: @live_organization, url: live_organizations_path(@live_organization), local:true do |f| %>
+バンド名　：<%= @user.band.band_name%></br>
+ライブ名　：<%= f.text_field :live_name%></br>
+  <%= f.label :lecture_at, "講演予定日："%>
+  <%= f.date_select :lecture_at, {}, class: 'form-control' %></br>
+募集バンド数：<%= f.select :amount, options_for_select(1..10), class:"form-control" %></br>
+ライブ詳細：<%= f.text_area :organize_introduction %>
+<%= f.hidden_field :band_id, :value => @user.band.id %>
 
 <%= f.submit "投稿"%>
 <% end %>

@@ -2,9 +2,13 @@
 <p>Find me in app/views/public/live_organizations/index.html.erb</p>
 
 <% @live_organizations.each do |live_organization| %>
-<%= live_organization.band.band_name%>
-<%= live_organization.live.live_name%>
-<%= live_organization.live.introduction%>
+<div>
+バンド名：<%= link_to live_organization.band.band_name,live_organization_path(@live_organization)%>
+ライブ名：<%= live_organization.live_name%>
+募集人数：<%= live_organization.amount%>
+ライブスケジュール：<%= live_organization.lecture_at%>
+ライブ詳細：<%= live_organization.introduction%>
+</div>
 <% end %>
 
 <%= link_to "new Live",new_live_organization_path %>
