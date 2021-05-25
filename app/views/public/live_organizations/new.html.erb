@@ -1,0 +1,10 @@
+<h1>Public::LiveOrganizations#new</h1>
+<p>Find me in app/views/public/live_organizations/new.html.erb</p>
+
+<%= form_with model:live_organization, url:live_organizations_path,local:true do |f| %>
+バンド名：<%= @user.band.band_name%>
+<label class="control-label" for="">講演予定日時</label>
+  <%= f.datetime_select :lecture_at, {}, class: 'form-control' %>
+
+<%= f.submit "投稿"%>
+<% end %>

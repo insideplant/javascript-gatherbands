@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_23_074134) do
+ActiveRecord::Schema.define(version: 2021_05_25_112837) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,6 +46,22 @@ ActiveRecord::Schema.define(version: 2021_05_23_074134) do
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["band_id"], name: "index_comments_on_band_id"
+  end
+
+  create_table "live_organizations", force: :cascade do |t|
+    t.integer "band_id"
+    t.integer "live_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lives", force: :cascade do |t|
+    t.datetime "live_date"
+    t.integer "live_organization"
+    t.text "introduction"
+    t.string "live_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "members", force: :cascade do |t|

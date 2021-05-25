@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  live_date: 2021-05-25 11:14:16
+  live_organization: 1
+  introduction: MyText
+  live_name: MyString
+
+two:
+  live_date: 2021-05-25 11:14:16
+  live_organization: 1
+  introduction: MyText
+  live_name: MyString
