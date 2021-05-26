@@ -5,12 +5,13 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @band = Band.find_by(id: @user.band_id)
+    @band = @user.band
   end
 
   def update
-    user = current_user
-    user.update(user_params)
+    @user = current_user
+    @band = @user.band
+    @user.update(user_params)
     redirect_to users_mypage_path
   end
 
@@ -23,7 +24,7 @@ class Public::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:user_name,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:email)
+    params.require(:user).permit(:user_name,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:email, band_attributes:[:band_na,:id])
   end
 
 end

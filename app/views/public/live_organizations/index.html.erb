@@ -3,11 +3,11 @@
 
 <% @live_organizations.each do |live_organization| %>
 <div>
-バンド名：<%= link_to live_organization.band.band_name,live_organization_path(@live_organization)%>
-ライブ名：<%= live_organization.live_name%>
-募集人数：<%= live_organization.amount%>
-ライブスケジュール：<%= live_organization.lecture_at%>
-ライブ詳細：<%= live_organization.introduction%>
+バンド名：<%= link_to live_organization.band.band_name,live_organization_path(live_organization)%></br>
+ライブ名：<%= live_organization.live_name%></br>
+募集人数：<%= live_organization.amount%></br>
+ライブスケジュール：<%= live_organization.lecture_at%></br>
+ライブ詳細：<%= live_organization.organize_introduction%>
 </div>
 <% end %>
 
