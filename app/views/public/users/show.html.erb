@@ -1,16 +1,59 @@
 <h1>Public::Users#show</h1>
 <p>Find me in app/views/public/users/show.html.erb</p>
 
-<%= @user.user_name%>
-<%= @user.band.band_name%>
-<%= @user.last_name%>
-<%= @user.first_name%>
-<%= @user.last_name_kana%>
-<%= @user.first_name_kana%>
-<%= @user.email%>
-<%= @user.postal_code%>
-<%= @user.address%>
-<%= @user.telephone_number%>
+<h1>My Page</h1>
+<%= link_to "Edit",users_mypage_edit_path, class:"btn btn-primary" %>
 
-<%= link_to "Edit",users_mypage_edit_path %>
+<div class="mb-3">
+<table class="table table-hover">
+  <thead class="thead thead-default">
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <thody>
+    <tr>
+      <td><%= User.human_attribute_name(:user_name)%></td>
+      <td><%= @user.user_name%></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:email)%></td>
+      <td><%= @user.email%></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= @user.band.band_name%></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:last_name)%></td>
+      <td><%= @user.last_name%></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:first_name)%></td>
+      <td><%= @user.first_name%></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:last_name_kana)%></td>
+      <td><%= @user.last_name_kana%></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:first_name_kana)%></td>
+      <td><%= @user.first_name_kana%></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:postal_code)%></td>
+      <td><%= @user.postal_code%></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:address)%></td>
+      <td><%= @user.address%></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:te)%></td>
+      <td><%= @user.telephone_number%></td>
+    </tr>
+  </thody>
+</table>
+</div>
 
