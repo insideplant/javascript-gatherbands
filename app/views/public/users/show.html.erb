@@ -22,7 +22,7 @@
       <td><%= @user.email%></td>
     </tr>
     <tr>
-      <td></td>
+      <td><%= Band.human_attribute_name(:band_name)%></td>
       <td><%= @user.band.band_name%></td>
     </tr>
     <tr>
@@ -50,7 +50,7 @@
       <td><%= @user.address%></td>
     </tr>
     <tr>
-      <td><%= User.human_attribute_name(:te)%></td>
+      <td><%= User.human_attribute_name(:telephone_number)%></td>
       <td><%= @user.telephone_number%></td>
     </tr>
   </thody>

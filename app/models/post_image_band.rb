@@ -1,0 +1,2 @@
+class PostImageBand < ApplicationRecord
+end

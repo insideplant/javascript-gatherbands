@@ -1,0 +1,2 @@
+class PostImageUser < ApplicationRecord
+end
