@@ -14,6 +14,10 @@
   </thead>
   <thody>
     <tr>
+      <td></td>
+      <td><%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100" %></td>
+    </tr>
+    <tr>
       <td><%= User.human_attribute_name(:user_name)%></td>
       <td><%= @user.user_name%></td>
     </tr>

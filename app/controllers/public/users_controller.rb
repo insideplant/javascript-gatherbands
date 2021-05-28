@@ -18,13 +18,21 @@ class Public::UsersController < ApplicationController
   def confirmation
   end
 
+  def create
+    @user = User.new(
+      name: params[:name],
+      email: params[:email],
+      image_name: 'default_user.png'
+      )
+  end
+
   def index
     @user = User.all
   end
 
   private
   def user_params
-    params.require(:user).permit(:user_name,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:email, band_attributes:[:band_na,:id])
+    params.require(:user).permit(:user_name,:profile_image,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:email, band_attributes:[:band_na,:id])
   end
 
 end
