@@ -16,4 +16,5 @@ class Public::BandsController < ApplicationController
   end
 
 
+
 end

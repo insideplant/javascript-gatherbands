@@ -1,7 +1,6 @@
-<h1>Public::UserBands#edit</h1>
+<h1>Public::Bands#edit</h1>
 <p>Find me in app/views/public/user_bands/edit.html.erb</p>
 
-<%= javascript_include_tag "javascript.js" %>
 <div>
 <%= form_with model: @band, url: band_member_path(@band, member_id: @member.id), local:true do |f| %>
 <%= f.label :band_name %>
@@ -9,20 +8,19 @@
 
 <div>
 <%= f.fields_for :members, @member do |member| %>
+  <%= member.label :role %>
+  <%= member.text_field :role %>
+  <%= member.label :name %>
+  <%= member.text_field :name %>
 
-  <%= member.label :role, class:"role-area_title" %>
-  <%= member.text_field :role, class:"role-area_form" %>
-  <%= member.label :name, class:"name-area_title" %>
-  <%= member.text_field :name, class:"name-area_form" %>
-  <%= button_to "削除する", class:"delete-form-btn" %>
-
-  <% if @member.persisted? %>
-  <%= tag.check_box :_destroy, data:{ index: member.index }, class: "hidden-destroy" %>
-  <% end %>
-  <%= button_to "追加する", class:"add-form-btn" %>
+  <p id="output"></p>
+  <%= button_to "削除する"%>
+  <%= button_tag "追加する" ,type: 'button', class:"add-form-btn" %>
 <% end %>
 </div>
 
 <%= f.submit "create" %>
 <% end %>
 </div>
+
+<%= javascript_include_tag "javascript.js" %>

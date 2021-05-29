@@ -1,22 +1,17 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
 
 <h1>My Page</h1>
-<%= link_to "Edit",users_mypage_edit_path, class:"btn btn-primary" %>
+  <div class="nav justify-content-end mb-3">
+  <%= link_to "Edit",users_mypage_edit_path,:onclick=>"window.open(this.href,'hoge', 'height=100, width=100');return false;", class:"btn btn-primary" %>
+  </div>
 
-<div class="mb-3">
+<div class="row">
+ <div class="col-4 text-center">
+   <%= attachment_image_tag @user, :profile_image, size: "300x300", fallback: "no_image.png", size: "300x300" %>
+ </div>
+
+<div class="col-8">
 <table class="table table-hover">
-  <thead class="thead thead-default">
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <thody>
-    <tr>
-      <td></td>
-      <td><%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100" %></td>
-    </tr>
+  <tbody>
     <tr>
       <td><%= User.human_attribute_name(:user_name)%></td>
       <td><%= @user.user_name%></td>
@@ -57,7 +52,8 @@
       <td><%= User.human_attribute_name(:telephone_number)%></td>
       <td><%= @user.telephone_number%></td>
     </tr>
-  </thody>
+  </tbody>
 </table>
+</div>
 </div>
 

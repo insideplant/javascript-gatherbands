@@ -1,0 +1,8 @@
+<li id="article-<%= article.id %>">
+  <%= link_to gravatar_for(article.band, size: 50), article.band %>
+  <span class="band"><%= link_to article.band.band_name, article.band %></span>
+  <span class="content"><%= article.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(article.created_at) %> ago.
+  </span>
+</li>
