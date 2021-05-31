@@ -3,16 +3,32 @@
 
 <div>
   <table>
-    
+    <tbody>
+      <tr>
+        <td>バンド名：</td>
+        <td><%= @band.band_name%></td>
+      </tr>
+        <td>ユーザー名：</td>
+        <td><%= @user.user_name%></td>
+      <tr>
+        <td>メンバー：</td>
+        <td>
+          <% @members.each do |member|%>
+          <%= member.role%>
+          <%= member.name%>
+          <% end %>
+          <%= link_to "Edit",edit_band_path(@band) %>
+          
+        </td>
+      </tr>
+      <tr>ユーザー：</tr>
+    </tbody>
+
   </table>
-バンド名：<%= @band.band_name%></br>
-ユーザー：<%= @user.user_name%></br>
+</br>
+</br>
 メンバー：
-<% @members.each do |member|%>
-<%= member.role%>
-<%= member.name%>
-<% end %>
-<%= link_to "Edit",edit_band_path(@band) %>
+
 </div>
 
 <div>

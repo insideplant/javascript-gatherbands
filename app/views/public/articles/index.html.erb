@@ -1,16 +1,30 @@
 <h1>Article::Articles#index</h1>
 <p>Find me in app/views/public/posts/index.html.erb</p>
 
-<%= form_with model:@article, url:articles_path,local:true do |f| %>
-<%= @user.band.band_name%>
+<div class="row">
+  <%= form_with model:@article, url:articles_path,local:true do |f| %>
 
-<%= f.hidden_field :band_id, :value => @user.band.id %>
-<%= f.text_field :content %>
-<%= f.submit "投稿"%>
-<% end %>
+  <div class="form-group">
+    <%= f.label :content, @user.band.band_name %>
+    <%= f.text_area :content, class:"form-control" %>
+    <%= f.hidden_field :band_id, :value => @user.band.id %>
+  </div>
+
+  <%= f.submit "投稿", class:"btn btn-primary"%>
+  <% end %>
+</div>
 
 
-<% @articles.each do |article| %>
-<%= article.band.band_name%>
-<%= link_to article.content,article_path(article) %>
-<% end %>
+
+  <% @articles.each do |article| %>
+  <div class="card mb-3" style="max-width: 540px">
+   <div class="row no-gutters">
+    <div class="col-md-4 my-auto">
+      <%= article.band.band_name%>
+    </div>
+    <div class="col-md-8">
+      <%= link_to article.content,article_path(article) %>
+    </div>
+   </div>
+  </div>
+  <% end %>
