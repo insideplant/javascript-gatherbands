@@ -4,14 +4,16 @@
 //}
 $(function(){
   // jQueryプログラムの内容
+  var n = 0;
   $('.add-form-btn').on('click',function(){
-    var n =n+1
+    n =n+1
     var content = $('.formA').children().first().clone();
+    console.log(content);
+    console.log(content.html());
+    content.html(content.html().replaceAll("[0]",`[${n}]`));
+    content.html(content.html().replaceAll("_0_",`_${n}_`));
     $('.formA').append(content);
-    $('#band_members_attributes_0_role').attr('name').replace("0", "${n}");
-    $('#band_members_attributes_0_role').attr('id').replace("0", "${n}");
-    $('#band_members_attributes_0_name').attr('name').replace("0", "${n}");
-    $('#band_members_attributes_0_name').attr('id').replace("0", "${n}");
+
   });
 });
 

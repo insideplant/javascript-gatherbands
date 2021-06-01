@@ -1,33 +1,35 @@
 <h1>Public::UserBands#index</h1>
 <p>Find me in app/views/public/user_bands/index.html.erb</p>
 
-<div>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="band_info">
+      <h1>
+        <%#= gravatar_for @user %>
+        <%= @band.band_name%>
+      </h1>
   <table>
     <tbody>
-      <tr>
-        <td>バンド名：</td>
-        <td><%= @band.band_name%></td>
-      </tr>
-        <td>ユーザー名：</td>
-        <td><%= @user.user_name%></td>
-      <tr>
-        <td>メンバー：</td>
-        <td>
-          <% @members.each do |member|%>
-          <%= member.role%>
-          <%= member.name%>
-          <% end %>
-          <%= link_to "Edit",edit_band_path(@band) %>
-          
-        </td>
-      </tr>
-      <tr>ユーザー：</tr>
-    </tbody>
-
-  </table>
-</br>
-</br>
-メンバー：
+        <tr>
+          <td>バンド名　：</td>
+          <td><%= @band.band_name%></td>
+        </tr>
+          <td>ユーザー名：</td>
+          <td><%= @user.user_name%></td>
+        <tr>
+          <td>メンバー　：</td>
+          <td>
+            <% @members.each do |member|%>
+            <%= member.role%>
+            <%= member.name%>
+            <% end %>
+            <%= link_to "Edit",edit_band_path(@band) %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </section>
+  </aside>
 
 </div>
 
