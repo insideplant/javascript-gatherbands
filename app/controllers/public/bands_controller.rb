@@ -13,12 +13,13 @@ class Public::BandsController < ApplicationController
     @user = current_user
     @band = current_user.band
     unless Member.exists?(band_id: @band.id)
-      @members = @band.members.build
+      @new_members = @band.members.build
     else
       @members = @band.members
+      #@new_members = @band.members.build
     end
   end
-  
+
   def update
     @band = Band.find(params[:id])
     #@member = @band.members.build
@@ -32,11 +33,11 @@ class Public::BandsController < ApplicationController
       redirect_to bands_path
     end
   end
-  
+
   private
 
   def member_params
-    params.require(:band).permit(:band_name,members_attributes:[:role,:name])
+    params.require(:band).permit(:band_name,new_members_attributes:[:role,:name])
   end
 
   def update_member_params

@@ -20,7 +20,6 @@
           <td>メンバー　：</td>
           <td>
             <% @members.each do |member|%>
-            <%= member.role%>
             <%= member.name%>
             <% end %>
             <%= link_to "Edit",edit_band_path(@band) %>

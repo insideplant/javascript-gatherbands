@@ -7,13 +7,12 @@ $(function(){
   var n = 0;
   $('.add-form-btn').on('click',function(){
     n =n+1
-    var content = $('.formA').children().first().clone();
+    var content = $('.formB').children().first().clone();
     console.log(content);
     console.log(content.html());
     content.html(content.html().replaceAll("[0]",`[${n}]`));
     content.html(content.html().replaceAll("_0_",`_${n}_`));
-    $('.formA').append(content);
-
+    $('.formB').append(content);
   });
 });
 
