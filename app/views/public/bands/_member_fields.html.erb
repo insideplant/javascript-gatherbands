@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <%= member.label :role %>
+  <%= member.text_field :role, class:"form-control" %>
+  <%= member.label :name %>
+  <%= member.text_field :name, class:"form-control" %>
+
+  <%= link_to_remove_association "remove task", member %>
+</div>

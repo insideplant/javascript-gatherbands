@@ -7,44 +7,16 @@
    <%= f.text_field :band_name, class:"form-control" %>
  </div>
 
- <div class="formA">
+ <div class="members">
   <%# 8.times do %>
-  <div class="row">
-   <%= f.fields_for :members, @members do |member| %>
-   <div class="col-3">
-    <%= member.label :role %>
-   </div>
-   <div class="col-3">
-    <%= member.text_field :role, class:"form-control" %>
-   </div>
-   <div class="col-3">
-    <%= member.label :name %>
-   </div>
-   <div class="col-3">
-    <%= member.text_field :name, class:"form-control" %>
-   </div>
-   <% end %>
+  <%= f.fields_for :members, @members do |member| %>
+   <%= render "member_fields", f: member %>
+  <% end %>
+  <div class="links">
+   <%= link_to_add_association "タグを追加", f, :members %>
   </div>
  </div>
- <div class="formB">
-  <div class="row">
-   <%= f.fields_for :new_members, @new_members do |new_member| %>
-   <div class="col-3">
-    <%= new_member.label :role %>
-   </div>
-   <div class="col-3">
-    <%= new_member.text_field :role, class:"form-control" %>
-   </div>
-   <div class="col-3">
-    <%= new_member.label :name %>
-   </div>
-   <div class="col-3">
-    <%= new_member.text_field :name, class:"form-control" %>
-   </div>
-   <% end %>
-  </div>
- </div>
- <%= button_tag "追加する" ,type: 'button', class:"add-form-btn form-btn" %>
+
 <%= f.submit "create" %>
 <% end %>
 

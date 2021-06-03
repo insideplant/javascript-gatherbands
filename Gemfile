@@ -68,7 +68,11 @@ gem 'pry-byebug'
 gem 'bootstrap','~>4.5'
 gem 'jquery-rails'
 
+gem 'cocoon'
+
 gem "refile", require: "refile/rails", github: 'manfe/refile'
+
+
 
 
 
