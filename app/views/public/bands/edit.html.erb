@@ -1,8 +1,6 @@
-
-<div>
 <%= form_with model: @band, url: band_path(@band), local:true do |f| %>
 
- <div class="form-group">
+ <div class="form-group row">
    <%= f.label :band_name %>
    <%= f.text_field :band_name, class:"form-control" %>
  </div>
@@ -11,12 +9,15 @@
   <%= f.fields_for :members, @member do |member| %>
    <%= render "member_fields", f: member %>
   <% end %>
-  <div class="links">
-   <%= link_to_add_association "タグを追加", f, :members %>
+ </div>
+
+ <div class="row">
+  <div class="links col-sm-7">
+   <%= link_to_add_association "New Member", f, :members, class: "btn btn-primary btn-block" %>
+  </div>
+  <div class="col-sm-2">
+   <%= f.submit "create", class: "btn btn-block" %>
+   <% end %>
   </div>
  </div>
 
-<%= f.submit "create" %>
-<% end %>
-
-</div>

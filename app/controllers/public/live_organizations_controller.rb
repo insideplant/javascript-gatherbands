@@ -9,11 +9,6 @@ class Public::LiveOrganizationsController < ApplicationController
     @live_organization = LiveOrganization.new
   end
 
-  def index
-    @user = current_user
-    @live_organizations = LiveOrganization.all
-  end
-
   def show
   end
 

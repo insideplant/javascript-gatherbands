@@ -1,6 +1,3 @@
-<h1>Public::UserBands#index</h1>
-<p>Find me in app/views/public/user_bands/index.html.erb</p>
-
 <div class="row">
   <aside class="col-md-4">
     <section class="band_info">
@@ -30,13 +27,15 @@
     </section>
   </aside>
 
-</div>
-
+  <% @live_organizations.each do |live_organization| %>
 <div>
-<% @bands.each do |band| %>
-<div>
-<%= band.band_name%>
-<%= band.user.user_name%>
+バンド名：<%= link_to live_organization.band.band_name,live_organization_path(live_organization)%></br>
+ライブ名：<%= live_organization.live_name%></br>
+募集人数：<%= live_organization.amount%></br>
+ライブスケジュール：<%= live_organization.lecture_at%></br>
+ライブ詳細：<%= live_organization.organize_introduction%>
 </div>
 <% end %>
+
+<%= link_to "new Live",new_live_organization_path %>
 </div>
