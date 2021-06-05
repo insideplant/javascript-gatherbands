@@ -8,8 +8,7 @@
  </div>
 
  <div class="members">
-  <%# 8.times do %>
-  <%= f.fields_for :members, @members do |member| %>
+  <%= f.fields_for :members, @member do |member| %>
    <%= render "member_fields", f: member %>
   <% end %>
   <div class="links">

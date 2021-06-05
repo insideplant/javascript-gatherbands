@@ -12,12 +12,12 @@ class Public::BandsController < ApplicationController
   def edit
     @user = current_user
     @band = current_user.band
-     unless Member.exists?(band_id: @band.id)
-        @members = @band.members.build
-     else
-        @members = @band.members
+     #unless Member.exists?(band_id: @band.id)
+        #@members = @band.members.build
+     #else
+        @member = @band.members
       #@new_members = @band.members.build
-     end
+     #end
   end
 
   def update
@@ -25,7 +25,6 @@ class Public::BandsController < ApplicationController
     #@member = @band.members.build
     #@member.update(member_params)
     if @band.update(update_band_params)
-      binding.pry
       redirect_to bands_path
     else
       render :edit
