@@ -5,6 +5,8 @@ class Public::BandsController < ApplicationController
     @live_organizations = LiveOrganization.all
     @bands = Band.all
     @members = Member.all.where(band_id: @band.id)
+    
+    @lives = Live.all
   end
 
   def show

@@ -9,10 +9,13 @@
   <%= f.fields_for :members, @member do |member| %>
    <%= render "member_fields", f: member %>
   <% end %>
+  
+  
+  
  </div>
 
- <div class="row">
-  <div class="links col-sm-7">
+ <div class="link row">
+  <div class="col-sm-7">
    <%= link_to_add_association "New Member", f, :members, class: "btn btn-primary btn-block" %>
   </div>
   <div class="col-sm-2">

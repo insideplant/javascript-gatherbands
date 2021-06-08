@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resources :live_organizations, only: [:new,:index, :create, :show, :edit, :update]
+    resources :live_organizations, only: [:index, :create, :show, :edit, :update]
     resources :lives
     resources :bands, only:[:index, :show, :edit, :update] do
       resources :members, only:[:show, :edit, :update, :create]

@@ -1,0 +1,10 @@
+<%= form_with model: @live, url: lives_path(@live), local:true do |f| %>
+バンド名　：<%= @user.band.band_name%></br>
+ライブ名　：<%= f.text_field :live_name%></br>
+  <%= f.label :lecture_at, "講演予定日："%>
+  <%= f.date_select :lecture_at, {}, class: 'form-control' %></br>
+募集バンド数：<%= f.select :amount, options_for_select(2..10), class:"form-control" %></br>
+ライブ詳細：<%= f.text_area :introduction %>
+
+<%= f.submit "投稿"%>
+<% end %>

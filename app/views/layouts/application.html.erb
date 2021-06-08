@@ -11,8 +11,8 @@
   <body>
     <nav class="navbar navbar-expand-md  fixed-top navbar-light bg-light">
       <div class="container">
-      <div class="navbar-brand">GatherBands</div>
-    　　 <ul class="navbar-nav ml-auto">
+        <div class="navbar-brand">GatherBands</div>
+    　  <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
          <li><%= link_to "Top",root_path, class:"nav-link" %></li>
          <li><%= link_to "mypage",users_mypage_path, class:"nav-link" %></li>
@@ -28,11 +28,22 @@
          <li><%= link_to "live",lives_path, class:"nav-link" %></li>
         <% end %>
         </ul>
-       </div>
+      </div>
     </nav>
-    </header>
     <div class="container">
-    <%= yield %>
+      <%= yield %>
+      <footer class="footer">
+        <small>
+          The <a>Ruby on Rails Tutorial</a>
+          by <a>Michael Hartl</a>
+        </small>
+        <nav>
+          <ul class="navbar-nav ml-auto">
+            <li><%= link_to "About", about_path, class:"nav-link" %></li>
+            <li><%= link_to "Contact", class:"nav-link" %></li>
+          </ul>
+        </nav>
+      </footer>
     </div>
   </body>
 </html>
