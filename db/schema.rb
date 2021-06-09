@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_120213) do
+ActiveRecord::Schema.define(version: 2021_06_09_125744) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,11 +49,22 @@ ActiveRecord::Schema.define(version: 2021_06_08_120213) do
     t.index ["band_id"], name: "index_comments_on_band_id"
   end
 
+  create_table "live_houses", force: :cascade do |t|
+    t.integer "price"
+    t.string "house_name"
+    t.string "address"
+    t.string "telephone_number"
+    t.text "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "live_organizations", force: :cascade do |t|
     t.integer "band_id"
     t.integer "live_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "host", default: false, null: false
   end
 
   create_table "lives", force: :cascade do |t|
@@ -86,6 +97,15 @@ ActiveRecord::Schema.define(version: 2021_06_08_120213) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rents", force: :cascade do |t|
+    t.integer "live_id"
+    t.integer "live_house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["live_house_id"], name: "index_rents_on_live_house_id"
+    t.index ["live_id"], name: "index_rents_on_live_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -6,5 +6,6 @@ class RemoveColumnsInLiveOrganizations < ActiveRecord::Migration[5.2]
     remove_column :live_organizations, :amount, :integer
     remove_column :live_organizations, :introduction, :text
     remove_column :live_organizations, :organize_introduction, :text
+    add_column :live_organizations, :host, :boolean, default: false, null: false
   end
 end

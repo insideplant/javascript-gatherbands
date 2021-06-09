@@ -5,7 +5,7 @@ class Public::BandsController < ApplicationController
     @live_organizations = LiveOrganization.all
     @bands = Band.all
     @members = Member.all.where(band_id: @band.id)
-    
+
     @lives = Live.all
   end
 
@@ -27,7 +27,7 @@ class Public::BandsController < ApplicationController
     @band = Band.find(params[:id])
     #@member = @band.members.build
     #@member.update(member_params)
-    if @band.update(update_band_params)
+    if @band.update(band_params)
       redirect_to bands_path
     else
       render :edit

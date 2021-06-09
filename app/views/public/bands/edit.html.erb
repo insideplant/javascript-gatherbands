@@ -9,9 +9,6 @@
   <%= f.fields_for :members, @member do |member| %>
    <%= render "member_fields", f: member %>
   <% end %>
-  
-  
-  
  </div>
 
  <div class="link row">
@@ -20,7 +17,6 @@
   </div>
   <div class="col-sm-2">
    <%= f.submit "create", class: "btn btn-block" %>
-   <% end %>
   </div>
  </div>
-
+ <% end %>
