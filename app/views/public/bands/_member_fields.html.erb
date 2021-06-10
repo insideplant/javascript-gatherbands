@@ -1,14 +1,7 @@
 <div class="nested-fields row col-sm-12">
-  <table>
-    <tbody>
-      <tr>
-        <tb class="scope-sm-2 mb-3 offset-1"><%= f.label :role %></tb>
-        <tb class="col-sm-3 mb-3"><%= f.text_field :role, class:"form-control" %></tb>
-        <tb class="scope-sm-2 mb-3"><%= f.label :name %></tb>
-        <tb class="col-sm-3 mb-3"><%= f.text_field :name, class:"form-control" %></tb>
-        <tb class="col-sm-2 mb-3"><%= link_to_remove_association "ー", f, class: "btn btn-primary" %></tb>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+  <div class="field scope-sm-2 mb-3 offset-1"><%= f.label :role %></div>
+  <div class="field col-sm-3 mb-3"><%= f.text_field :role, class:"form-control" %></div>
+  <div class="field scope-sm-2 mb-3 offset-1"><%= f.label :name %></div>
+  <div class="field col-sm-3 mb-3"><%= f.text_field :name, class:"form-control" %></div>
+  <div class="field col-sm-2 mb-3"><%= link_to_remove_association "ー", f, class: "btn btn-primary" %></div>
 </div>

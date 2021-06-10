@@ -1,45 +1,53 @@
 
-    <div class="card-list">
-        <div class="card mx-auto mt-4 shadou-lg">
-          <div class="card-body row">
-            <div class="col-2">
-              <%#= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
-                size: "60x60" , class:"mt-2 rounded-circle"%>
-            </div>
-            <div class="col-10">
-              <div class="row">
-                <h1><%= @live.live_name%></h1>
-              </div>
-              <div class="row">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>ホスト名</td>
-                      <td>：<%= @host_band.band_name%></td>
-                    </tr>
-                    <tr>
-                      <td>メンバー</td>
-                      <td>
-                      ：<% @host_band.members.each do |member| %>
-                       <%= member.name%>
-                       <% end %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>募集人数</td>
-                      <td>：<%= @live.amount %></td>
-                    </tr>
-                    <tr>
-                      <td>開催予定日</td>
-                      <td>：<%= @live.lecture_at %></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="row">
-                <%= link_to '参加', lives_path(@live), method: :post, class:"btn btn-primary"%>
-              </div>
-            </div>
+  <div class="card-list">
+    <div class="card mx-auto mt-4 shadou-lg">
+      <div class="card-body row">
+        <div class="col-2">
+          <%#= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
+            size: "60x60" , class:"mt-2 rounded-circle"%>
+        </div>
+        <div class="col-10">
+          <div class="row">
+            <h1><%= @live.live_name%></h1>
+          </div>
+          <div class="row">
+            <table>
+              <tbody>
+                <tr>
+                  <td>ホスト名</td>
+                  <td>：<%= @host_band.band_name%></td>
+                </tr>
+                <tr>
+                  <td>メンバー</td>
+                  <td>
+                  ：<% @host_band.members.each do |member| %>
+                   <%= member.name%>
+                   <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>募集人数</td>
+                  <td>：<%= @live.amount %></td>
+                </tr>
+                <tr>
+                  <td>開催予定日</td>
+                  <td>：<%= @live.lecture_at %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <% unless current_user.id == @host_band.id %>
+              <%= form_with model: @live_new_organization, url:live_organizations_path, local:true do |f| %>
+                <%= f.hidden_field :live_id, :value => @live.id%>
+                <%= f.hidden_field :band_id, :value => current_user.band.id %>
+                <%= f.submit "参加", class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
           </div>
         </div>
+      </div>
+      <%= render "participants" %>
     </div>
+  </div>
+

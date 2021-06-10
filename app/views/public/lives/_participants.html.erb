@@ -1,0 +1,28 @@
+<% @live_organization_participants.each do |live_organization_participant| %>
+  <div class="card-body row bg-primary">
+    <div class="col-2">
+      <%#= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
+        size: "60x60" , class:"mt-2 rounded-circle"%>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <table>
+          <tbody>
+            <tr>
+              <td>バンド名</td>
+              <td>：<%= live_organization_participant.band.band_name%></td>
+            </tr>
+            <tr>
+              <td>メンバー</td>
+              <td>
+              ：<% live_organization_participant.band.members.each do |member| %>
+               <%= member.name%>
+               <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+   </div>
+  </div>
+<% end %>

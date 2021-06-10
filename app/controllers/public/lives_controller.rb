@@ -5,9 +5,6 @@ class Public::LivesController < ApplicationController
       @user = current_user
       @live_organization = LiveOrganization.create(band_id: @user.id, live_id: @live.id, host: true)
       redirect_to bands_path
-    else
-      @user = current_user
-      LiveOrganization.create(band_id: @user.band_id, live_id: @live.id)
     end
   end
 
@@ -21,9 +18,14 @@ class Public::LivesController < ApplicationController
 
   def show
     @live = Live.find(params[:id])
+
+    #host
     @live_organization = LiveOrganization.find_by(live_id: @live.id, host: true)
+    @live_new_organization = LiveOrganization.new
     @host_band = Band.find(@live_organization.band_id)
 
+    #participants
+    @live_organization_participants = LiveOrganization.where(live_id: @live.id, host: false)
   end
 
   def update
