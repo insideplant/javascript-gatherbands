@@ -4,9 +4,12 @@ class CreateLiveHouses < ActiveRecord::Migration[5.2]
       t.integer :price
       t.string :house_name
       t.string :address
+      t.float :branches, :latitude
+      t.float :branches, :longitude
       t.string :telephone_number
       t.string :image_id
       t.text :detail
+      t.boolean :is_active, default: true, null: false
 
       t.timestamps
     end

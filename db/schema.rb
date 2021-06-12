@@ -53,9 +53,13 @@ ActiveRecord::Schema.define(version: 2021_06_09_125744) do
     t.integer "price"
     t.string "house_name"
     t.string "address"
+    t.float "branches"
+    t.float "latitude"
+    t.float "longitude"
     t.string "telephone_number"
     t.string "image_id"
     t.text "detail"
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -15,7 +15,7 @@
     <% @live_houses.each do |live_house| %>
      <tr>
       <td><%= live_house.id %></td>
-      <td><%= link_to live_house.name %></td>
+      <td><%= link_to live_house.house_name, admin_live_house_path(live_house) %></td>
       <td><%= live_house.price %></td>
       <td>地図</td>
       <td><%= live_house.is_active %></td>

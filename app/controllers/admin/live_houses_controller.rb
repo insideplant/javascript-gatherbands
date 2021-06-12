@@ -4,7 +4,8 @@ class Admin::LiveHousesController < ApplicationController
   end
 
   def show
-    @live_houses = LiveHouse.find(params[])
+    @live_house = LiveHouse.find(params[:id])
+    gon.user = @live_house
   end
 
   def new
@@ -14,7 +15,7 @@ class Admin::LiveHousesController < ApplicationController
   def create
     live_house = LiveHouse.new(live_house_params)
     live_house.save
-    redirect_to admin_live_house_path(live_house.id)
+    redirect_to admin_live_houses_path
   end
 
   private
