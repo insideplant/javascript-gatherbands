@@ -5,7 +5,8 @@ class Admin::LiveHousesController < ApplicationController
 
   def show
     @live_house = LiveHouse.find(params[:id])
-    gon.user = @live_house
+    #gon.latitude = @live_house.latitude
+    #gon.longitude = @live_house
   end
 
   def new
@@ -20,7 +21,7 @@ class Admin::LiveHousesController < ApplicationController
 
   private
   def live_house_params
-    params.require(:live_house).permit(:price, :house_name, :address, :telephone_number, :image, :detail)
+    params.require(:live_house).permit(:price, :house_name, :address, :telephone_number, :image, :detail, :latitude, :longitude)
   end
 
 end
