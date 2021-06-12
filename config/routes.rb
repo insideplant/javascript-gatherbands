@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     resources :genres, only:[:index, :show, :edit, :update]
     resources :user_bands, only:[:index, :show, :update]
     resources :users, only:[:index, :show, :edit, :update]
-    resources :live_houses, only:[:index, :show, :edit, :update]
+    resources :live_houses, only:[:new, :index, :show, :edit, :update]
   end
 
 

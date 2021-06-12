@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_125744) do
     t.string "house_name"
     t.string "address"
     t.string "telephone_number"
+    t.string "image_id"
     t.text "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_125744) do
     t.string "live_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.boolean "status", default: false, null: false
     t.integer "amount"
     t.date "lecture_at"
   end

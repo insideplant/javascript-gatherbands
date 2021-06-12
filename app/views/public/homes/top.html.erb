@@ -1,5 +1,45 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+  <div class="col-8">
+    <div class="card-list">
+      <% @lives.each do |live| %>
+        <%= link_to life_path(live) do%>
+        <div class="card w-auto mx-auto mt-4 shadou-lg">
+          <div class="card-body row">
+            <div class="col-2">
+              <%#= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
+                size: "60x60" , class:"mt-2 rounded-circle"%>
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <h1><%= live.live_name%></h1>
+              </div>
+              <div class="row">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>ホスト名</td>
+                      <td>：<%= %></td>
+                    </tr>
+                    <tr>
+                      <td>募集人数</td>
+                      <td>：<%= live.amount %></td>
+                    </tr>
+                    <tr>
+                      <td>開催予定日</td>
+                      <td>：<%= live.lecture_at %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="row">
+                <%= %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
 
 

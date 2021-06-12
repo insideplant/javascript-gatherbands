@@ -41,7 +41,9 @@
               <%= form_with model: @live_new_organization, url:live_organizations_path, local:true do |f| %>
                 <%= f.hidden_field :live_id, :value => @live.id%>
                 <%= f.hidden_field :band_id, :value => current_user.band.id %>
-                <%= f.submit "参加", class: "btn btn-primary" %>
+                <% if @live_organization_participants.count < @live.amount %>
+                  <%= f.submit "参加", class: "btn btn-primary" %>
+                <% end %>
               <% end %>
             <% end %>
           </div>

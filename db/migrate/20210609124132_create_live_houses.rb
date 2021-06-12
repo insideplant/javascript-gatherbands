@@ -5,6 +5,7 @@ class CreateLiveHouses < ActiveRecord::Migration[5.2]
       t.string :house_name
       t.string :address
       t.string :telephone_number
+      t.string :image_id
       t.text :detail
 
       t.timestamps
