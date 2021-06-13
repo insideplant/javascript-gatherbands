@@ -1,0 +1,75 @@
+<div class="modal-dialog modal-dialog-scrollable" role="document">
+  <%= form_with model: @user, url:users_mypage_update_path, remote:true do |f| %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100" %>
+
+        <div class="form-group">
+          <%= f.label :profile_image, "画像" %>
+          <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :user_name, "ユーザー名" %>
+          <%= f.text_field :user_name, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.fields_for :band, @band do |band| %>
+          <%= band.label :band_name, "バンド名" %>
+          <%= band.text_field :band_name, class:"form-control" %>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name, "姓" %>
+          <%= f.text_field :last_name, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :first_name, "名" %>
+          <%= f.text_field :first_name, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name_kana, "セイ" %>
+          <%= f.text_field :last_name_kana, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name_kana, "メイ" %>
+          <%= f.text_field :first_name_kana, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :postal_code, "郵便番号" %>
+          <%= f.text_field :postal_code, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :postal_code, "住所" %>
+          <%= f.text_field :address, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :telephone_number, "電話番号" %>
+          <%= f.text_field :telephone_number, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, "email" %>
+          <%= f.text_field :email, class:"form-control" %>
+        </div>
+      </div>
+      <div class="modal-footer actions">
+        <%= f.submit "update", class:"btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>

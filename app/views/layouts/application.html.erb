@@ -16,6 +16,7 @@
     　  <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
          <li><%= link_to "Top",root_path, class:"nav-link" %></li>
+         <li><%= link_to "Live House",live_houses_path, class:"nav-link" %></li>
          <li><%= link_to "mypage",users_mypage_path, class:"nav-link" %></li>
          <li><%= link_to "posts",articles_path, class:"nav-link" %></li>
          <li><%= link_to "bands",bands_path, class:"nav-link" %></li>

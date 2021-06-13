@@ -11,8 +11,23 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     @band = @user.band
-    @user.update(user_params)
+    
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
+        # 追加
+        format.js { @status = "success" }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+        # 追加
+        format.js { @status = "fail" }
+      end
+    end
     redirect_to users_mypage_path
+    
+    
   end
 
   def confirmation

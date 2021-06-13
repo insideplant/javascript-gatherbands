@@ -21,7 +21,7 @@ class Admin::LiveHousesController < ApplicationController
 
   private
   def live_house_params
-    params.require(:live_house).permit(:price, :house_name, :address, :telephone_number, :image, :detail, :latitude, :longitude)
+    params.require(:live_house).permit(:price, :house_name, :address, :telephone_number, :image, :detail, :postal_code, :website)
   end
 
 end

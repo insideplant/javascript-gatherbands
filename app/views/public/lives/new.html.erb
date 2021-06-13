@@ -7,5 +7,19 @@
   募集バンド数：<%= f.select :amount, options_for_select(2..10), class:"form-control" %></br>
   ライブ詳細：<%= f.text_area :introduction %>
 
+
+  <div id="inputScheduleForm" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-nm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">スケジュール登録</h4>
+            </div>
+            <div class="modal-body">
+              <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+
 <%= f.submit "投稿"%>
 <% end %>

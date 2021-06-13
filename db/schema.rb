@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_125744) do
+ActiveRecord::Schema.define(version: 2021_06_12_152138) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,10 +49,19 @@ ActiveRecord::Schema.define(version: 2021_06_09_125744) do
     t.index ["band_id"], name: "index_comments_on_band_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "band_id"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "live_houses", force: :cascade do |t|
     t.integer "price"
     t.string "house_name"
+    t.string "postal_code"
     t.string "address"
+    t.string "website"
     t.float "branches"
     t.float "latitude"
     t.float "longitude"

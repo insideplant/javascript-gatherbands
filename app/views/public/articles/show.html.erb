@@ -1,10 +1,17 @@
 <h1>Public::Posts#show</h1>
 <p>Find me in app/views/public/posts/show.html.erb</p>
 
-<%= @article.content %>
-<% @comments.each do |comment|%>
+<div>
+ <%= @article.content %>
+ <% @comments.each do |comment|%>
   <%= comment.content%>
-<% end %>
+ <% end %>
+</div>
+
+<div id="iine">
+  <%= render "favorite", article: @article %>
+</div>
+
 
 <%= form_with(model: [@article, @comment], local: true) do |f|%>
   <%= f.text_area :content%>

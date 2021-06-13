@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'live_houses/index'
-    get 'live_houses/show'
-    get 'live_houses/new'
-  end
-  namespace :public do
-    get 'comments/create'
-  end
+
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -20,12 +13,15 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    resources :live_houses, only: [:index, :show]
+    resources :favorites, only: [:create, :destroy]
     resources :live_organizations, only: [:index, :create, :show, :edit, :update]
     resources :lives
     resources :bands, only:[:index, :show, :edit, :update] do
       resources :members, only:[:show, :edit, :update, :create]
     end
     resources :articles do
+      resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create]
     end
     get 'users/mypage' => 'users#show'
@@ -39,7 +35,7 @@ Rails.application.routes.draw do
     resources :genres, only:[:index, :show, :edit, :update]
     resources :user_bands, only:[:index, :show, :update]
     resources :users, only:[:index, :show, :edit, :update]
-    resources :live_houses, only:[:new, :create, :index, :show, :edit, :update]
+    resources :live_houses
   end
 
 

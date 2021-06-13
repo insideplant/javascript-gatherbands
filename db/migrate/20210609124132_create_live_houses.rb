@@ -3,7 +3,9 @@ class CreateLiveHouses < ActiveRecord::Migration[5.2]
     create_table :live_houses do |t|
       t.integer :price
       t.string :house_name
+      t.string :postal_code
       t.string :address
+      t.string :website
       t.float :branches, :latitude
       t.float :branches, :longitude
       t.string :telephone_number

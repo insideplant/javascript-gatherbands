@@ -78,5 +78,8 @@ gem "refile-mini_magick"
 gem "gon"
 gem 'geocoder'
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
 
 
