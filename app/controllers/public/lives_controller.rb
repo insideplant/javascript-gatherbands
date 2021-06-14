@@ -1,4 +1,12 @@
 class Public::LivesController < ApplicationController
+
+  def index
+    @live = Live.new
+    @lives = Live.all
+    #@lives = Live.where("start_on > ?",  6.months.since)
+    #render json: [ { 'start' => 1.day.ago, 'end' => 1.day.since }]
+  end
+
   def create
     unless Live.find_by(id: params[:id])
       @live = Live.create(live_params)
@@ -10,10 +18,9 @@ class Public::LivesController < ApplicationController
 
   def new
     @user = current_user
-    @live = Live.new
   end
 
-  def index
+  def calendar
   end
 
   def show
@@ -37,7 +44,7 @@ class Public::LivesController < ApplicationController
   private
 
   def live_params
-    params.require(:live).permit(Live::REGISTRABLE_ATTRIBUTES,:live_name,:amount,:introduction)
+    params.require(:live).permit(:start_at,:end_at, :live_name,:amount,:introduction, :status)
   end
 
 

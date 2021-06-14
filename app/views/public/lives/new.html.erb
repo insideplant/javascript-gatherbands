@@ -1,25 +1,21 @@
 <%= form_with model: @live, url: lives_path, local:true do |f| %>
   バンド名　：<%= @user.band.band_name%></br>
   ライブ名　：<%= f.text_field :live_name%></br>
+  ライブハウス：<%= f.text_field :live_name%></br>
   <% #https://qiita.com/banetya/items/c238a66690861ac1a2c0 https://qiita.com/mmmm/items/efda48f1ac0267c95c29 %>
-    <%= f.label :lecture_at, "講演予定日："%>
-    <%= f.date_select :lecture_at, {}, class: 'form-control' %></br>
+    <%= f.label :start_at, "講演開始時間："%>
+    <%= f.datetime_select :start_at %></br>
+    <%#= f.datetime_field :lecture_at, placeholder: "day" %>
+    <%= f.label :end_at, "講演終了時間："%>
+    <%= f.datetime_select :start_at %></br>
   募集バンド数：<%= f.select :amount, options_for_select(2..10), class:"form-control" %></br>
   ライブ詳細：<%= f.text_area :introduction %>
 
-
-  <div id="inputScheduleForm" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-nm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">スケジュール登録</h4>
-            </div>
-            <div class="modal-body">
-              <div id="calendar"></div>
-            </div>
-        </div>
-    </div>
+  <%= link_to 'scadule', live_calendar_path, remote: true, class: "btn btn-lg, btn-primary" %>
+  <div class="modal" id="calendar-modal">
   </div>
+
+   <div id="calendar"></div>
 
 <%= f.submit "投稿"%>
 <% end %>

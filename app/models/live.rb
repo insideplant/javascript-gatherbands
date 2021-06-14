@@ -1,6 +1,6 @@
 class Live < ApplicationRecord
   has_many :live_organizations, dependent: :destroy
-  has_many :rents
+  belongs_to :live
 
   REGISTRABLE_ATTRIBUTES = %i(
     name

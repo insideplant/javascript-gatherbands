@@ -7,6 +7,10 @@ class Public::BandsController < ApplicationController
     @members = Member.all.where(band_id: @band.id)
 
     @lives = Live.all
+
+    #@live = Live.find_by(params[:live_organization][:live_id])
+    #@live_organization_participants = LiveOrganization.where(host: false, live_id:@live.id)
+
   end
 
   def show
@@ -39,5 +43,5 @@ class Public::BandsController < ApplicationController
   def band_params
     params.require(:band).permit(:band_name,members_attributes:[:id,:role,:name,:_destroy])
   end
-  
+
 end

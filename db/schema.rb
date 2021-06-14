@@ -88,7 +88,8 @@ ActiveRecord::Schema.define(version: 2021_06_12_152138) do
     t.datetime "updated_at", null: false
     t.boolean "status", default: false, null: false
     t.integer "amount"
-    t.date "lecture_at"
+    t.datetime "start_at"
+    t.datetime "end_at"
   end
 
   create_table "members", force: :cascade do |t|

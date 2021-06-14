@@ -1,5 +1,5 @@
 class LiveHouse < ApplicationRecord
-  has_many :rents
+  has_many :lives
   attachment :image
 
   geocoded_by :address

@@ -27,13 +27,14 @@
     </section>
     </div>
     <div class="col-sm-3">
-      <%= link_to "new Live",new_life_path ,class: "btn btn-primary"%>
+      <%= link_to "new Live",lives_path ,class: "btn btn-primary"%>
     </div>
   </div>
 
+  <%# if @live_organization_participants.count == @live.amount %>
+  <% @lives.each do |live| %>
   <div class="col-8">
     <div class="card-list">
-      <% @lives.each do |live| %>
         <%= link_to life_path(live) do%>
         <div class="card w-auto mx-auto mt-4 shadou-lg">
           <div class="card-body row">
@@ -70,9 +71,10 @@
           </div>
         </div>
         <% end %>
-      <% end %>
     </div>
   </div>
+  <% end %>
+  <%# end%>
 
 
 

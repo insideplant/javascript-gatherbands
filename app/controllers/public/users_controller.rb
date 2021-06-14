@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     @band = @user.band
-    
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -26,8 +26,8 @@ class Public::UsersController < ApplicationController
       end
     end
     redirect_to users_mypage_path
-    
-    
+
+
   end
 
   def confirmation

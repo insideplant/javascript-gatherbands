@@ -1,21 +1,24 @@
-
-  <table>
-    <thead>
-      <tr>
-        <td>ID</td>
-        <td>NAME</td>
-        <td>BAND</td>
-        <td>CREATE</td>
-      </tr>
-    </thead>
+<div class="row">
+  <table class="table table-striped">
+   <thead class="thead-dark">
+    <tr>
+     <th>User ID</th>
+     <th>User name</th>
+     <th>Band</th>
+     <th></th>
+     <th>status</th>
+    </tr>
+   </thead>
+   <thody>
     <% @users.each do |user| %>
-      <tbody>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= user.user_name %></td>
-          <td><%= user.band.band_name %></td>
-          <td><%= user.created_at %></td>
-        </tr>
-      </tbody>
+     <tr>
+      <td><%= user.id %></td>
+      <td><%= link_to user.user_name, admin_user_path(user) %></td>
+      <td><%= user.band.band_name %></td>
+      <td></td>
+      <td></td>
+    </tr>
     <% end %>
+   </thody>
   </table>
+  </div>
