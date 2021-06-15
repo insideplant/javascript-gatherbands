@@ -8,12 +8,10 @@ class Public::LivesController < ApplicationController
   end
 
   def create
-    unless Live.find_by(id: params[:id])
-      @live = Live.create(live_params)
-      @user = current_user
-      @live_organization = LiveOrganization.create(band_id: @user.id, live_id: @live.id, host: true)
-      redirect_to bands_path
-    end
+    @live = Live.create(live_params)
+    @user = current_user
+    @live_organization = LiveOrganization.create(band_id: @user.id, live_id: @live.id, host: true)
+    redirect_to bands_path
   end
 
   def new
@@ -44,7 +42,7 @@ class Public::LivesController < ApplicationController
   private
 
   def live_params
-    params.require(:live).permit(:start_at,:end_at, :live_name,:amount,:introduction, :status)
+    params.require(:live).permit(:start_at,:end_at, :live_name,:amount,:introduction, :status, :live_house_id)
   end
 
 
