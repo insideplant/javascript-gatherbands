@@ -2,15 +2,24 @@ class Public::LivesController < ApplicationController
 
   def index
     @live = Live.new
-    @lives = Live.all
+    @lives = Live.where(live_house_id: params[:live_house_id])
     #@lives = Live.where("start_on > ?",  6.months.since)
     #render json: [ { 'start' => 1.day.ago, 'end' => 1.day.since }]
+    respond_to do |format|
+      # リクエストされるフォーマットがHTML形式の場合
+      format.html
+
+      # リクエストされるフォーマットがJSON形式の場合
+      format.json { render json: @lives }
+      # @usersをjson形式のデータへ変換して返す
+    end
   end
 
   def create
     @live = Live.create(live_params)
     @user = current_user
-    @live_organization = LiveOrganization.create(band_id: @user.id, live_id: @live.id, host: true)
+    @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
+
     redirect_to bands_path
   end
 
@@ -19,6 +28,7 @@ class Public::LivesController < ApplicationController
   end
 
   def calendar
+    @lives = Live.all
   end
 
   def show

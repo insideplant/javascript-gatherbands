@@ -1,59 +1,61 @@
-<h1>My Page</h1>
-  <%= link_to "Edit",users_mypage_edit_path, remote: true, class: "btn btn-lg, btn-primary" %>
+<div class="container">
 
-<div class="modal fade" id="user-modal">
-</div>
+  <h1>My Page</h1>
+    <%= link_to "Edit",users_mypage_edit_path, remote: true, class: "btn btn-lg, btn-primary" %>
 
-<div class="row">
-  <div class="col-4 text-center">
-    <%= attachment_image_tag @user, :profile_image, size: "300x300", fallback: "no_image.png", size: "300x300", class:"rounded-circle" %>
+  <div class="modal fade" id="user-modal">
   </div>
 
-　<div class="col-7">
-    <table class="table table-hover">
-      <tbody>
-        <tr>
-          <td><%= User.human_attribute_name(:user_name)%></td>
-          <td><%= @user.user_name%></td>
-        </tr>
-        <tr>
-          <td><%= User.human_attribute_name(:email)%></td>
-          <td><%= @user.email%></td>
-        </tr>
-        <tr>
-          <td><%= Band.human_attribute_name(:band_name)%></td>
-          <td><%= @user.band.band_name%></td>
-        </tr>
-        <tr>
-          <td><%= User.human_attribute_name(:last_name)%></td>
-          <td><%= @user.last_name%></td>
-        </tr>
-        <tr>
-          <td><%= User.human_attribute_name(:first_name)%></td>
-          <td><%= @user.first_name%></td>
-        </tr>
-        <tr>
-          <td><%= User.human_attribute_name(:last_name_kana)%></td>
-          <td><%= @user.last_name_kana%></td>
-        </tr>
-        <tr>
-          <td><%= User.human_attribute_name(:first_name_kana)%></td>
-          <td><%= @user.first_name_kana%></td>
-        </tr>
-        <tr>
-          <td><%= User.human_attribute_name(:postal_code)%></td>
-          <td><%= @user.postal_code%></td>
-        </tr>
-        <tr>
-          <td><%= User.human_attribute_name(:address)%></td>
-          <td><%= @user.address%></td>
-        </tr>
-        <tr>
-          <td><%= User.human_attribute_name(:telephone_number)%></td>
-          <td><%= @user.telephone_number%></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="col-sm-4 text-center">
+      <%= attachment_image_tag @user, :profile_image, size: "300x300", fallback: "no_image.png", size: "300x300", class:"rounded-circle" %>
+    </div>
+  　<div class="col-sm-7">
+      <table class="table table-dark">
+        <tbody>
+          <tr>
+            <td><%= User.human_attribute_name(:user_name)%></td>
+            <td><%= @user.user_name%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:email)%></td>
+            <td><%= @user.email%></td>
+          </tr>
+          <tr>
+            <td><%= Band.human_attribute_name(:band_name)%></td>
+            <td><%= @user.band.band_name%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:last_name)%></td>
+            <td><%= @user.last_name%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:first_name)%></td>
+            <td><%= @user.first_name%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:last_name_kana)%></td>
+            <td><%= @user.last_name_kana%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:first_name_kana)%></td>
+            <td><%= @user.first_name_kana%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:postal_code)%></td>
+            <td><%= @user.postal_code%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:address)%></td>
+            <td><%= @user.address%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:telephone_number)%></td>
+            <td><%= @user.telephone_number%></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
+</div>

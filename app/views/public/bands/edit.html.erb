@@ -1,20 +1,22 @@
-<%= form_with model: @band, url: band_path(@band), local:true do |f| %>
+<div class="container">
+ <%= form_with model: @band, url: band_path(@band), local:true do |f| %>
 
- <div class="form-group row">
-  <%= f.label :band_name %>
-  <%= f.text_field :band_name, class:"form-control" %>
- </div>
+  <div class="form-group row">
+   <%= f.label :band_name %>
+   <%= f.text_field :band_name, class:"form-control" %>
+  </div>
 
- <div class="members">
-  <%= f.fields_for :members, @member do |member| %>
-   <%= render "member_fields", f: member %>
+  <div class="members">
+   <%= f.fields_for :members, @member do |member| %>
+    <%= render "member_fields", f: member %>
+   <% end %>
+   <div class="links row">
+    <%= link_to_add_association "New Member", f, :members, class: "btn btn-primary btn-block" %>
+   </div>
+   <div>
+    <%= f.submit "create", class: "btn btn-block" %>
+   </div>
+  </div>
+
   <% end %>
-  <div class="links row">
-   <%= link_to_add_association "New Member", f, :members, class: "btn btn-primary btn-block" %>
-  </div>
-  <div>
-   <%= f.submit "create", class: "btn btn-block" %>
-  </div>
- </div>
-
- <% end %>
+</div>

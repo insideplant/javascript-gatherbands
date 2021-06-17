@@ -1,42 +1,44 @@
-<div class="row">
-  <div class="col-3">
-    <%= form_with model:@article, url:articles_path,local:true do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= form_with model:@article, url:articles_path,local:true do |f| %>
 
-    <div class="form-group">
-      <%= f.label :content, @user.band.band_name %>
-      <%= f.text_area :content, class:"form-control" %>
-      <%= f.hidden_field :band_id, :value => @user.band.id %>
+      <div class="form-group">
+        <%= f.label :content, @user.band.band_name %>
+        <%= f.text_area :content, class:"form-control" %>
+        <%= f.hidden_field :band_id, :value => @user.band.id %>
+      </div>
+
+      <%= f.submit "投稿", class:"btn btn-primary"%>
+      <% end %>
     </div>
 
-    <%= f.submit "投稿", class:"btn btn-primary"%>
-    <% end %>
-  </div>
-
-  <div class="col-9">
-    <div class="card-list">
-      <% @articles.each do |article| %>
-        <%= link_to article_path(article) do%>
-        <div class="card w-auto mx-auto mt-4 shadou-lg">
-          <div class="card-body row">
-            <div class="col-2">
-              <%= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
-                size: "60x60" , class:"mt-2 rounded-circle"%>
-            </div>
-            <div class="col-10">
-              <div class="row">
-                <%= article.band.band_name%>
+    <div class="col-9">
+      <div class="card-list">
+        <% @articles.each do |article| %>
+          <%= link_to article_path(article) do%>
+          <div class="card w-auto mx-auto mt-4 shadou-lg">
+            <div class="card-body row">
+              <div class="col-2">
+                <%= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
+                  size: "60x60" , class:"mt-2 rounded-circle"%>
               </div>
-              <div class="row">
-                <%= article.content%>
+              <div class="col-10">
+                <div class="row">
+                  <%= article.band.band_name%>
+                </div>
+                <div class="row">
+                  <%= article.content%>
+                </div>
+                <span>
+                  <%= link_to "#{article.comments.count} コメント" , class:"text-dark" %>
+                </span>
               </div>
-              <span>
-                <%= link_to "#{article.comments.count} コメント" , class:"text-dark" %>
-              </span>
             </div>
           </div>
-        </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

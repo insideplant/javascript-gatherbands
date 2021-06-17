@@ -26,8 +26,7 @@ class Public::UsersController < ApplicationController
       end
     end
     redirect_to users_mypage_path
-
-
+    
   end
 
   def confirmation
