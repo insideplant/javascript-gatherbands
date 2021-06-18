@@ -1,81 +1,89 @@
 <div class="container">
   <div class="bands-content">
     <div class="row">
-      <div class="col-sm-9">
-      <section class="band_info">
+      <div class="col-sm-2">
+        <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.png", size: "50x50", class:"rounded-circle" %>
+      </div>
+      <div class="col-sm-8">
         <h1>
-          <%#= gravatar_for @user %>
-          <%= @band.band_name%>
+        <%#= gravatar_for @user %>
+        <%= @band.band_name%>
         </h1>
-      <table>
-        <tbody>
-            <tr>
-              <td>バンド名　：</td>
-              <td><%= @band.band_name%></td>
-            </tr>
-              <td>ユーザー名：</td>
-              <td><%= @user.user_name%></td>
-            <tr>
-              <td>メンバー　：</td>
-              <td>
-                <% @members.each do |member|%>
-                <%= member.name%>
-                <% end %>
-                <%= link_to "Edit",edit_band_path(@band) %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
       </div>
-      <div class="col-sm-3">
-        <%= link_to "new Live",lives_path ,class: "btn btn-primary"%>
+      <div class="col-sm-2">
+        <%= link_to "Edit",edit_band_path(@band) , class: "btn btn-primary"%>
       </div>
     </div>
-
-    <%# if @live_organization_participants.count == @live.amount %>
-    <% @lives.each do |live| %>
-    <div class="col-sm-8 offset-2">
-      <div class="card-list">
-          <%= link_to life_path(live) do%>
-          <div class="card w-auto mx-auto mt-4 shadou-lg">
-            <div class="card-body row">
-              <div class="col-2">
-                <%#= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
-                  size: "60x60" , class:"mt-2 rounded-circle"%>
-              </div>
-              <div class="col-10">
-                <div class="row">
-                  <h1><%= live.live_name%></h1>
-                </div>
-                <div class="row">
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>ホスト名</td>
-                        <td>：<%= %></td>
-                      </tr>
-                      <tr>
-                        <td>募集人数</td>
-                        <td>：<%= live.amount %></td>
-                      </tr>
-                      <tr>
-                        <td>開催予定日</td>
-                        <td>：<%= live.start_at %></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="row">
-                  <%= %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% end %>
+    <div class="row">
+      <%= @user.user_name%>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        フォロー中
+      </div>
+      <div class="col-sm-2">
+        フォロワー
       </div>
     </div>
-    <% end %>
   </div>
 
+  <div class="row">
+    <div class="col-sm-3">
+      search:
+      <%= link_to "new live", lives_path, class: "btn btn-primary" %>
+    </div>
+      <div class="col-sm-8">
+        <% @lives.each do |live| %>
+          <div class="card-list">
+            <%= link_to life_path(live), class: "card-link" do%>
+              <div class="card w-auto mx-auto mt-4 shadou-lg">
+                <div class="card-body row">
+                  <div class="col-2">
+                    <%#= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
+                      size: "60x60" , class:"mt-2 rounded-circle"%>
+                  </div>
+                  <div class="col-10">
+                    <div class="row">
+                      <div class="col-10">
+                        <h1><%= live.live_name%></h1>
+                      </div>
+                      <div class="col-2">
+                        残り<span><%= live.rest_amount %></span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>ホスト名</td>
+                            <td>：<%= live.live_organizations.find_by(host: true).band.band_name %></td>
+                          </tr>
+                          <tr>
+                            <td>募集人数</td>
+                            <td>：<%= live.amount %></td>
+                          </tr>
+                          <tr>
+                            <td>現在の参加バンド</td>
+                            <td>：<%#= live.live_organizations.where(host: false) %></td>
+                          </tr>
+                          <tr>
+                            <td>開催予定日</td>
+                            <td>：Open <%= live.start_at.strftime("%Y/%m/%d(%a) %H:%M") %></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <%= %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+          </div>
+        <% end %>
+        <%= paginate @lives %>
+      </div>
+  </div>
 </div>

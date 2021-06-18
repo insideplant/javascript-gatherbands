@@ -1,19 +1,16 @@
 class Public::BandsController < ApplicationController
   def index
     @user = current_user
-    @band = current_user.band
+    @band = @user.band
     @live_organizations = LiveOrganization.all
     @bands = Band.all
     @members = Member.all.where(band_id: @band.id)
 
-    @lives = Live.all
+    @lives = Live.page(params[:page]).reverse_order
 
     #@live = Live.find_by(params[:live_organization][:live_id])
     #@live_organization_participants = LiveOrganization.where(host: false, live_id:@live.id)
 
-  end
-
-  def show
   end
 
   def edit

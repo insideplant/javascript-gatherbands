@@ -12,20 +12,21 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get '/about' => 'homes#about'
     resources :live_houses, only: [:index, :show, :new, :edit]
     resources :favorites, only: [:create, :destroy]
     resources :live_organizations, only: [:index, :create, :show, :edit, :update]
     resources :lives
-    resources :bands, only:[:index, :show, :edit, :update] do
+    resources :relationships, only: [:create, :destroy]
+    resources :bands, only:[:index, :edit, :update] do
       resources :members, only:[:show, :edit, :update, :create]
     end
     resources :articles do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create]
     end
-    get 'users/mypage' => 'users#show'
-    get 'users/mypage/edit' => 'users#edit'
+
+    get 'users/:id/edit' => 'users#edit' ,as: 'edit_mypage'
+    get 'users/:id' => 'users#show', as: 'mypage'
     get 'users/confirmation' => 'users#is_active'
     patch 'users/mypage/update' => 'users#update'
   end

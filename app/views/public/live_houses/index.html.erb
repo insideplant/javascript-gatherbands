@@ -1,8 +1,18 @@
 <div class="container">
 
-<% @live_houses.each do |live_house|%>
-<%= link_to live_house.house_name, live_house_path(live_house) %>
+<div class="studio_list">
+    <h2>Live House</h2>
+</div>
+
+<div class="row">
+    <% @live_houses.each do |live_house|%>
+    <div class="col-sm-2">
+    　<%= link_to live_house_path(live_house) do %>
+       <%= attachment_image_tag @live_house, :image, size: "180x180", fallback: "no_image.png", size: "180x180", class:"img-fulid" %>
+      <% end %>
+    </div>
+    <% end %>
+</div>
 
 
-<% end %>
-<>
+<%#= link_to live_house.house_name, live_house_path(live_house) %>

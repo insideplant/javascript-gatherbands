@@ -10,4 +10,8 @@ class Live < ApplicationRecord
   validates :live_name,  presence: true, length: { maximum: 15 }
   validates :introduction, presence: true
 
+  def rest_amount
+    self.amount -= self.live_organizations.where(host: false).count
+  end
+
 end

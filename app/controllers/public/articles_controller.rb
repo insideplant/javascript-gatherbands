@@ -1,9 +1,4 @@
 class Public::ArticlesController < ApplicationController
-  def index
-    @article = Article.new
-    @articles = Article.all
-    @user = current_user
-  end
 
   def show
     @article = Article.find(params[:id])
@@ -16,11 +11,12 @@ class Public::ArticlesController < ApplicationController
 
   def create
     article = Article.new(article_params)
-    article.band_id = params[:article][:band_id]
     if article.save
-      redirect_to articles_path(article)
+      redirect_to mypage_path(current_user)
     else
-      render :index
+      @user = current_user
+      @articles = Article.all
+      render template: "public/users/show"
     end
   end
 
