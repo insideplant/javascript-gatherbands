@@ -33,7 +33,7 @@ $(function () {
       center: 'title',
       right: 'month,agendaWeek,agendaDay'
     },
-    events: "/lives.json",
+    events: "/live_houses",
     validRange: function(nowDate){
       return {
       start: nowDate.clone().add(6, 'months'),

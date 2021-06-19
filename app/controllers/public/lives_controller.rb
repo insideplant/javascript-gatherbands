@@ -10,7 +10,7 @@ class Public::LivesController < ApplicationController
       format.html
 
       # リクエストされるフォーマットがJSON形式の場合
-      format.json { render json: @lives }
+      format.json { render json: [{id: Lives.id, start: @lives.start_at, end: @lives.end_at}] }
       # @usersをjson形式のデータへ変換して返す
     end
   end
