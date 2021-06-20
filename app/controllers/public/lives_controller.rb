@@ -26,9 +26,7 @@ class Public::LivesController < ApplicationController
   def new
     #gon.live_house_id = params[:id]
     @live_houses = LiveHouse.all
-    @live_house = LiveHouse.find(1)
     @live = Live.new
-    @lives = Live.where(live_house_id: 1)
 
     respond_to do |format|
       # リクエストされるフォーマットがHTML形式の場合

@@ -6,7 +6,6 @@
       </div>
       <div class="col-sm-8">
         <h1>
-        <%#= gravatar_for @user %>
         <%= @band.band_name%>
         </h1>
       </div>
@@ -28,7 +27,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       search:
       <%= link_to "new live", new_life_path, class: "btn btn-primary" %>
     </div>

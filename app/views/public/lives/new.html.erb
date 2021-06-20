@@ -13,9 +13,9 @@
           </div>
 
           <div class="form-group">
-            <%= f.label :live_house_id, "Live名", class: "form-control-label"%>
+            <%= f.label :live_house_id, "Live House名", class: "form-control-label"%>
             <div class="input-group" data-target-input="nearest">
-              <%= f.select :live_house_id, @live_houses.map{ |live_house| [live_house.house_name, selecthouse_url(live_house.id) ]}, class:"form-control selecthouse" %>
+              <%= f.select :live_house_id, @live_houses.map{ |live_house| [live_house.house_name, live_house.id ]}, class:"form-control selecthouse" %>
             </div>
           </div>
 
@@ -31,14 +31,13 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                <div id="calendar"></div>
+                  <div id="calendar_wrapper">
+                    <div id="calendar">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.hidden_field :live_house_id, :value => @live_house.id %>
           </div>
 
           <div class="form-group">
@@ -77,5 +76,48 @@
       <% end %>
     </div>
   </div>
+<script>
 
+$(function($) {
+  $('select#live_live_house_id').change(function() {
+    if ($(this).val() != '') {
+      $('#calendar').remove();  // 大本の<div id="calendar">を削除
+      var el = document.createElement('div'); // divタグを作成(<div>)
+      el.id = 'calendar';// 作成したDivタグにIDを割り振る<div id="calendar">
+      parent = document.getElementById("calendar_wrapper"); // 挿入先の親となるDivタグ(<div id="calendar_wrapper">)を取得
+      parent.appendChild(el); // <div id="calendar_wrapper"><div id="calendar"></div></div>という形になるように追加
+      draw_calendar(); // カレンダーの描画
+    }
+  });
+});
+draw_calendar();
+function draw_calendar() {
+   var current_id = document.getElementById("live_live_house_id").value;
+
+   $('#calendar').fullCalendar({
+     selectable: true,
+     header: {
+       left: 'prev,next today',
+       center: 'title',
+       right: 'month,agendaWeek,agendaDay'
+     },
+     events: "/live_houses/" + current_id + ".json",//"lives/new.json"
+     validRange: function(nowDate){
+       return {
+       start: nowDate.clone().add(6, 'months'),
+       end: nowDate.clone().add(24, 'months')
+       };
+     },
+
+     color: 'yellow',
+     textColor: 'black',
+
+     select: function(startDate, endDate) {
+       $('#new_live').modal('show');
+       $(".input-start").val(moment(startDate).format("YYYY-MM-DD HH:mm"));
+       $(".input-end").val(moment(endDate).format("YYYY-MM-DD HH:mm"));
+     }
+   });
+}
+</script>
 </div>

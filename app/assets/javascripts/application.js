@@ -24,34 +24,6 @@
 //= require moment
 //= require fullcalendar
 
-//
-// $(function () {
-//   $('#calendar').fullCalendar({
-//     selectable: true,
-//     header: {
-//       left: 'prev,next today',
-//       center: 'title',
-//       right: 'month,agendaWeek,agendaDay'
-//     },
-//     events: "/live_houses/" + gon.live_house_id +".json",//"lives/new.json"
-//     validRange: function(nowDate){
-//       return {
-//       start: nowDate.clone().add(6, 'months'),
-//       end: nowDate.clone().add(24, 'months')
-//       };
-//     },
-
-//     color: 'yellow',
-//     textColor: 'black',
-
-//     select: function(startDate, endDate) {
-//       $('#new_live').modal('show');
-//       $(".input-start").val(moment(startDate).format("YYYY-MM-DD HH:mm"));
-//       $(".input-end").val(moment(endDate).format("YYYY-MM-DD HH:mm"));
-//     }
-//   });
-// });
-
 
 $(document).ready(function () {
   $("#images").skippr({
@@ -78,17 +50,6 @@ $(document).ready(function () {
   });
 });
 
-console.log('test')
 
-$(function($) {
-  $('select#live_live_house_id').change(function() {
-    console.log('test')
-    if ($(this).val() != '') {
-      console.log($(this).val());
-      console.log( window.location.href)
-      window.location.href = $(this).val();
-    }
-  });
-});
 // <select name="live[live_house_id]" id="live_live_house_id"><option value="1">house1</option>
 // <option value="2">house2</option></select>
