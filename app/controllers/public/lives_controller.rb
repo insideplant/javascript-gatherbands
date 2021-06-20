@@ -8,7 +8,7 @@ class Public::LivesController < ApplicationController
     respond_to do |format|
       # リクエストされるフォーマットがHTML形式の場合
       format.html
-
+        
       # リクエストされるフォーマットがJSON形式の場合
       format.json { render json: [{id: Lives.id, start: @lives.start_at, end: @lives.end_at}] }
       # @usersをjson形式のデータへ変換して返す
@@ -24,11 +24,27 @@ class Public::LivesController < ApplicationController
   end
 
   def new
-    @user = current_user
+    #gon.live_house_id = params[:id]
+    @live_houses = LiveHouse.all
+    @live_house = LiveHouse.find(1)
+    @live = Live.new
+    @lives = Live.where(live_house_id: 1)
+
+    respond_to do |format|
+      # リクエストされるフォーマットがHTML形式の場合
+      format.html
+
+      # リクエストされるフォーマットがJSON形式の場合
+      format.json { render :new }
+      # @livesをjson形式のデータへ変換して返す
+    end
+  end
+  
+  def selecthouse
+  
   end
 
   def calendar
-    @lives = Live.all
   end
 
   def show

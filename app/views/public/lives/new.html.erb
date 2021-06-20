@@ -1,21 +1,81 @@
-<%= form_with model: @live, url: lives_path, local:true do |f| %>
-  バンド名　：<%= @user.band.band_name%></br>
-  ライブ名　：<%= f.text_field :live_name%></br>
-  ライブハウス：<%= f.text_field :live_name%></br>
-  <% #https://qiita.com/banetya/items/c238a66690861ac1a2c0 https://qiita.com/mmmm/items/efda48f1ac0267c95c29 %>
-    <%= f.label :start_at, "講演開始時間："%>
-    <%= f.datetime_select :start_at %></br>
-    <%#= f.datetime_field :lecture_at, placeholder: "day" %>
-    <%= f.label :end_at, "講演終了時間："%>
-    <%= f.datetime_select :start_at %></br>
-  募集バンド数：<%= f.select :amount, options_for_select(2..10), class:"form-control" %></br>
-  ライブ詳細：<%= f.text_area :introduction %>
+<div class="container">
 
-  <%= link_to 'scadule', live_calendar_path, remote: true, class: "btn btn-lg, btn-primary" %>
-  <div class="modal" id="calendar-modal">
+  <div class="row">
+    <div class="form-group field">
+      <%= form_with(model: @live, remote: true) do |f| %>
+        <div class="form-inputs">
+          <h1><%= current_user.band.band_name%></h1>
+          <div class="form-group">
+            <%= f.label :live_name, "Live名", class: "form-control-label"%>
+            <div class="input-group" data-target-input="nearest">
+              <%= f.text_field :live_name, class: "form-control"%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :live_house_id, "Live名", class: "form-control-label"%>
+            <div class="input-group" data-target-input="nearest">
+              <%= f.select :live_house_id, @live_houses.map{ |live_house| [live_house.house_name, selecthouse_url(live_house.id) ]}, class:"form-control selecthouse" %>
+            </div>
+          </div>
+
+          <%= link_to "calendar",calendar_path, remote: true, class: "btn btn-lg, btn-primary" %>
+
+          <div class="modal fade" id="new_live">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">New live</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <div id="calendar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.hidden_field :live_house_id, :value => @live_house.id %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :start_at, "開始時間", class: "form-control-label"%>
+            <div class="input-group" data-target-input="nearest">
+              <%= f.text_field :start_at, class: "form-control input-start"%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :end_at, "終了時間", class: "form-control-label"%>
+            <div class="input-group" data-target-input="nearest">
+              <%= f.text_field :end_at, class: "form-control input-end"%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :amount, "募集バンド数", class: "form-control-label"%>
+            <div class="input-group" data-target-input="nearest">
+              <%= f.select :amount, options_for_select(2..10), class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :introduction, "ライブ詳細", class: "form-control-label"%>
+            <div class="input-group" data-target-input="nearest">
+              <%= f.text_area :introduction , class:"form-control" %>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer actions">
+          <%= f.submit "入力完了", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-   <div id="calendar"></div>
-
-<%= f.submit "投稿"%>
-<% end %>
+</div>

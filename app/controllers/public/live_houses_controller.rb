@@ -9,6 +9,7 @@ class Public::LiveHousesController < ApplicationController
 
 
   def show
+    gon.live_house_id = params[:id]
     @live_house = LiveHouse.find(params[:id])
     @live = Live.new
     @lives = Live.where(live_house_id: params[:id])
@@ -18,7 +19,7 @@ class Public::LiveHousesController < ApplicationController
       format.html
 
       # リクエストされるフォーマットがJSON形式の場合
-      format.json { render :index }
+      format.json { render :show }
       # @livesをjson形式のデータへ変換して返す
     end
   end

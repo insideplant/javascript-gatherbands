@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
     resources :live_organizations, only: [:index, :create, :show, :edit, :update]
     resources :lives
+    get 'calendar' => 'lives#calendar'
+    get 'lives/:id/selecthouse' => 'lives#selecthouse' ,as: "selecthouse"
+
     resources :relationships, only: [:create, :destroy]
     resources :bands, only:[:index, :edit, :update] do
       resources :members, only:[:show, :edit, :update, :create]
