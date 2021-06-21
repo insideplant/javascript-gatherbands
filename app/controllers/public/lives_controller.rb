@@ -19,7 +19,6 @@ class Public::LivesController < ApplicationController
     @live = Live.create(live_params)
     @user = current_user
     @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
-    binding.pry
     redirect_to bands_path
     
   end

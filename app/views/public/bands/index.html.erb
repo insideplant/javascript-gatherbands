@@ -4,10 +4,23 @@
       <div class="col-sm-2">
         <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.png", size: "50x50", class:"rounded-circle" %>
       </div>
-      <div class="col-sm-8">
-        <h1>
-        <%= @band.band_name%>
-        </h1>
+      <div class="row col-sm-8">
+        <h1 class="col-sm-3"><%= @band.band_name%></h1>
+        
+        <table class="col-sm-9">
+          <tbody>
+            <% @band.members.each do |member|%>
+            <tr>
+              <td style="width: 20%"><%= member.role %></td>
+              <td style="width: 30%">: <%= member.name %></td>
+              <td style="width: 20%"></td>
+              <td style="width: 20%"></td>
+            </tr>
+            <% end %>
+            <tr></tr>
+          </tbody>
+        </table>
+        
       </div>
       <div class="col-sm-2">
         <%= link_to "Edit",edit_band_path(@band) , class: "btn btn-primary"%>
@@ -18,10 +31,10 @@
     </div>
     <div class="row">
       <div class="col-sm-2">
-        フォロー中
+        フォロー中 <%= @band.followings.count%>
       </div>
       <div class="col-sm-2">
-        フォロワー
+        フォロワー <%= @band.follower_ids.count%>
       </div>
     </div>
   </div>

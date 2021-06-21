@@ -2,9 +2,17 @@
 
   <div class="modal fade" id="user-modal"></div>
 
-  <div class="row">
+  <div class="row mb-4">
     <div class="col-sm-4 text-center">
-      <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100", class:"rounded-circle" %>
+      <div class="row mb-3">
+        <div class="co-sm-4 offset-sm-4">
+          <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100", class:"rounded-circle" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 offset-2"><%= @band.followings.count.to_s%>フォロー中</div>
+        <div class="col-4"><%= @band.follower_ids.count%>フォロワー</div>
+      </div>
     </div>
   　<div class="col-sm-4">
   　   <table>
