@@ -13,6 +13,19 @@
         <%= f.label :live_house_id, "Live House名", class: "form-control-label"%>
         <%= f.select :live_house_id, @live_houses.map{ |live_house| [live_house.house_name, live_house.id ]}, class:"form-control selecthouse" %>
       </div>
+
+      <div>
+        <div id="price_area">
+          <% @live_houses.each do |live_house| %> <!-- 登録されているLiveHouseをEachで回す-->
+            <% if live_house.id == @live_houses.first.id %> <!-- 最初のIDだけ表示する。 -->
+            <div id="price_area_<%=live_house.id%>" class="live_house_price" style="display:block;"><%=live_house.price%>円</div>
+            <% else %> <!-- 最初以外は非表示にする。 -->
+            <div id="price_area_<%=live_house.id%>" class="live_house_price" style="display:none;"><%=live_house.price%>円</div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
       <%= link_to "calendar",calendar_path, remote: true, class: "btn btn-lg, btn-primary" %>
 
       <div class="modal fade" id="new_live">
@@ -65,6 +78,7 @@
 
 <script>
 
+
 $(function($) {
   $('select#live_live_house_id').change(function() {
     if ($(this).val() != '') {
@@ -74,9 +88,20 @@ $(function($) {
       parent = document.getElementById("calendar_wrapper"); // 挿入先の親となるDivタグ(<div id="calendar_wrapper">)を取得
       parent.appendChild(el); // <div id="calendar_wrapper"><div id="calendar"></div></div>という形になるように追加
       draw_calendar(); // カレンダーの描画
+      
+      var current_id = document.getElementById("live_live_house_id").value; // 選択されたLiveHouseのIDを取得する
+      var docs = document.getElementsByClassName("live_house_price"); // class="live_house_price"が設定されているエレメントを取得する
+      Array.from(docs).forEach(function(element) {
+        if (element.id == "price_area_" + current_id) {
+          element.style.display = "block";
+        } else {
+          element.style.display = "none";
+        }
+      });
     }
   });
 });
+
 draw_calendar();
 function draw_calendar() {
    var current_id = document.getElementById("live_live_house_id").value;
