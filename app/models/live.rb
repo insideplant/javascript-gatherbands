@@ -14,4 +14,12 @@ class Live < ApplicationRecord
     self.amount -= self.live_organizations.where(host: false).count
   end
 
+  def start_time
+    self.start_at.strftime("%Y/%m/%d(#{dw[self.start_at.wday]})")
+  end
+
+  def end_time
+    self.end_at.strftime("%H:%M")
+  end
+
 end

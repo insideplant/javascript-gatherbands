@@ -2,9 +2,9 @@
   <div class="card-list">
     <div class="card mx-auto mt-4 shadou-lg">
       <div class="card-body row">
+
         <div class="col-2">
-          <%#= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
-            size: "60x60" , class:"mt-2 rounded-circle"%>
+          <%= attachment_image_tag @host_band.user, :profile_image, size: "150x150", fallback: "no_image.png", size: "150x150", class:"rounded-circle" %>
         </div>
         <div class="col-10">
           <div class="row">
@@ -15,7 +15,7 @@
               <tbody>
                 <tr>
                   <td>ホスト名</td>
-                  <td>：<%= @host_band.band_name%></td>
+                  <td>：<%= link_to @host_band.band_name, mypage_path(@host_band.user)%></td>
                 </tr>
                 <tr>
                   <td>メンバー</td>
@@ -27,29 +27,40 @@
                 </tr>
                 <tr>
                   <td>募集人数</td>
-                  <td>：<%= @live.amount %></td>
+                  <td>：<%= @live.amount %>バンド</td>
                 </tr>
                 <tr>
-                  <td>開催予定日</td>
-                  <td>：<%= @live.start_at %></td>
+                  <td>開催場所</td>
+                  <td>：<%= link_to @live.live_house.house_name, live_house_path(@live.live_house) %></td>
+                </tr>
+                <tr>
+                  <td>開催日時</td>
+                  <td>：<% dw = ["日", "月", "火", "水", "木", "金", "土"] %>
+                    <%= @live.start_at.strftime("%Y/%m/%d(#{dw[@live.start_at.wday]}) %H:%M") %> - <%= @live.end_time %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>info</td>
+                  <td>：<%= @live.introduction %></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="row">
-            <% unless current_user.id == @host_band.id %>
-              <%= form_with model: @live_new_organization, url:live_organizations_path, local:true do |f| %>
-                <%= f.hidden_field :live_id, :value => @live.id%>
-                <%= f.hidden_field :band_id, :value => current_user.band.id %>
-                <% if @live_organization_participants.count < @live.amount %>
-                  <%= f.submit "参加", class: "btn btn-primary" %>
-                <% end %>
+        </div>
+
+        <div class="col-12">
+          <% unless current_user.band.id == @host_band.id %>
+            <%= form_with model: @live_new_organization, url:live_organizations_path, local:true do |f| %>
+              <%= f.hidden_field :live_id, :value => @live.id%>
+              <%= f.hidden_field :band_id, :value => current_user.band.id %>
+              <% if @live_organization_participants.count < @live.amount %>
+                <%= f.submit "参加", class: "btn btn-primary" %>
               <% end %>
             <% end %>
-          </div>
+          <% end %>
         </div>
+        <%= render "participants" %>
       </div>
-      <%= render "participants" %>
     </div>
   </div>
 </div>
