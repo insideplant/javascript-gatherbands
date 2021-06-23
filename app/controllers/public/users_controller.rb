@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
     @band = @user.band
     @article = Article.new
     @articles = Article.page(params[:page]).reverse_order
+    @live_organizations = @band.live_organizations
   end
 
   def edit

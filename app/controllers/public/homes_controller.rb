@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @lives = Live.where(status: true)
+    @lives = Live.where(status: 1)
   end
 
   def about

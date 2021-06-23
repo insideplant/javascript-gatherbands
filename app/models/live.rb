@@ -18,8 +18,4 @@ class Live < ApplicationRecord
     self.start_at.strftime("%Y/%m/%d(#{dw[self.start_at.wday]})")
   end
 
-  def end_time
-    self.end_at.strftime("%H:%M")
-  end
-
 end

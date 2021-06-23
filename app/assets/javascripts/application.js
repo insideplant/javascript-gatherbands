@@ -51,5 +51,14 @@ $(document).ready(function () {
 });
 
 
+//$(function($) {
+//  $('select#live_live_house_id').change(function() {
+//    if ($(this).val() != '') {
+//      console.log($(this).val());
+//      console.log( window.location.href)
+//      window.location.href = $(this).val();
+//    }
+//  });
+//});
 // <select name="live[live_house_id]" id="live_live_house_id"><option value="1">house1</option>
 // <option value="2">house2</option></select>

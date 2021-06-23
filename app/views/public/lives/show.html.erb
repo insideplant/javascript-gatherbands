@@ -36,7 +36,7 @@
                 <tr>
                   <td>開催日時</td>
                   <td>：<% dw = ["日", "月", "火", "水", "木", "金", "土"] %>
-                    <%= @live.start_at.strftime("%Y/%m/%d(#{dw[@live.start_at.wday]}) %H:%M") %> - <%= @live.end_time %>
+                    <%= @live.start_at.strftime("%Y/%m/%d(#{dw[@live.start_at.wday]})") %>
                   </td>
                 </tr>
                 <tr>

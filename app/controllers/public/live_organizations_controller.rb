@@ -9,7 +9,7 @@ class Public::LiveOrganizationsController < ApplicationController
     @live_organization_participants = LiveOrganization.where(host: false).where(live_id: @live.id)
 
     if @live_organization_participants.count == @live.amount
-      @live.update(status: true)
+      @live.update(status: 1)
       redirect_to root_path
     else
       redirect_to bands_path

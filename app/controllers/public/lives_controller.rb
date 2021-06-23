@@ -8,7 +8,7 @@ class Public::LivesController < ApplicationController
     respond_to do |format|
       # リクエストされるフォーマットがHTML形式の場合
       format.html
-        
+
       # リクエストされるフォーマットがJSON形式の場合
       format.json { render json: [{id: Lives.id, start: @lives.start_at, end: @lives.end_at}] }
       # @usersをjson形式のデータへ変換して返す
@@ -16,11 +16,16 @@ class Public::LivesController < ApplicationController
   end
 
   def create
-    @live = Live.create(live_params)
-    @user = current_user
-    @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
-    redirect_to bands_path
-    
+    if Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
+      @live_houses = LiveHouse.all
+      @live = Live.new
+      render :new
+    else
+      @live = Live.create(live_params)
+      @user = current_user
+      @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
+      redirect_to bands_path
+    end
   end
 
   def new
@@ -37,9 +42,9 @@ class Public::LivesController < ApplicationController
       # @livesをjson形式のデータへ変換して返す
     end
   end
-  
+
   def selecthouse
-  
+
   end
 
   def calendar
