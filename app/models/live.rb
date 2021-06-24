@@ -2,11 +2,6 @@ class Live < ApplicationRecord
   has_many :live_organizations, dependent: :destroy
   belongs_to :live_house
 
-  REGISTRABLE_ATTRIBUTES = %i(
-    name
-    lecture_at(1i) lecture_at(2i) lecture_at(3i)
-  )
-
   validates :live_name,  presence: true, length: { maximum: 15 }
   validates :introduction, presence: true
 
@@ -17,5 +12,11 @@ class Live < ApplicationRecord
   def start_time
     self.start_at.strftime("%Y/%m/%d(#{dw[self.start_at.wday]})")
   end
-
+  
+  def price_per_person
+    self.live_house.price /= (self.amount + 1)
+  end
+  
+  enum status:    [ :gathering, :gathered, :waiting_live, :finish_live ]
+  
 end

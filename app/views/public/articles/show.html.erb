@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="col-sm-9 offset-sm-2">
-      <div id="iine">
+      <div id="iine<%=@article.id%>">
         <%= render "favorite", article: @article %>
       </div>
 
@@ -29,8 +29,8 @@
 
     <div class="col-sm-9 offset-sm-2">
       <% @comments.each do |comment|%>
-      <div >
-        <%= comment.content%>
+      <div class="border-top border-white">
+        <%= comment.content %>
       </div>
       <% end %>
     </div>

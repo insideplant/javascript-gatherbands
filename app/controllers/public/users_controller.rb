@@ -5,6 +5,10 @@ class Public::UsersController < ApplicationController
     @article = Article.new
     @articles = Article.page(params[:page]).reverse_order
     @live_organizations = @band.live_organizations
+    
+    #Live History
+    #live = Live.(band_id: @band,)
+    
   end
 
   def edit

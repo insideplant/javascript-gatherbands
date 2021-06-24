@@ -15,19 +15,7 @@ class Public::LiveOrganizationsController < ApplicationController
       redirect_to bands_path
     end
   end
-
-  def new
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def destroy
-  end
-
+  
   private
 
   def live_organization_params

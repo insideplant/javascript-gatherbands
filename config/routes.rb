@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'lives/index'
+    get 'lives/show'
+  end
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -40,6 +44,7 @@ Rails.application.routes.draw do
     resources :user_bands, only:[:index, :show, :update]
     resources :users, only:[:index, :show, :edit, :update]
     resources :live_houses
+    resources :lives, only:[:index, :show] 
   end
 
 

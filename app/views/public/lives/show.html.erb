@@ -30,6 +30,10 @@
                   <td>：<%= @live.amount %>バンド</td>
                 </tr>
                 <tr>
+                  <td>一人あたり費用</td>
+                  <td>：<%= converting_to_jpy(@live.price_per_person) %></td>
+                </tr>
+                <tr>
                   <td>開催場所</td>
                   <td>：<%= link_to @live.live_house.house_name, live_house_path(@live.live_house) %></td>
                 </tr>

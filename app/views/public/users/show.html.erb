@@ -36,7 +36,7 @@
 
     </div>
     <div class="col-sm-2">
-      <% if @user == current_user %>
+      <% if @user.current_user?(current_user) %>
         <%= link_to "Edit",edit_mypage_path(@user), remote: true, class: "btn btn-lg, btn-primary" %>
       <% else %>
         <%= render 'public/relationships/follow_button', band: @band %>
@@ -56,51 +56,52 @@
       <% end %>
     </div>
 
-    <div class="col-9">
+    <div class="col-6">
       <div class="card-list">
           <% @articles.each do |article| %>
             <%= link_to article_path(article), class:"card-link" do%>
             <div class="card w-auto mx-auto mt-4 shadou-lg">
               <div class="card-body row">
-                <div class="col-2">
+                <div class="col-3">
                   <%= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
                     size: "60x60" , class:"mt-2 rounded-circle"%>
                 </div>
-                <div class="col-10">
+                <div class="col-9">
                   <div class="row">
                     <%= article.band.band_name%>
                   </div>
                   <div class="row">
                     <%= article.content%>
                   </div>
-                  <div class="row">
-                    <div id="iine" class="col-2">
-                      <% if article.favorited_by?(current_user.band) %>
-                        <p>
-                          <%= link_to article_favorites_path(article), method: :delete, remote: true do %>
-                          ♥ <%= article.favorites.count %> いいね
-                          <% end %>
-                        </p>
-                      <% else %>
-                        <p>
-                          <%= link_to article_favorites_path(article), method: :post, remote: true do %>
-                          ♡ <%= article.favorites.count %> いいね
-                          <% end %>
-                        </p>
-                      <% end %>
-                    </div>
-                    <div class="col-2">
-                      <span>
-                      <%= article.comments.count %>コメント
-                      </span>
-                    </div>
-                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div id="iine<%= article.id %>" class="col-3 offset-1">
+                  <%= render "public/articles/favorite", article: article %>
+                </div>
+                <div class="col-3">
+                  <span>
+                  <%= article.comments.count %>コメント
+                  </span>
                 </div>
               </div>
             </div>
             <% end %>
           <% end %>
           <%= paginate @articles %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="row">
+        <h3>Live History</h3>
+
+      </div>
+      <div class="row">
+        <h3>New Live</h3>
+
+      </div>
+      <div class="row">
+        <h3>Gathering Bands</h3>
       </div>
     </div>
   </div>

@@ -25,6 +25,7 @@
         <% elsif admin_signed_in? %>
          <li><%= link_to "Users",admin_users_path, class:"nav-link"%></li>
          <li><%= link_to "Live House",admin_live_houses_path, class:"nav-link"%></li>
+         <li><%= link_to "Lives",admin_lives_path, class:"nav-link"%></li>
          <li><%= link_to "Log out",destroy_user_session_path, method: :delete, class:"nav-link"%></li>
         <% else %>
          <li><%= link_to "Sign up",new_user_registration_path, class:"nav-link" %></li>

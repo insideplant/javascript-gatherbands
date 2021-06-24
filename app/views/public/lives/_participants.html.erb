@@ -1,6 +1,6 @@
-  <div class="col-12 bg-primary ">
+  <div class="col-12">
     <% @live_organization_participants.each do |live_organization_participant| %>
-    <div class="row">
+    <div class="row border-top border-dark">
     <div class="col-2">
       <%= attachment_image_tag live_organization_participant.band.user, :profile_image, size: "50x50", fallback: "no_image.png", size: "50x50", class:"rounded-circle" %>
     </div>

@@ -20,9 +20,9 @@
           <div id="price_area">
             <% @live_houses.each do |live_house| %> <!-- 登録されているLiveHouseをEachで回す-->
               <% if live_house.id == @live_houses.first.id %> <!-- 最初のIDだけ表示する。 -->
-              <div id="price_area_<%=live_house.id%>" class="live_house_price" style="display:block;"><%=live_house.price%>円</div>
+              <div id="price_area_<%=live_house.id%>" class="live_house_price" style="display:block;"><%=converting_to_jpy(live_house.price)%>円</div>
               <% else %> <!-- 最初以外は非表示にする。 -->
-              <div id="price_area_<%=live_house.id%>" class="live_house_price" style="display:none;"><%=live_house.price%>円</div>
+              <div id="price_area_<%=live_house.id%>" class="live_house_price" style="display:none;"><%=converting_to_jpy(live_house.price)%>円</div>
               <% end %>
             <% end %>
           </div>
