@@ -5,12 +5,6 @@ class Public::UsersController < ApplicationController
     @article = Article.new
     @articles = Article.page(params[:page]).reverse_order
 
-    #Live History
-    @live_history = @band.lives.where(status: 3)
-
-    #New Live情報
-    @new_live = @band.lives.where(status: 2)
-
     #募集中のlive情報
     @gather_bands = @band.lives
   end

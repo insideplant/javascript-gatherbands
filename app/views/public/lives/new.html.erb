@@ -1,5 +1,6 @@
 <div class="container">
 
+  <form>
     <h1 class="mb-5"><%= current_user.band.band_name%></h1>
 
     <%= form_with(model: @live, local: true) do |f| %>
@@ -84,6 +85,7 @@
         <%= f.submit "入力完了", class: "btn btn-primary" %>
       </div>
     <% end %>
+  </form>
 </div>
 
 <script>

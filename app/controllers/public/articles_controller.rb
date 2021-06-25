@@ -4,6 +4,11 @@ class Public::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @comments = @article.comments
     @comment = @article.comments.build
+    
+    @band = current_user.band
+    
+    #募集中のlive情報
+    @gather_bands = @band.lives
   end
 
   def new

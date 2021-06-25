@@ -4,10 +4,10 @@ class Public::CommentsController < ApplicationController
     @comment = article.comments.build(comment_params)
     @comment.band_id = article.band_id
     if @comment.save
-      flash[:success] = "コメントしました"
+      flash[:info] = "コメントしました"
       redirect_back(fallback_location: root_path)
     else
-      flash[:success] = "コメントできませんでした"
+      flash[:warning] = "コメントできませんでした"
       redirect_back(fallback_location: root_path)
     end
   end

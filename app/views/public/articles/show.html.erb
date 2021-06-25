@@ -1,38 +1,83 @@
 <div class="container">
   <div class="row">
-    <div class="row col-sm-9 offset-sm-2">
-      <div class="col-3">
-        <div class="row">
-          <%= attachment_image_tag @article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,size: "60x60" , class:"mt-2 rounded-circle"%>
-        </div>
-        <div class="row">
-          <%= link_to @article.band.band_name, mypage_path(@article.band.user) %>
-        </div>
-      </div>
-      <div class="col-9 d-flex align-items-center">
-         <%= @article.content %>
-      </div>
-    </div>
-    <div class="col-sm-9 offset-sm-2">
-      <div id="iine<%=@article.id%>">
-        <%= render "favorite", article: @article %>
-      </div>
+    <div class="col-sm-3">
 
+    </div>
+
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-3">
+              <div class="row">
+                <%= attachment_image_tag @article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,size: "60x60" , class:"mt-2 rounded-circle"%>
+              </div>
+              <div class="row">
+                <%= link_to @article.band.band_name, mypage_path(@article.band.user) %>
+              </div>
+            </div>
+            <div class="col-9 d-flex align-items-center">
+               <%= @article.content %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="row">
+            <div id="iine<%=@article.id%>" class="col-3">
+              <%= render "favorite", article: @article %>
+            </div>
+            <div class="col-3">
+              <%= @article.comments.count %>コメント
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="form-group">
         <%= form_with(model: [@article, @comment], local: true) do |f|%>
-          <%= f.label :コメント, class: "form7" %>
-          <%= f.text_area :content, class:"form-control-plaintext",placeholder:"coment" %>
+          <%= f.text_area :content, class:"form-control-plaintext text-white",placeholder:"coment" %>
           <%= f.submit "返信", class:"btn btn-primary mt-3" %>
         <% end %>
       </div>
+
+      <% @comments.each do |comment|%>
+        <div class="row border-top border-white border-top border-white">
+          <%= comment.content %>
+        </div>
+      <% end %>
     </div>
 
-    <div class="col-sm-9 offset-sm-2">
-      <% @comments.each do |comment|%>
-      <div class="border-top border-white">
-        <%= comment.content %>
+    <div class="col-sm-3">
+      <div class="row card border-primary mb-3 bg-transparent">
+        <div class="card-header"><h3>Live History</h3></div>
+        <div class="card-body text-primary">
+          <% @gather_bands.finish_live.each do |gathered| %>
+            <h5 class="card-title"><%= gathered.live_name %></h5>
+            <%= gathered.start_time %>
+          <% end %>
+        </div>
       </div>
-      <% end %>
+
+      <div class="row card border-primary mb-3 bg-transparent">
+        <div class="card-header bg-transparent"><h3>New live</h3></div>
+        <div class="card-body text-primary">
+          <% @gather_bands.waiting_live.each do |waiting_live| %>
+            <h5 class="card-title"><%= waiting_live.live_name %></h5>
+            <%= waiting_live.start_at %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row card border-primary mb-3 bg-transparent">
+        <div class="card-header"><h3>Gathering Bands</h3></div>
+        <div class="card-body text-primary">
+          <% @gather_bands.gathering.each do |gathering| %>
+            <h5 class="card-title"><%= gathering.live_name %></h5>
+            <%= gathering.start_time %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -137,13 +137,15 @@ textarea {
 
 /* body */
 .live_image{
-  height: 500px;
+  height: 350px;
 }
 .live1 {
   background-image: url(live1.jpg);
+  background-position:center bottom;
 }
 .live2 {
   background-image: url(live2.jpg);
+  background-position:center top;
 }
 .live3 {
   background-image: url(live3.jpg);
@@ -152,12 +154,12 @@ textarea {
   background-image: url(live4.jpg);
 }
 
-.recent-live {
+/*.recent-live {
   width: 300px;
   height: 200px;
   background-color:red;
   text-align: center;
-}
+} */
 
 
 /* footer */

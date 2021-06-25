@@ -5,29 +5,17 @@ class Public::BandsController < ApplicationController
     @live_organizations = LiveOrganization.all
     @bands = Band.all
     @members = Member.all.where(band_id: @band.id)
-
     @lives = Live.page(params[:page]).reverse_order
-
-    #@live = Live.find_by(params[:live_organization][:live_id])
-    #@live_organization_participants = LiveOrganization.where(host: false, live_id:@live.id)
-
   end
 
   def edit
     @user = current_user
     @band = current_user.band
-     #unless Member.exists?(band_id: @band.id)
-        #@members = @band.members.build
-     #else
-        @member = @band.members
-      #@new_members = @band.members.build
-     #end
+    @member = @band.members
   end
 
   def update
     @band = Band.find(params[:id])
-    #@member = @band.members.build
-    #@member.update(member_params)
     if @band.update(band_params)
       redirect_to bands_path
     else
