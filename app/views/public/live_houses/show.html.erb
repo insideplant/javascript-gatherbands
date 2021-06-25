@@ -6,27 +6,27 @@
         <tbody>
           <tr>
             <td>Website</td>
-            <td><%= link_to @live_house.website,@live_house.website %></td>
+            <td>：<%= link_to @live_house.website,@live_house.website %></td>
           </tr>
           <tr>
             <td>Price</td>
-            <td><%= @live_house.price%></td>
+            <td>：<%= converting_to_jpy(@live_house.price) %></td>
           </tr>
           <tr>
             <td>Postal Code</td>
-            <td><%= @live_house.postal_code%></td>
+            <td>：<%= number_to_postal_code(@live_house.postal_code)%></td>
           </tr>
           <tr>
             <td>Address</td>
-            <td><%= @live_house.address%></td>
+            <td>：<%= @live_house.address%></td>
           </tr>
           <tr>
             <td>TELL</td>
-            <td><%= @live_house.telephone_number%></td>
+            <td>：<%= @live_house.telephone_number%></td>
           </tr>
           <tr>
             <td>Detail</td>
-            <td><%= @live_house.detail%></td>
+            <td>：<%= @live_house.detail%></td>
           </tr>
         </tbody>
       </table>
@@ -35,10 +35,9 @@
       <%= attachment_image_tag @live_house, :image, size: "300x300", fallback: "no_image.png", size: "300x300"%>
     </div>
     <div id='map' class="col-sm-4">
-
     </div>
   </div>
-
+  
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYghblosto1WOuW2btc0E9GpvmpNtGM7E&callback=initMap" async defer></script>
   <script>
     let map

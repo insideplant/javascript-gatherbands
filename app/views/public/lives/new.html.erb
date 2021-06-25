@@ -119,9 +119,8 @@ function draw_calendar() {
    $('#calendar').fullCalendar({
      selectable: true,
      header: {
-       left: 'prev,next today',
+       left: 'prev',
        center: 'title',
-       right: 'month,agendaWeek,agendaDay'
      },
      events: "/live_houses/" + current_id + ".json",//"lives/new.json"
      eventOverlap: false,

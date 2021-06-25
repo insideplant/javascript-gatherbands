@@ -4,11 +4,15 @@ class Public::UsersController < ApplicationController
     @band = @user.band
     @article = Article.new
     @articles = Article.page(params[:page]).reverse_order
-    @live_organizations = @band.live_organizations
-    
+
     #Live History
-    #live = Live.(band_id: @band,)
-    
+    @live_history = @band.lives.where(status: 3)
+
+    #New Live情報
+    @new_live = @band.lives.where(status: 2)
+
+    #募集中のlive情報
+    @gather_bands = @band.lives
   end
 
   def edit

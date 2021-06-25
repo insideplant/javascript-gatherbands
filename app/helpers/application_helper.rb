@@ -8,4 +8,8 @@ module ApplicationHelper
     Band.find(live_organization.band_id)
   end
   
+  def number_to_postal_code(number)
+    "〒#{number.to_s.insert(3, "-")}"
+  end
+  
 end
