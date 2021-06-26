@@ -1,0 +1,2 @@
+module LiveHouse::LivesHelper
+end

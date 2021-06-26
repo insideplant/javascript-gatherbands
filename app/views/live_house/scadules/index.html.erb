@@ -1,0 +1,33 @@
+<div class="container">
+
+<h1>Lives</h1>
+
+<div>
+  <%= link_to "new",new_live_house_life_path, class:"btn btn-prymary" %>
+</div>
+
+ <div class="row">
+  <table class="table table-dark table-sm">
+   <thead class="thead-dark">
+    <tr>
+     <th>live ID</th>
+     <th>name</th>
+     <th>Host</th>
+     <th>Scadule</th>
+     <th>status</th>
+    </tr>
+   </thead>
+   <thody>
+    <% @lives.each do |live| %>
+     <tr>
+      <td><%= live.id %></td>
+      <td><%= link_to live.live_name, life_path(live) %></td>
+      <td><%= link_to host_band(live.id).band_name, mypage_path(host_band(live.id).user) %></td>
+      <td>scadule</td>
+      <td><%= live.status %></td>
+    </tr>
+    <% end %>
+   </thody>
+  </table>
+ </div>
+</div>

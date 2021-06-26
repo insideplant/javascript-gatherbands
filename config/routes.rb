@@ -1,22 +1,28 @@
 Rails.application.routes.draw do
 
   devise_for :live_houses
-  namespace :admin do
-    get 'lives/index'
-    get 'lives/show'
-  end
+
   devise_for :users, controllers: {
-    sessions: "users/sessions",
-    registrations: "users/registrations"
+    sessions: "devise/users/sessions",
+    registrations: "devise/users/registrations"
   }
 
   devise_for :admins, controllers: {
-    sessions: "admins/sessions",
-    registrations: "admins/registrations"
+    sessions: "devise/admins/sessions",
+    registrations: "devise/admins/registrations"
   }
+
+  namespace :live_house do
+    root to: 'homes#top'
+    resources :mypages, only:[:new, :show, :edit]
+    resources :scadules, only:[:index, :show]
+    resources :lives, only:[:new, :create, :edit, :update, :destroy]
+  end
 
   scope module: :public do
     root to: 'homes#top'
+    get 'lives/index'
+    get 'lives/show'
     resources :live_houses, only: [:index, :show, :new, :edit]
     resources :favorites, only: [:create, :destroy]
     resources :live_organizations, only: [:index, :create, :show, :edit, :update]
@@ -45,7 +51,7 @@ Rails.application.routes.draw do
     resources :user_bands, only:[:index, :show, :update]
     resources :users, only:[:index, :show, :edit, :update]
     resources :live_houses
-    resources :lives, only:[:index, :show] 
+    resources :lives, only:[:index, :show]
   end
 
 

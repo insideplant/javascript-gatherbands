@@ -1,0 +1,2 @@
+module LiveHouse::ScadulesHelper
+end

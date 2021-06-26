@@ -1,0 +1,2 @@
+module LiveHouse::MypageHelper
+end

@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
      admin_root_path
    when User
      root_path
+   when LiveHouse
+     root_path
    end
   end
 

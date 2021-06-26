@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1><%= @live_house.house_name %></h1>
+      <table>
+        <tbody>
+          <tr>
+            <td>Website</td>
+            <td>：<%= link_to @live_house.website,@live_house.website %></td>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td>：<%#= converting_to_jpy(@live_house.price) %></td>
+          </tr>
+          <tr>
+            <td>Postal Code</td>
+            <td>：<%#= number_to_postal_code(@live_house.postal_code)%></td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>：<%= @live_house.address%></td>
+          </tr>
+          <tr>
+            <td>TELL</td>
+            <td>：<%= @live_house.telephone_number%></td>
+          </tr>
+          <tr>
+            <td>Detail</td>
+            <td>：<%= @live_house.detail%></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <%= attachment_image_tag @live_house, :image, size: "300x300", fallback: "no_image.png", size: "300x300"%>
+    </div>
+    <div id='map' class="col-sm-4">
+    </div>
+  </div>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYghblosto1WOuW2btc0E9GpvmpNtGM7E&callback=initMap" async defer></script>
+  <script>
+    let map
+    function initMap(){
+      const geocoder = new google.maps.Geocoder()
+
+      const map = new google.maps.Map(document.getElementById('map'), {
+        //latが緯度、lngが経度を示します
+        center: {
+          lat: <%= @live_house.latitude %>,
+          lng: <%= @live_house.longitude %>
+        },
+        //数値は0〜21まで指定できます。数値が大きいほど拡大されます
+        zoom: 12,
+      });
+      //positionに指定した座標にピンを表示させます
+      const marker = new google.maps.Marker({
+        position:  {
+          lat: <%= @live_house.latitude %>,
+          lng: <%= @live_house.longitude %>
+        },
+        map: map
+      });
+    }
+  </script>
+
+</div>
