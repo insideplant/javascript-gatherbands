@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :live_houses
   namespace :admin do
     get 'lives/index'
     get 'lives/show'

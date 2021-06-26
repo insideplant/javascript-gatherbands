@@ -2,11 +2,11 @@ class Public::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @new_article = Article.new
     @comments = @article.comments
     @comment = @article.comments.build
-    
+
     @band = current_user.band
-    
     #募集中のlive情報
     @gather_bands = @band.lives
   end

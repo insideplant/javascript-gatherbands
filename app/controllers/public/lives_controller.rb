@@ -17,6 +17,7 @@ class Public::LivesController < ApplicationController
 
   def create
     if Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
+      binding.pry
       @live_houses = LiveHouse.all
       @live = Live.new
       render :new

@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-
+      <%= form_with model:@new_article,local:true do |f| %>
+      <div class="form-group">
+        <%= f.label :content, @band_name %>
+        <%= f.text_area :content, class:"form-control" %>
+        <%= f.hidden_field :band_id, :value => @band.id %>
+      </div>
+      <%= f.submit "投稿", class:"btn btn-primary"%>
+      <% end %>
     </div>
 
     <div class="col-sm-6">
