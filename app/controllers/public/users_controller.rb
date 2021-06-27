@@ -4,8 +4,8 @@ class Public::UsersController < ApplicationController
     @band = @user.band
     @article = Article.new
     @articles = Article.page(params[:page]).reverse_order
-
-    #募集中のlive情報
+    
+    #live情報
     @gather_bands = @band.lives
   end
 

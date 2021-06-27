@@ -1,8 +1,6 @@
 <div class="container">
 
     <h1 class="mb-5"><%= current_live_house.house_name%></h1>
-
-    <%= form_with(model: @live, local: true) do |f| %>
       <div class="modal fade" id="new2_live">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -13,15 +11,15 @@
               </button>
             </div>
             <div class="modal-body">
-              <div id="calendar_wrapper">
-                <div id="calendar">
-                </div>
+              
+              <div id="calendar" >
               </div>
             </div>
           </div>
         </div>
       </div>
 
+    <%= form_with(model: @live, local: true) do |f| %>
       <div class="form-group row">
         <%= f.label :start_at, "Non Live", class: "form-control-label col-sm-2 col-form-label"%>
         <div class="col-sm-3">
@@ -31,7 +29,7 @@
           <%= f.text_field :end_at, class: "form-control input-end"%>
         </div>
         <div class="col-sm-3">
-          <%= link_to "calendar",calendar_path, remote: true, class: "btn btn-lg, btn-primary" %>
+          <%= link_to "calendar",live_house_calendar_path, remote: true, class: "btn btn-lg, btn-primary" %>
         </div>
       </div>
 
@@ -50,34 +48,29 @@
 
 <script>
 
-draw_calendar();
-function draw_calendar() {
-   var current_id = document.getElementById("live_live_house_id").value;
+  $('#calendar').fullCalendar({
+   selectable: true,
+   header: {
+     left: 'prev',
+     center: 'title',
+   },
+   events: "/live_house/lives/new" + ".json",//"lives/new.json"
 
-   $('#calendar').fullCalendar({
-     selectable: true,
-     header: {
-       left: 'prev',
-       center: 'title',
-     },
-     events: "/live_houses/" + current_id + ".json",//"lives/new.json"
+   eventOverlap: false,
+   validRange: function(nowDate){
+     return {
+     start: nowDate.clone().add(6, 'months'),
+     end: nowDate.clone().add(24, 'months')
+     };
+   },
 
-     eventOverlap: false,
-     validRange: function(nowDate){
-       return {
-       start: nowDate.clone().add(6, 'months'),
-       end: nowDate.clone().add(24, 'months')
-       };
-     },
+   color: 'yellow',
+   textColor: 'black',
 
-     color: 'yellow',
-     textColor: 'black',
-
-     select: function(startDate, endDate) {
-       $('#new_live').modal('show');
-       $(".input-start").val(moment(startDate).format("YYYY-MM-DD"));
-       //$(".input-end").val(moment(endDate).format("YYYY-MM-DD"));
-     }
-   });
-}
+   select: function(startDate, endDate) {
+     $('#new_live').modal('show');
+     $(".input-start").val(moment(startDate).format("YYYY-MM-DD"));
+     $(".input-end").val(moment(endDate).format("YYYY-MM-DD"));
+   }
+  });
 </script>

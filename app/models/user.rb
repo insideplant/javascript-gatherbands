@@ -9,9 +9,17 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :band
 
   validates :user_name, presence: true
-  
+
   def current_user?(user)
     self == user
+  end
+
+  def name
+    [first_name, last_name].join(' ')
+  end
+
+  def kana_name
+    [first_name_kana, last_name_kana].join(' ')
   end
 
 end

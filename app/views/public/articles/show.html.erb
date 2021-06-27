@@ -1,4 +1,49 @@
 <div class="container">
+
+   <div class="modal fade" id="user-modal"></div>
+
+  <div class="row mb-4">
+    <div class="col-sm-4 text-center">
+      <div class="row mb-3">
+        <div class="offset-sm-4">
+          <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100", class:"rounded-circle" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 offset-2"><%= @band.followings.count.to_s%>フォロー中</div>
+        <div class="col-4"><%= @band.follower_ids.count%>フォロワー</div>
+      </div>
+    </div>
+  　<div class="col-sm-4">
+  　   <table>
+        <tbody>
+          <tr>
+            <td><%= User.human_attribute_name(:user_name)%></td>
+            <td> : <%= @user.user_name%></td>
+          </tr>
+          <tr>
+            <td><%= User.human_attribute_name(:email)%></td>
+            <td> : <%= @user.email%></td>
+          </tr>
+          <tr>
+            <td><%= Band.human_attribute_name(:band_name)%></td>
+            <td> : <%= @band.band_name%></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-2">
+      <% if current_live_house || current_admin || @user.current_user?(current_user) %>
+        <%= link_to "Edit",edit_mypage_path(@user), remote: true, class: "btn btn-lg, btn-primary" %>
+      <% else %>
+        <%= render 'public/relationships/follow_button', band: @band %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-sm-3">
       <%= form_with model:@new_article,local:true do |f| %>
@@ -13,35 +58,27 @@
 
     <div class="col-sm-6">
       <div class="row">
-        <div class="col-sm-8">
-          <div class="row">
-            <div class="col-3">
-              <div class="row">
-                <%= attachment_image_tag @article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,size: "60x60" , class:"mt-2 rounded-circle"%>
-              </div>
-              <div class="row">
-                <%= link_to @article.band.band_name, mypage_path(@article.band.user) %>
-              </div>
-            </div>
-            <div class="col-9 d-flex align-items-center">
-               <%= @article.content %>
-            </div>
+        <div class="col-3">
+          <div class="text-center">
+            <%= attachment_image_tag @article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,size: "60x60" , class:"mt-2 rounded-circle"%>
           </div>
+          <div class="text-center">
+            <%= link_to @article.band.band_name, mypage_path(@article.band.user) %>
+          </div>
+        </div>
+        <div class="col-9 d-flex align-items-center">
+           <%= @article.content %>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-8">
-          <div class="row">
-            <div id="iine<%=@article.id%>" class="col-3">
-              <%= render "favorite", article: @article %>
-            </div>
-            <div class="col-3">
-              <%= @article.comments.count %>コメント
-            </div>
-          </div>
+        <div id="iine<%=@article.id%>" class="col-3">
+          <%= render "favorite", article: @article %>
+        </div>
+        <div class="col-3">
+          <%= @article.comments.count %>コメント
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group col-12">
         <%= form_with(model: [@article, @comment], local: true) do |f|%>
           <%= f.text_area :content, class:"form-control-plaintext text-white",placeholder:"coment" %>
           <%= f.submit "返信", class:"btn btn-primary mt-3" %>
@@ -49,8 +86,21 @@
       </div>
 
       <% @comments.each do |comment|%>
-        <div class="row border-top border-white border-top border-white">
-          <%= comment.content %>
+        <div class="border-top border-top border-white py-3 col-12">
+          <div class="row">
+            <div class="col-2">
+              <div class="row">
+                <%= attachment_image_tag comment.article.band.user, :profile_image, size: "30x30", fallback: "no_image.png", size: "30x30", class:"rounded-circle" %>
+              </div>
+              <div class="row">
+                <%= comment.article.band.user.user_name %>
+              </div>
+            </div>
+            <div class="col-10">
+              <%= comment.content %>
+            </div>
+          </div>
+
         </div>
       <% end %>
     </div>

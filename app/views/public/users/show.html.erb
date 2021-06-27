@@ -36,7 +36,7 @@
 
     </div>
     <div class="col-sm-2">
-      <% if @user.current_user?(current_user) %>
+      <% if current_live_house || current_admin || @user.current_user?(current_user) %>
         <%= link_to "Edit",edit_mypage_path(@user), remote: true, class: "btn btn-lg, btn-primary" %>
       <% else %>
         <%= render 'public/relationships/follow_button', band: @band %>

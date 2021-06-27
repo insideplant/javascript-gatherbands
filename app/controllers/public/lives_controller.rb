@@ -16,12 +16,15 @@ class Public::LivesController < ApplicationController
   end
 
   def create
+
     if Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
       binding.pry
       @live_houses = LiveHouse.all
       @live = Live.new
       render :new
     else
+      #@live = Live.new(who: "band")
+      #@live.save(live_params)
       @live = Live.create(live_params)
       @user = current_user
       @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)

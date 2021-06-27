@@ -14,9 +14,11 @@ Rails.application.routes.draw do
 
   namespace :live_house do
     root to: 'homes#top'
+    get 'calendar' => 'lives#calendar'
     resources :mypages, only:[:new, :show, :edit]
     resources :scadules, only:[:index, :show]
-    resources :lives, only:[:new, :create, :edit, :update, :destroy]
+    resources :lives, only:[:new, :create, :show, :edit, :update, :destroy]
+    resources :user, only:[:show]
   end
 
   scope module: :public do
@@ -51,7 +53,7 @@ Rails.application.routes.draw do
     resources :user_bands, only:[:index, :show, :update]
     resources :users, only:[:index, :show, :edit, :update]
     resources :live_houses
-    resources :lives, only:[:index, :show]
+    resources :lives, only:[:index, :show, :update]
   end
 
 
