@@ -22,6 +22,6 @@ class Live < ApplicationRecord
     self.live_house.price /= (self.amount + 1)
   end
 
-  enum status:    [ :gathering, :gathered, :waiting_live, :finish_live ]
+  enum status:    [ :gathering, :gathered, :waiting_live, :finish_live, :live_house]
 
 end

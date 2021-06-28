@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :live_houses
+  devise_for :live_houses, controllers: {
+    sessions: "devise/live_houses/sessions",
+    registrations: "devise/live_houses/registrations"
+  }
 
   devise_for :users, controllers: {
     sessions: "devise/users/sessions",

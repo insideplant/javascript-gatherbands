@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
- before_action :configure_permitted_parameters, if: :devise_controller?
+ #before_action :configure_permitted_parameters, if: :devise_controller?
 
   add_flash_types :success, :info, :warning, :danger
 
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
    when User
      root_path
    when LiveHouse
-     root_path
+     live_house_root_path
    end
   end
 
@@ -23,9 +23,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [[:user_name],band_attributes: [:band_name] ])
-  end
+  # def configure_permitted_parameters
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [[:user_name],band_attributes: [:band_name] ])
+  # end
 
+  #def configure_permitted_parameters
+  #  binding.pry
+  #  if resource_class == User
+  #    User::ParameterSanitizer.new(User, :user, params)
+  #  else
+  #    LiveHouse::ParameterSanitizer.new(LiveHouse, :live_house, params)
+  #    # super # Use the default one
+  #  end
+  #end
 
 end
