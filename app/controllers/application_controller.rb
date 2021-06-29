@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
    when User
      root_path
    when LiveHouse
-     live_house_root_path
+     live_house_mypage_path(current_live_house)
    end
   end
 

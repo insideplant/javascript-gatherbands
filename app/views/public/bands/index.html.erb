@@ -72,11 +72,19 @@
                       </tr>
                       <tr>
                         <td>募集人数</td>
-                        <td>：<%= live.amount %></td>
+                        <td>：<%= live.amount %>バンド</td>
                       </tr>
                       <tr>
                         <td>現在の参加バンド</td>
-                        <td>：<%#= live.live_organizations.where(host: false) %></td>
+                        <td>：
+                        　<%# if live.live_organizations.where(host: false).present? %>
+                            <% live.live_organizations.where(host: false).each do |participant_band| %>
+                              <%= participant_band.band.band_name%>
+                            <% end %>
+                          <%# else %>
+                            <%#= nothing %>
+                          <%# end %>
+                        </td>
                       </tr>
                       <tr>
                         <td>開催予定日</td>

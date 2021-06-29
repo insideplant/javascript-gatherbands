@@ -115,8 +115,22 @@
         <div class="card-header"><h3>Gathering Bands</h3></div>
         <div class="card-body text-primary">
           <% @gather_bands.gathering.each do |gathering| %>
-            <h5 class="card-title"><%= gathering.live_name %></h5>
-            <%= gathering.start_time %>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= link_to life_path(gathering) do%>
+                      <%= gathering.start_time %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to life_path(gathering) do%>
+                      <%= gathering.live_name %>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           <% end %>
         </div>
       </div>

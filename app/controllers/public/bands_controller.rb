@@ -5,7 +5,7 @@ class Public::BandsController < ApplicationController
     @live_organizations = LiveOrganization.all
     @bands = Band.all
     @members = Member.all.where(band_id: @band.id)
-    @lives = Live.page(params[:page]).reverse_order
+    @lives = Live.where(registered_person: true).page(params[:page]).reverse_order
   end
 
   def edit

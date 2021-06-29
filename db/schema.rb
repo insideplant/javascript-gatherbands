@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_06_28_132314) do
     t.datetime "end_at"
     t.integer "live_house_id"
     t.boolean "registered_person"
+    t.string "color"
   end
 
   create_table "members", force: :cascade do |t|

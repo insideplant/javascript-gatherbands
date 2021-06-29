@@ -1,33 +1,34 @@
 class Public::LivesController < ApplicationController
 
-  def index
-    @live = Live.new
-    @lives = Live.where(live_house_id: params[:live_house_id])
-    #@lives = Live.where("start_on > ?",  6.months.since)
-    #render json: [ { 'start' => 1.day.ago, 'end' => 1.day.since }]
-    respond_to do |format|
-      # リクエストされるフォーマットがHTML形式の場合
-      format.html
-
-      # リクエストされるフォーマットがJSON形式の場合
-      format.json { render json: [{id: Lives.id, start: @lives.start_at, end: @lives.end_at}] }
-      # @usersをjson形式のデータへ変換して返す
-    end
-  end
+  #def index
+  #  @live = Live.new
+  #  @lives = Live.where(live_house_id: params[:live_house_id])
+  #  #@lives = Live.where("start_on > ?",  6.months.since)
+  #  #render json: [ { 'start' => 1.day.ago, 'end' => 1.day.since }]
+  #  respond_to do |format|
+  #    # リクエストされるフォーマットがHTML形式の場合
+  #    format.html
+  #
+  #    # リクエストされるフォーマットがJSON形式の場合
+  #    format.json { render json: [{id: Lives.id, start: @lives.start_at, end: @lives.end_at}] }
+  #    # @usersをjson形式のデータへ変換して返す
+  #  end
+  #end
 
   def create
-
     if Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
-      binding.pry
       @live_houses = LiveHouse.all
       @live = Live.new
+      flash[:info] = "liveのgatherに失敗しました"
       render :new
     else
-      #@live = Live.new(who: "band")
-      #@live.save(live_params)
-      @live = Live.create(live_params)
+      @live = Live.new(live_params)
+      @live.registered_person = "band"
+      @live.save
+      #@live = Live.create(live_params)
       @user = current_user
       @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
+      flash.now[:danger] = 'liveをgatherしました'
       redirect_to bands_path
     end
   end
@@ -36,6 +37,7 @@ class Public::LivesController < ApplicationController
     #gon.live_house_id = params[:id]
     @live_houses = LiveHouse.all
     @live = Live.new
+    @lives = Live.all
 
     respond_to do |format|
       # リクエストされるフォーマットがHTML形式の場合

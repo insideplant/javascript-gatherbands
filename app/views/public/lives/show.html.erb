@@ -20,7 +20,7 @@
                   <td>メンバー</td>
                   <td>
                   ：<% @host_band.members.each do |member| %>
-                   <%= member.name%>
+                    <%= member.name%>(<%= member.role %>)　
                    <% end %>
                   </td>
                 </tr>
