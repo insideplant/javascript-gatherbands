@@ -16,20 +16,36 @@ class Public::LivesController < ApplicationController
   #end
 
   def create
-    if Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
-      @live_houses = LiveHouse.all
-      @live = Live.new
-      flash[:info] = "liveのgatherに失敗しました"
+    @live_houses = LiveHouse.all
+    @live = Live.new
+    @lives = Live.all
+    
+    #Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
+    @live_insert = false
+    @lives.each do |compare_live|
+      if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)
+        #&&arams[:live][:end_at].between?(compare_live.start_at, compare_live.end_at)
+        @live_insert = true
+      end
+    end
+    
+    if @live_insert
+      flash.now[:danger] = "liveのgatherに失敗しました"
       render :new
     else
       @live = Live.new(live_params)
+      @live.end_at = params[:live][:start_at]
       @live.registered_person = "band"
-      @live.save
-      #@live = Live.create(live_params)
-      @user = current_user
-      @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
-      flash.now[:danger] = 'liveをgatherしました'
-      redirect_to bands_path
+      if @live.save
+        #@live = Live.create(live_params)
+        @user = current_user
+        @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
+        flash[:info] = 'liveをgatherしました'
+        redirect_to bands_path
+      else
+        flash.now[:danger] = "liveのgatherに失敗しました"
+        render :new
+      end
     end
   end
 

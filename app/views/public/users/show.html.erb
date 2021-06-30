@@ -82,6 +82,11 @@
                 <div class="col-3">
                   <%= article.comments.count %>コメント
                 </div>
+                <div class="col-3">
+                  <% if current_live_house || current_admin || @user.current_user?(current_user) == article.band.user %>
+                   <%= link_to "削除", article_path(article),method: :delete%>
+                  <% end %>
+                </div>
               </div>
             </div>
             <% end %>

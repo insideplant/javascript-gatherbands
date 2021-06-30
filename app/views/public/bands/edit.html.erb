@@ -10,11 +10,13 @@
    <%= f.fields_for :members, @member do |member| %>
     <%= render "member_fields", f: member %>
    <% end %>
-   <div class="links row">
-    <%= link_to_add_association "New Member", f, :members, class: "btn btn-primary btn-block" %>
-   </div>
-   <div>
-    <%= f.submit "create", class: "btn btn-block" %>
+   <div class="row">
+    <div class="links col-sm-6">
+     <%= link_to_add_association "New Member", f, :members, class: "btn btn-primary btn-block" %>
+    </div>
+    <div class=" col-sm-6">
+     <%= f.submit "create", class: "btn btn-block btn-light" %>
+    </div>
    </div>
   </div>
 

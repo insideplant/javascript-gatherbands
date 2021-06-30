@@ -33,6 +33,12 @@ class Public::ArticlesController < ApplicationController
   end
 
   def destroy
+    article = Article.find(params[:id])
+    if article.delete
+      redirect_to users_path(article.band.user)
+    else
+      render :"users/show"
+    end
   end
 
   private
