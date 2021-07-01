@@ -21,5 +21,4 @@ class User < ApplicationRecord
   def kana_name
     [first_name_kana, last_name_kana].join(' ')
   end
-
 end

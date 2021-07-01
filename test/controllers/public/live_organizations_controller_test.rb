@@ -25,5 +25,4 @@ class Public::LiveOrganizationsControllerTest < ActionDispatch::IntegrationTest
     get public_live_organizations_destroy_url
     assert_response :success
   end
-
 end

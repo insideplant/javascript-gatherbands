@@ -15,5 +15,4 @@ class Admin::UserBandsControllerTest < ActionDispatch::IntegrationTest
     get admin_user_bands_update_url
     assert_response :success
   end
-
 end

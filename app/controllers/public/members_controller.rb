@@ -4,8 +4,4 @@ class Public::MembersController < ApplicationController
 
   def edit
   end
-
- 
-
-
 end

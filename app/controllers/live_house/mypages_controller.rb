@@ -16,5 +16,4 @@ class LiveHouse::MypagesController < ApplicationController
 
   def edit
   end
-
 end

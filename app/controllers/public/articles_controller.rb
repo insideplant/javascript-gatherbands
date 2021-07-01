@@ -44,7 +44,6 @@ class Public::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:content,:band_id)
+    params.require(:article).permit(:content, :band_id)
   end
-
 end

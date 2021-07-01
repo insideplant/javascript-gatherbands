@@ -10,5 +10,4 @@ class Admin::LivesControllerTest < ActionDispatch::IntegrationTest
     get admin_lives_show_url
     assert_response :success
   end
-
 end

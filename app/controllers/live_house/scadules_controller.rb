@@ -12,8 +12,6 @@ class LiveHouse::ScadulesController < ApplicationController
     end
   end
 
-
   def show
   end
-
 end

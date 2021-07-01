@@ -20,5 +20,4 @@ class Public::LivesControllerTest < ActionDispatch::IntegrationTest
     get public_lives_edit_url
     assert_response :success
   end
-
 end

@@ -1,6 +1,5 @@
 class Live < ApplicationRecord
-
-  #live開催
+  # live開催
   has_many :live_organizations, dependent: :destroy
   has_many :bands,through: :live_organizations
 
@@ -21,7 +20,6 @@ class Live < ApplicationRecord
   def price_per_person
     self.live_house.price /= (self.amount + 1)
   end
-
-  enum status:    [ :gathering, :gathered, :waiting_live, :finish_live, :live_house]
-
+  # https://qiita.com/punkshiraishi/items/799bef63607e03262644
+  enum localization: { gathering: 0, gathered: 1, waiting_live: 2, finish_live: 3, live_house: 4 }
 end

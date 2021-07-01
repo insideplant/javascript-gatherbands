@@ -7,7 +7,6 @@ class Public::LiveHousesController < ApplicationController
     @live_houses = LiveHouse.all
   end
 
-
   def show
     gon.live_house_id = params[:id]
     @live_house = LiveHouse.find(params[:id])
@@ -30,5 +29,4 @@ class Public::LiveHousesController < ApplicationController
     @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
     redirect_to bands_path
   end
-
 end

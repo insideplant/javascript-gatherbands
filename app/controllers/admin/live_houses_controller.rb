@@ -5,8 +5,6 @@ class Admin::LiveHousesController < ApplicationController
 
   def show
     @live_house = LiveHouse.find(params[:id])
-    #gon.latitude = @live_house.latitude
-    #gon.longitude = @live_house
   end
 
   def new
@@ -20,7 +18,6 @@ class Admin::LiveHousesController < ApplicationController
   def create
     live_house = LiveHouse.new(live_house_params)
     live_house.save
-    binding.pry
     redirect_to admin_live_houses_path
   end
 
@@ -31,8 +28,9 @@ class Admin::LiveHousesController < ApplicationController
   end
 
   private
-  def live_house_params
-    params.require(:live_house).permit(:price, :house_name, :address, :telephone_number, :image, :detail, :postal_code, :website, :is_active)
-  end
 
+  def live_house_params
+    params.require(:live_house).permit(:price, :house_name, :address, :telephone_number,
+                                       :image, :detail, :postal_code, :website, :is_active)
+  end
 end

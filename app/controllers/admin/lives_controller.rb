@@ -21,5 +21,4 @@ class Admin::LivesController < ApplicationController
   def live_params
     params.require(:live).permit(:status)
   end
-
 end

@@ -1,10 +1,10 @@
 class Public::LiveOrganizationsController < ApplicationController
   def create
-    #Liveの参加
+    # Liveの参加
     @user = current_user
     LiveOrganization.create(live_organization_params)
 
-    #Liveのマッチング完了
+    # Liveのマッチング完了
     @live = Live.find(params[:live_organization][:live_id])
     @live_organization_participants = LiveOrganization.where(host: false).where(live_id: @live.id)
 
@@ -21,5 +21,4 @@ class Public::LiveOrganizationsController < ApplicationController
   def live_organization_params
     params.require(:live_organization).permit(:band_id, :live_id)
   end
-
 end

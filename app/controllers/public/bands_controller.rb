@@ -26,7 +26,6 @@ class Public::BandsController < ApplicationController
   private
 
   def band_params
-    params.require(:band).permit(:band_name,members_attributes:[:id,:role,:name,:_destroy])
+    params.require(:band).permit(:band_name, members_attributes: [:id, :role, :name, :_destroy])
   end
-
 end

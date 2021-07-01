@@ -15,5 +15,4 @@ class Admin::LiveHousesControllerTest < ActionDispatch::IntegrationTest
     get admin_live_houses_new_url
     assert_response :success
   end
-
 end

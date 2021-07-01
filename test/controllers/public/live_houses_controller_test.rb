@@ -10,5 +10,4 @@ class Public::LiveHousesControllerTest < ActionDispatch::IntegrationTest
     get public_live_houses_show_url
     assert_response :success
   end
-
 end

@@ -20,5 +20,4 @@ class Public::MembersControllerTest < ActionDispatch::IntegrationTest
     get public_members_create_url
     assert_response :success
   end
-
 end

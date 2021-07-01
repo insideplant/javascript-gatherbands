@@ -5,5 +5,4 @@ class Public::CommentsControllerTest < ActionDispatch::IntegrationTest
     get public_comments_create_url
     assert_response :success
   end
-
 end

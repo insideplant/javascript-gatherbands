@@ -5,10 +5,10 @@ class Public::RelationshipsController < ApplicationController
     following = current_user.band.follow(@band)
     if following.save
       flash[:info] = 'ユーザーをフォローしました'
-    redirect_to mypage_path(@band)
+      redirect_to mypage_path(@band)
     else
-    flash.now[:danger] = 'ユーザーのフォローに失敗しました'
-    redirect_to mypage_path(@band)
+      flash.now[:danger] = 'ユーザーのフォローに失敗しました'
+      redirect_to mypage_path(@band)
     end
   end
 
@@ -28,5 +28,4 @@ class Public::RelationshipsController < ApplicationController
   def set_band
     @band = Band.find(params[:follow_id])
   end
-
 end
