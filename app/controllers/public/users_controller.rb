@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
     @article = Article.new
     @articles = Article.page(params[:page]).reverse_order
 
-    #live情報
+    # live情報
     @gather_bands = @band.lives
   end
 
@@ -42,7 +42,7 @@ class Public::UsersController < ApplicationController
       name: params[:name],
       email: params[:email],
       image_name: 'default_user.png'
-      )
+    )
   end
 
   def index
@@ -54,6 +54,6 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:user_name, :profile_image, :last_name, :first_name, :last_name_kana,
                                  :first_name_kana, :postal_code, :address, :telephone_number, :email,
-                                 band_attributes:[:band_name, :id])
+                                 band_attributes: [:band_name, :id])
   end
 end

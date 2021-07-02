@@ -1,7 +1,7 @@
 class Live < ApplicationRecord
   # live開催
   has_many :live_organizations, dependent: :destroy
-  has_many :bands,through: :live_organizations
+  has_many :bands, through: :live_organizations
 
   belongs_to :live_house
 

@@ -1,5 +1,4 @@
 class Public::LivesController < ApplicationController
-
   def create
     @live_houses = LiveHouse.all
     @live = Live.new
@@ -21,7 +20,7 @@ class Public::LivesController < ApplicationController
       @live.end_at = params[:live][:start_at]
       @live.registered_person = "band"
       if @live.save
-        #@live = Live.create(live_params)
+        # @live = Live.create(live_params)
         @user = current_user
         @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
         flash[:info] = 'liveをgatherしました'
@@ -36,7 +35,7 @@ class Public::LivesController < ApplicationController
   def new
     @live_houses = LiveHouse.all
     @live = Live.new
-    @lives = Live.all
+    @lives = Live.includes(:live_organization)
 
     respond_to do |format|
       format.html

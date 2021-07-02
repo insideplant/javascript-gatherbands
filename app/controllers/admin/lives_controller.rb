@@ -1,6 +1,6 @@
 class Admin::LivesController < ApplicationController
   def index
-    @lives = Live.all
+    @lives = Live.where(registered_person: true)
   end
 
   def show

@@ -15,7 +15,7 @@ class Public::LiveOrganizationsController < ApplicationController
       redirect_to bands_path
     end
   end
-  
+
   private
 
   def live_organization_params
