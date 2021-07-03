@@ -5,14 +5,17 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+  # super
+   @user = User.new
+   @band = @user.build_band
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    UserMailer.with(user: resource).welcome_email.deliver_now
+  end
 
   # GET /resource/edit
   # def edit

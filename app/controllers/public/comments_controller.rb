@@ -1,20 +1,22 @@
 class Public::CommentsController < ApplicationController
   def create
-    article = Article.find(params[:article_id])
-    @comment = article.comments.build(comment_params)
-    @comment.band_id = article.band_id
+    @user = current_user
+    @band = @user.band
+    @comment = @band.comments.new(comment_params)
+    @article = @comment.article
     if @comment.save
+      @article.create_notification_comment!(@band, @comment.id)
       flash[:info] = "コメントしました"
-      redirect_back(fallback_location: root_path)
+      redirect_to article_path(@article)
     else
       flash[:warning] = "コメントできませんでした"
-      redirect_back(fallback_location: root_path)
+      render 'articles/show'
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :article_id)
   end
 end

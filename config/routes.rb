@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :lives
     get 'calendar' => 'lives#calendar'
     get 'lives/:id/selecthouse' => 'lives#selecthouse' ,as: "selecthouse"
+    resources :notifications, only: :index
 
     resources :relationships, only: [:create, :destroy]
     resources :bands, only:[:index, :edit, :update] do
@@ -59,5 +60,7 @@ Rails.application.routes.draw do
     resources :lives, only:[:index, :show, :update]
   end
 
-
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end

@@ -24,7 +24,7 @@
        <td><%= live.id %></td>
        <td><%= link_to live.live_name, life_path(live) %></td>
        <td><%= link_to host_band(live.id).band_name, mypage_path(host_band(live.id).user) %></td>
-       <td>scadule</td>
+       <td><%= live.start_time%></td>
        <td><%= live.status %></td>
      </tr>
      <% end %>

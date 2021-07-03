@@ -16,15 +16,31 @@ class LiveHouse::LivesController < ApplicationController
   end
 
   def create
-    live = Live.new(live_params)
-    live.registered_person = false
-    live.live_house_id = current_live_house.id
-    live.status = "live_house"
-    live.color = "gray"
-    if live.save
-      redirect_to live_house_scadules_path
-    else
+    @live_houses = LiveHouse.all
+
+    @lives = Live.where(live_house_id: current_live_house.id)
+    # Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
+    @live_insert = false
+    @lives.each do |compare_live|
+      if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)&&params[:live][:end_at].between?(compare_live.start_at, compare_live.end_at)
+        @live_insert = true
+      end
+    end
+    
+    if @live_insert
+      flash.now[:danger] = "liveのgatherに失敗しました"
       render :new
+    else
+      live = Live.new(live_params)
+      live.registered_person = false
+      live.live_house_id = current_live_house.id
+      live.status = "live_house"
+      live.color = "gray"
+      if live.save
+        redirect_to live_house_scadules_path
+      else
+        render :new
+      end
     end
   end
 

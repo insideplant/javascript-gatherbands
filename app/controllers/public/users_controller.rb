@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @band = @user.band
     @article = Article.new
-    @articles = Article.page(params[:page]).reverse_order
+    @articles = Article.includes(band: :user).page(params[:page]).reverse_order
 
     # live情報
     @gather_bands = @band.lives

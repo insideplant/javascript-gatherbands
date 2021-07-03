@@ -1,0 +1,29 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+  <div class="row border-top border-top border-white py-3">
+    <%= link_to mypage_path(visitor) do %>
+    <div class="col-2">
+      <%= attachment_image_tag visitor.user, :profile_image, size: "50x50" , fallback: "no_image.png" ,size: "50x50" , class:"mt-2 rounded-circle" %>
+    </div>
+    <div class="col-sm10">
+      <%= visitor.user.user_name %>
+    <% end %>さんが
+      <%case notification.action %>
+      <% when 'follow' then %>
+        <%= "あなたをフォローしました" %>
+      <% when 'iine' then %>
+        <%= link_to 'あなたの投稿', notification.article, style: "font-weight: bold;" %>
+        <%= "にいいねしました" %>
+      <% when 'comment' then %>
+        <% if notification.article.band.id == visited.id %>
+          <%= link_to "あなたの投稿", notification.article, style: "font-weight: bold;" %>
+        <% else %>
+          <%= link_to post_path(notification.article) do %>
+            <%= notification.article.band.user.user_name + 'さんの投稿' %>
+            <%= Comment.find_by(id: notification.comment_id)&.comment %>
+          <% end %>
+        <% end %>
+        <%= "にコメントしました" %>
+      <% end %>
+    </div>
+  </div>

@@ -15,6 +15,11 @@ class Band < ApplicationRecord
   has_many :live_organizations
   has_many :lives, through: :live_organizations, source: :live
 
+  # 通知機能
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+  # band情報とmember情報を同時にcreate
   accepts_nested_attributes_for :members, allow_destroy: true
 
   validates_associated :members
@@ -32,5 +37,16 @@ class Band < ApplicationRecord
 
   def following?(other_band)
     self.followings.include?(other_band)
+  end
+  
+  def create_notification_follow!(current_band)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_band.id, id, 'follow'])
+    if temp.blank?
+      notification = current_band.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 end

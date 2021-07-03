@@ -5,21 +5,21 @@ class Live < ApplicationRecord
 
   belongs_to :live_house
 
-  validates :live_name,  presence: true, length: { maximum: 15 }
+  validates :live_name, presence: true, length: { maximum: 15 }
   validates :introduction, presence: true
 
   def rest_amount
-    self.amount -= self.live_organizations.where(host: false).count
+    amount - live_organizations.where(host: false).count
   end
 
   def start_time
     dw = ["日", "月", "火", "水", "木", "金", "土"]
-    self.start_at.strftime("%Y/%m/%d(#{dw[self.start_at.wday]})")
+    start_at.strftime("%Y/%m/%d(#{dw[start_at.wday]})")
   end
 
   def price_per_person
-    self.live_house.price /= (self.amount + 1)
+    live_house.price /= (amount + 1)
   end
   # https://qiita.com/punkshiraishi/items/799bef63607e03262644
-  enum localization: { gathering: 0, gathered: 1, waiting_live: 2, finish_live: 3, live_house: 4 }
+  enum status: { gathering: 0, gathered: 1, waiting_live: 2, finish_live: 3, live_house: 4 }
 end

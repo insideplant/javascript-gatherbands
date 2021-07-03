@@ -1,12 +1,12 @@
 class Public::ArticlesController < ApplicationController
   def show
     @user = current_user
+    @band = current_user.band
     @article = Article.find(params[:id])
     @new_article = Article.new
-    @comments = @article.comments
-    @comment = @article.comments.build
+    @comments = @article.comments.includes(:band)
+    @comment = @band.comments.build
 
-    @band = current_user.band
     # 募集中のlive情報
     @gather_bands = @band.lives
   end
