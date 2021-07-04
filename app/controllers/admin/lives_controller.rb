@@ -8,7 +8,7 @@ class Admin::LivesController < ApplicationController
 
   def update
     @live = Live.find(params[:id])
-    if @live.update(satus: "waiting_live")
+    if @live.update(status: "waiting_live")
       redirect_to admin_lives_path
     else
       @lives = Live.all

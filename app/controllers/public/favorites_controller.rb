@@ -3,7 +3,7 @@ class Public::FavoritesController < ApplicationController
     @article = Article.find(params[:article_id])
     favorite = current_user.band.favorites.new(article_id: @article.id)
     favorite.save
-    post.create_notification_iine!(current_user.band)
+    @article.create_notification_iine!(current_user.band)
   end
 
   def destroy

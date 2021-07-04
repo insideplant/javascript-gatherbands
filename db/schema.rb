@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_03_113712) do
+ActiveRecord::Schema.define(version: 2021_07_04_163653) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_113712) do
     t.integer "live_house_id"
     t.boolean "registered_person"
     t.string "color"
+    t.string "live_image_id"
   end
 
   create_table "members", force: :cascade do |t|

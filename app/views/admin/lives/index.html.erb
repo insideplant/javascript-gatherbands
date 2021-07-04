@@ -24,7 +24,7 @@
       <td><%= live.status %></td>
       <td>
        <% if live.status == "gathered" %>
-        <%= link_to "confirmation", admin_life_path(live) %>
+        <%= link_to "confirmation", admin_life_path(live), method: :patch %>
        <% end %>
       </td>
     </tr>

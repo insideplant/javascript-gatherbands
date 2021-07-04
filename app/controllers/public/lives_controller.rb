@@ -70,6 +70,6 @@ class Public::LivesController < ApplicationController
   private
 
   def live_params
-    params.require(:live).permit(:start_at, :end_at, :live_name, :amount, :introduction, :status, :live_house_id)
+    params.require(:live).permit(:live_image, :start_at, :end_at, :live_name, :amount, :introduction, :status, :live_house_id)
   end
 end

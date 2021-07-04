@@ -1,4 +1,5 @@
 class Live < ApplicationRecord
+  attachment :live_image
   # live開催
   has_many :live_organizations, dependent: :destroy
   has_many :bands, through: :live_organizations
