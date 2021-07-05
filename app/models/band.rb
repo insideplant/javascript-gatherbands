@@ -26,19 +26,19 @@ class Band < ApplicationRecord
 
   def follow(other_band)
     unless self == other_band
-      self.relationships.find_or_create_by(follow_id: other_band.id)
+      relationships.find_or_create_by(follow_id: other_band.id)
     end
   end
 
   def unfollow(other_band)
-    relationship = self.relationships.find_by(follow_id: other_band.id)
+    relationship = relationships.find_by(follow_id: other_band.id)
     relationship.destroy if relationship
   end
 
   def following?(other_band)
-    self.followings.include?(other_band)
+    followings.include?(other_band)
   end
-  
+
   def create_notification_follow!(current_band)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_band.id, id, 'follow'])
     if temp.blank?

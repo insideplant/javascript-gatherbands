@@ -50,5 +50,6 @@ class Article < ApplicationRecord
       notification.checked = true
     end
     notification.save if notification.valid?
+    binding.pry
   end
 end

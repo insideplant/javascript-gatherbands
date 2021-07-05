@@ -24,6 +24,16 @@
           <% end %>
         <% end %>
         <%= "にコメントしました" %>
+      <% when 'participation' then %>
+        <% if notification.live.band.id == visited.id %>
+          <%= link_to "あなたの投稿", notification.article, style: "font-weight: bold;" %>
+        <% else %>
+          <%= link_to life_path(notification.article) do %>
+            <%= notification.article.band.user.user_name + 'さんのLive' %>
+            <%= Live.find_by(id: notification.live_organization_id)&.live %>
+          <% end %>
+        <% end %>
+        <%= "に参加しました" %>
       <% end %>
     </div>
   </div>

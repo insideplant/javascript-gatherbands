@@ -3,11 +3,10 @@ class Public::LivesController < ApplicationController
     @live_houses = LiveHouse.all
     @live = Live.new
     @lives = Live.where(params[:live][:live_house_id])
-    # Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
+
     @live_insert = false
     @lives.each do |compare_live|
       if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)
-        # &&arams[:live][:end_at].between?(compare_live.start_at, compare_live.end_at)
         @live_insert = true
       end
     end
@@ -20,7 +19,6 @@ class Public::LivesController < ApplicationController
       @live.end_at = params[:live][:start_at]
       @live.registered_person = "band"
       if @live.save
-        # @live = Live.create(live_params)
         @user = current_user
         @live_organization = LiveOrganization.create(band_id: @user.band.id, live_id: @live.id, host: true)
         flash[:info] = 'liveをgatherしました'

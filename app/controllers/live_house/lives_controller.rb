@@ -1,7 +1,6 @@
 class LiveHouse::LivesController < ApplicationController
   def new
     @live_houses = LiveHouse.all
-    @lives = Live.all
     @live_house = current_live_house
     @lives = Live.where(live_house_id: @live_house.id)
     @live = Live.new
@@ -19,16 +18,16 @@ class LiveHouse::LivesController < ApplicationController
     @live_houses = LiveHouse.all
 
     @lives = Live.where(live_house_id: current_live_house.id)
-    # Live.find_by(live_house_id: params[:live][:live_house_id], start_at: params[:live][:start_at])
     @live_insert = false
     @lives.each do |compare_live|
-      if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)&&params[:live][:end_at].between?(compare_live.start_at, compare_live.end_at)
+      if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)||params[:live][:end_at].between?(compare_live.start_at, compare_live.end_at)
         @live_insert = true
       end
     end
-    
+
     if @live_insert
       flash.now[:danger] = "liveのgatherに失敗しました"
+      @live = Live.new
       render :new
     else
       live = Live.new(live_params)
@@ -39,6 +38,7 @@ class LiveHouse::LivesController < ApplicationController
       if live.save
         redirect_to live_house_scadules_path
       else
+        @live = Live.new
         render :new
       end
     end
