@@ -31,7 +31,7 @@
 /* registration */
 
 #registrations {
-  background-image: url(live1.jpg);
+  background-image: image-url("live1.jpg");
   background-position: center;
   background-size: cover;
   background-color: transparent;
@@ -149,18 +149,18 @@ textarea {
   height: 350px;
 }
 .live1 {
-  background-image: url(live1.jpg);
+  background-image: image-url("live1.jpg");
   background-position:center bottom;
 }
 .live2 {
-  background-image: url(live2.jpg);
+  background-image: image-url("live2.jpg");
   background-position:center top;
 }
 .live3 {
-  background-image: url(live3.jpg);
+  background-image: image-url("live3.jpg");
 }
 .live4 {
-  background-image: url(live4.jpg);
+  background-image: image-url("live4.jpg");
 }
 
 /*.recent-live {

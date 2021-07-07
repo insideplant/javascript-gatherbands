@@ -114,7 +114,8 @@ ActiveRecord::Schema.define(version: 2021_07_04_163653) do
   create_table "notifications", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
-    t.integer "participate_id"
+    t.integer "live_id"
+    t.integer "live_organization_id"
     t.integer "article_id"
     t.integer "comment_id"
     t.string "action", default: "", null: false
@@ -123,7 +124,8 @@ ActiveRecord::Schema.define(version: 2021_07_04_163653) do
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_notifications_on_article_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
-    t.index ["participate_id"], name: "index_notifications_on_participate_id"
+    t.index ["live_id"], name: "index_notifications_on_live_id"
+    t.index ["live_organization_id"], name: "index_notifications_on_live_organization_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end

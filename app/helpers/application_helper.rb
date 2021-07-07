@@ -11,4 +11,8 @@ module ApplicationHelper
   def number_to_postal_code(number)
     "〒#{number.to_s.insert(3, "-")}"
   end
+
+  def live_participate?(band,live_participants)
+    live_participants.where(band_id: band)
+  end
 end

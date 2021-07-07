@@ -12,20 +12,20 @@ class Live < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
-  def create_notification_participant!(current_band, live_organization_id)
+  def create_notification_participant!(current_band, live_participate_id)
     # 自分以外にライブに参加している人を全て取得、全員に通知
     temp_ids = LiveOrganization.where(live_id: id).where.not(band_id: current_band.id).pluck(:band_id)
     temp_ids.each do |temp_id|
-      save_notification_participant!(current_band, live_organization_id, temp_id)
+      save_notification_participant!(current_band, live_participate_id, temp_id)
     end
     # 参加者がいない場合は、hostに通知
-    save_notification_participant!(current_band, live_organization_id, band_id) if temp_ids.blank?
+    save_notification_participant!(current_band, live_participate_id, band_id) if temp_ids.blank?
   end
 
-  def save_notification_participant!(current_band, live_organization_id, visited_id)
+  def save_notification_participant!(current_band, live_participate_id, visited_id)
     notification = current_band.active_notifications.new(
-      article_id: id,
-      participate_id: live_organization_id,
+      live_id: id,
+      live_organization_id: live_participate_id,
       visited_id: visited_id,
       action: 'participation'
     )
