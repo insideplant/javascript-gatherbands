@@ -6,8 +6,14 @@ class Public::LivesController < ApplicationController
 
     @live_insert = false
     @lives.each do |compare_live|
-      if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)
-        @live_insert = true
+      if params[:live][:start_at].present?
+        if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)
+          @live_insert = true
+        end
+      else
+        flash.now[:danger] = "liveのgatherに失敗しました"
+        render :new
+        return
       end
     end
 
@@ -24,7 +30,6 @@ class Public::LivesController < ApplicationController
         flash[:info] = 'liveをgatherしました'
         redirect_to bands_path
       else
-        flash.now[:danger] = "liveのgatherに失敗しました"
         render :new
       end
     end

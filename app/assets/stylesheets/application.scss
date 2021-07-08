@@ -18,10 +18,10 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @import "fullcalendar.min";
- 
- 
+
+
  /*layout崩れ*/
- .field_with_errors {
+.field_with_errors {
   display: contents;
   input {
     @extend .is-invalid;
@@ -145,7 +145,7 @@ textarea {
 
 
 /* body */
-.live_image{
+.live_image_top{
   height: 350px;
 }
 .live1 {
