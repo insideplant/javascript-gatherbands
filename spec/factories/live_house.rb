@@ -7,6 +7,6 @@ FactoryBot.define do
     address { Faker::Lorem.characters(number:10) }
     website { Faker::Lorem.characters(number:10) }
     detail { Faker::Lorem.characters(number:10) }
-    telephone_number 
+    telephone_number { '12345678910' }
   end
 end

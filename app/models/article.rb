@@ -1,9 +1,9 @@
 class Article < ApplicationRecord
   belongs_to :band
-  validates:content, presence: true, length: { maximum: 140 }
   has_many :favorites, dependent: :destroy
   has_many :comments
   has_many :notifications, dependent: :destroy
+  validates:content, presence: true, length: { maximum: 140 }
 
   def favorited_by?(band)
     favorites.where(band_id: band.id).exists?

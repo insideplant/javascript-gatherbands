@@ -26,12 +26,9 @@ class Public::UsersController < ApplicationController
         format.js { @status = "success" }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-        # 追加
-        format.js { @status = "fail" }
+        format.js { render :errors }
       end
     end
-    redirect_to mypage_path
   end
 
   def confirmation

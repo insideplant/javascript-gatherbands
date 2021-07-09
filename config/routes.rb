@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
     resources :articles do
       resource :favorites, only: [:create, :destroy]
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :destroy]
     end
 
     get 'users/:id/edit' => 'users#edit' ,as: 'edit_mypage'

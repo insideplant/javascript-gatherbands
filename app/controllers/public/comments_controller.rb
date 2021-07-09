@@ -14,6 +14,20 @@ class Public::CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+    @band = @user.band
+    @comment = Comment.find_by(params[:id])
+    @article = @comment.article
+    if @comment.destroy
+      flash[:info] = "コメントを削除しました"
+      redirect_to article_path(@article)
+    else
+      flash[:warning] = "コメントを削除出来ませんでした"
+
+    end
+  end
+
   private
 
   def comment_params

@@ -9,6 +9,9 @@ class LiveHouse < ApplicationRecord
   validates :postal_code, presence: true, format: { with: /\A\d{7}\z/,
                                         message: "ハイフンなし7桁で入力してください"
                                         }
+  validates :telephone_number, presence: true, format: { with: /\A\d{10}$|^\d{11}\z/,
+                                             message: "ハイフンなし10桁または11桁で入力してください"
+                                             }
 
   geocoded_by :address
   after_validation :geocode

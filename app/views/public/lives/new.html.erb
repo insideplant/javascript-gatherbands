@@ -3,7 +3,7 @@
     <h1 class="mb-5"><%= current_user.band.band_name%></h1>
 
     <%= form_with(model: @live, local: true) do |f| %>
-      <%= render "error_message", model: f.object %>
+      <%= render "layouts/error_messages", model: f.object %>
       <div class="form-group row">
         <%= f.label :live_name, "Live名", class: "form-control-label col-sm-2 col-form-label"%>
         <div class="col-sm-10">

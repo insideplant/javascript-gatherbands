@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_04_163653) do
+ActiveRecord::Schema.define(version: 2021_07_09_163738) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -152,15 +152,6 @@ ActiveRecord::Schema.define(version: 2021_07_04_163653) do
     t.index ["band_id", "follow_id"], name: "index_relationships_on_band_id_and_follow_id", unique: true
     t.index ["band_id"], name: "index_relationships_on_band_id"
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
-  end
-
-  create_table "rents", force: :cascade do |t|
-    t.integer "live_id"
-    t.integer "live_house_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["live_house_id"], name: "index_rents_on_live_house_id"
-    t.index ["live_id"], name: "index_rents_on_live_id"
   end
 
   create_table "users", force: :cascade do |t|
