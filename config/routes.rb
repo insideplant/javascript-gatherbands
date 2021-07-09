@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     resources :live_organizations, only: [:index, :create, :show, :edit, :update]
     resources :lives
     get 'calendar' => 'lives#calendar'
-    get 'lives/:id/selecthouse' => 'lives#selecthouse' ,as: "selecthouse"
     resources :notifications, only: :index
 
     resources :relationships, only: [:create, :destroy]

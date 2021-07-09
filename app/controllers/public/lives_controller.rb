@@ -46,9 +46,6 @@ class Public::LivesController < ApplicationController
     end
   end
 
-  def selecthouse
-  end
-
   def calendar
   end
 
@@ -62,12 +59,6 @@ class Public::LivesController < ApplicationController
 
     # participants
     @live_organization_participants = LiveOrganization.where(live_id: @live.id, host: false)
-  end
-
-  def update
-  end
-
-  def edit
   end
 
   private
