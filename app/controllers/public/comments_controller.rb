@@ -24,7 +24,6 @@ class Public::CommentsController < ApplicationController
       redirect_to article_path(@article)
     else
       flash[:warning] = "コメントを削除出来ませんでした"
-
     end
   end
 

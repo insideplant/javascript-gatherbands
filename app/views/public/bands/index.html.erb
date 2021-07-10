@@ -40,20 +40,20 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <%= link_to "new live", new_life_path, class: "btn btn-primary" %>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <div class="card-list">
         <% @lives.each do |live| %>
         <%= link_to life_path(live), class: "card-link" do%>
           <div class="card w-auto mx-auto mt-4 shadou-lg">
             <div class="card-body row">
-              <div class="col-2">
-                <%#= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
-                  size: "60x60" , class:"mt-2 rounded-circle"%>
+              <div class="col-3">
+                <%= attachment_image_tag live, :live_image, size: "120x120" , fallback: "no_image.png" ,
+                  size: "120x120" , class:"mt-2"%>
               </div>
-              <div class="col-10">
+              <div class="col-9">
                 <div class="row">
                   <div class="col-10">
                     <h1><%= live.live_name%></h1>
@@ -67,7 +67,7 @@
                     <tbody>
                       <tr>
                         <td>ホスト名</td>
-                        <td>：<%#= live.live_organizations.find_by(host: true).band.band_name %></td>
+                        <td>：<%= live.live_organizations.find_by(host: true).band.band_name %></td>
                       </tr>
                       <tr>
                         <td>募集人数</td>
@@ -76,13 +76,13 @@
                       <tr>
                         <td>現在の参加バンド</td>
                         <td>：
-                        　<%# if live.live_organizations.where(host: false).present? %>
+                        　<% if live.live_organizations.where(host: false).present? %>
                             <% live.live_organizations.where(host: false).includes(:band).each do |participant_band| %>
                               <%= participant_band.band.band_name%>
                             <% end %>
-                          <%# else %>
-                            <%#= nothing %>
-                          <%# end %>
+                          <% else %>
+                            No Band
+                          <% end %>
                         </td>
                       </tr>
                       <tr>

@@ -19,44 +19,38 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'calendar' => 'lives#calendar'
     resources :mypages, only:[:new, :show, :edit]
-    resources :scadules, only:[:index, :show]
-    resources :lives, only:[:new, :create, :show, :edit, :update, :destroy]
+    resources :scadules, only:[:index]
+    resources :lives, only:[:new, :create, :show]
     resources :user, only:[:show]
   end
 
   scope module: :public do
     root to: 'homes#top'
-    get 'lives/index'
-    get 'lives/show'
     resources :live_houses, only: [:index, :show]
     resources :favorites, only: [:create, :destroy]
-    resources :live_organizations, only: [:index, :create, :show, :edit, :update]
-    resources :lives
+    resources :live_organizations, only: [:create]
+    resources :lives, only: [:new, :create, :show]
     get 'calendar' => 'lives#calendar'
     resources :notifications, only: :index
 
     resources :relationships, only: [:create, :destroy]
-    resources :bands, only:[:index, :edit, :update] do
-      resources :members, only:[:show, :edit, :update, :create]
-    end
-    resources :articles do
+    resources :bands, only:[:index, :edit, :update]
+    resources :articles, only:[:show, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
 
     get 'users/:id/edit' => 'users#edit' ,as: 'edit_mypage'
     get 'users/:id' => 'users#show', as: 'mypage'
-    get 'users/confirmation' => 'users#is_active'
     patch 'users/mypage/update' => 'users#update'
   end
 
   namespace :admin do
     root to: 'homes#top'
-    resources :genres, only:[:index, :show, :edit, :update]
     resources :user_bands, only:[:index, :show, :update]
-    resources :users, only:[:index, :show, :edit, :update]
-    resources :live_houses, only:[:edit, :show, :index]
-    resources :lives, only:[:index, :edit, :show, :update]
+    resources :users, only:[:index, :show]
+    resources :live_houses, only:[:edit, :show, :index, :update]
+    resources :lives, only:[:index, :edit, :update]
   end
 
   if Rails.env.development?

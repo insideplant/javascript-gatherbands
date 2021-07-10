@@ -10,10 +10,4 @@ class Admin::UsersController < ApplicationController
     # live情報()
     @gather_bands = @band.lives
   end
-
-  def edit
-  end
-
-  def update
-  end
 end

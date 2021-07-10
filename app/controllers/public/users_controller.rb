@@ -31,19 +31,12 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def confirmation
-  end
-
   def create
     @user = User.new(
       name: params[:name],
       email: params[:email],
       image_name: 'default_user.png'
     )
-  end
-
-  def index
-    @user = User.all
   end
 
   private

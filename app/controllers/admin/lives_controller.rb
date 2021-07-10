@@ -3,9 +3,6 @@ class Admin::LivesController < ApplicationController
     @lives = Live.where(registered_person: true)
   end
 
-  def show
-  end
-
   def update
     @live = Live.find(params[:id])
     if @live.update(status: "waiting_live")

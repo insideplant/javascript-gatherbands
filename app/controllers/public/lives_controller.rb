@@ -46,9 +46,6 @@ class Public::LivesController < ApplicationController
     end
   end
 
-  def calendar
-  end
-
   def show
     @live = Live.find(params[:id])
 

@@ -11,7 +11,4 @@ class LiveHouse::ScadulesController < ApplicationController
       # @livesをjson形式のデータへ変換して返す
     end
   end
-
-  def show
-  end
 end

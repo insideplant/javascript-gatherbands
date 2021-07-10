@@ -11,9 +11,6 @@ class Public::ArticlesController < ApplicationController
     @gather_bands = @band.lives
   end
 
-  def new
-  end
-
   def create
     article = Article.new(article_params)
     if article.save
@@ -23,12 +20,6 @@ class Public::ArticlesController < ApplicationController
       @articles = Article.all
       render template: "public/users/show"
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   def destroy
