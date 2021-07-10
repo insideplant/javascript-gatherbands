@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 2021_07_03_113712) do
   create_table "bands", force: :cascade do |t|
     t.integer "user_id"
     t.string "band_name"
-    t.string "bandimage_id"
+    t.string "band_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bands_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -57,6 +58,11 @@ ActiveRecord::Schema.define(version: 2021_07_03_113712) do
   end
 
   create_table "live_houses", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.integer "price"
     t.string "house_name"
     t.string "postal_code"
@@ -71,11 +77,6 @@ ActiveRecord::Schema.define(version: 2021_07_03_113712) do
     t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.index ["email"], name: "index_live_houses_on_email", unique: true
     t.index ["reset_password_token"], name: "index_live_houses_on_reset_password_token", unique: true
   end
@@ -168,7 +169,6 @@ ActiveRecord::Schema.define(version: 2021_07_03_113712) do
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
-    t.integer "band_id"
     t.string "profile_image_id"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false

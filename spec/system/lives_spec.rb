@@ -2,16 +2,27 @@ require 'rails_helper'
 
 describe '投稿のテスト' do
   let!(:user) { create(:user) }
-  
+  before do
+    visit new_user_session_path
+    fill_in "user_email", with: user.email
+    fill_in "user_password", with: user.password
+    click_button 'Log in'
+  end
+
   let!(:live) { create(:live) }
-  describe 'new画面（life_new_path）のテスト'do
+  let!(:band) { create(:band, user: user) }
+  describe 'Liveのnew画面（new_life_path）のテスト'do
     before do
-      vist life_new_path
+      visit new_life_path
     end
     context '表示の確認' do
       it 'new画面(life_new_path)にband_nameが表示されているか' do
-        ecpect(page).to_have_content band.band_name
+        expect(page).to have_content band.band_name
       end
     end
+  end
+
+
+  describe ''do
   end
 end

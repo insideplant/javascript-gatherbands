@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AddDeviseToLiveHouses < ActiveRecord::Migration[5.2]
-  def self.up
-    change_table :live_houses do |t|
+class DeviseCreateLiveHouses < ActiveRecord::Migration[5.2]
+  def change
+    create_table :live_houses do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -43,7 +43,7 @@ class AddDeviseToLiveHouses < ActiveRecord::Migration[5.2]
       t.string :image_id
       t.text :detail
       t.boolean :is_active, default: false, null: false
-  
+
       t.timestamps null: false
     end
 
@@ -51,11 +51,5 @@ class AddDeviseToLiveHouses < ActiveRecord::Migration[5.2]
     add_index :live_houses, :reset_password_token, unique: true
     # add_index :live_houses, :confirmation_token,   unique: true
     # add_index :live_houses, :unlock_token,         unique: true
-  end
-
-  def self.down
-    # By default, we don't want to make any assumption about how to roll back a migration when your
-    # model already existed. Please edit below which fields you would like to remove in this migration.
-    raise ActiveRecord::IrreversibleMigration
   end
 end

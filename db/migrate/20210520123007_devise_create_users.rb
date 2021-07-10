@@ -40,7 +40,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :postal_code
       t.string :address
       t.string :telephone_number
-      t.integer :band_id
       t.string :profile_image_id
       t.boolean :is_active, null: false, default: true
 
