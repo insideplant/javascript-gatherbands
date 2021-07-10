@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'lives/index'
     get 'lives/show'
-    resources :live_houses, only: [:index, :show, :new, :edit]
+    resources :live_houses, only: [:index, :show]
     resources :favorites, only: [:create, :destroy]
     resources :live_organizations, only: [:index, :create, :show, :edit, :update]
     resources :lives
@@ -55,8 +55,8 @@ Rails.application.routes.draw do
     resources :genres, only:[:index, :show, :edit, :update]
     resources :user_bands, only:[:index, :show, :update]
     resources :users, only:[:index, :show, :edit, :update]
-    resources :live_houses
-    resources :lives, only:[:index, :show, :update]
+    resources :live_houses, only:[:edit, :show, :index]
+    resources :lives, only:[:index, :edit, :show, :update]
   end
 
   if Rails.env.development?

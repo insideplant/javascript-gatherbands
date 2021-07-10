@@ -7,18 +7,8 @@ class Admin::LiveHousesController < ApplicationController
     @live_house = LiveHouse.find(params[:id])
   end
 
-  def new
-    @new_live_house = LiveHouse.new
-  end
-
   def edit
     @live_house = LiveHouse.find(params[:id])
-  end
-
-  def create
-    live_house = LiveHouse.new(live_house_params)
-    live_house.save
-    redirect_to admin_live_houses_path
   end
 
   def update
