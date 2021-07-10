@@ -6,7 +6,7 @@
         <tbody>
           <tr>
             <td>Website</td>
-            <td>：<%= link_to @live_house.website,@live_house.website %></td>
+            <td>：<%= link_to @live_house.website.truncate(30),@live_house.website %></td>
           </tr>
           <tr>
             <td>Price</td>
@@ -37,7 +37,7 @@
     <div id='map' class="col-sm-4">
     </div>
   </div>
-  
+
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYghblosto1WOuW2btc0E9GpvmpNtGM7E&callback=initMap" async defer></script>
   <script>
     let map

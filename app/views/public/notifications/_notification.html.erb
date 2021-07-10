@@ -25,11 +25,11 @@
         <% end %>
         <%= "にコメントしました" %>
       <% when 'participation' then %>
-        <% if notification.live.band.id == visited.id %>
-          <%= link_to "あなたの投稿", notification.article, style: "font-weight: bold;" %>
+        <% if notification.live.live_organizations.find_by(host: true).band.id == visited.id %>
+          <%= link_to "あなたのLive", notification.live, style: "font-weight: bold;" %>
         <% else %>
-          <%= link_to life_path(notification.article) do %>
-            <%= notification.article.band.user.user_name + 'さんのLive' %>
+          <%= link_to life_path(notification.live) do %>
+            <%= notification.live.live_organizations.find_by(host: true).band.user.user_name + 'さんのLive' %>
             <%= Live.find_by(id: notification.live_organization_id)&.live %>
           <% end %>
         <% end %>
