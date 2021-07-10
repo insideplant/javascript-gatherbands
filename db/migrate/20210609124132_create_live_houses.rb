@@ -11,7 +11,7 @@ class CreateLiveHouses < ActiveRecord::Migration[5.2]
       t.string :telephone_number
       t.string :image_id
       t.text :detail
-      t.boolean :is_active, default: true, null: false
+      t.boolean :is_active, default: false, null: false
 
       t.timestamps
     end

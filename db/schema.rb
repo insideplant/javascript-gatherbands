@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_09_163738) do
+ActiveRecord::Schema.define(version: 2021_07_03_113712) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_07_09_163738) do
   create_table "bands", force: :cascade do |t|
     t.integer "user_id"
     t.string "band_name"
-    t.string "band_image_id"
+    t.string "bandimage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,24 +83,24 @@ ActiveRecord::Schema.define(version: 2021_07_09_163738) do
   create_table "live_organizations", force: :cascade do |t|
     t.integer "band_id"
     t.integer "live_id"
+    t.boolean "host", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "host", default: false, null: false
   end
 
   create_table "lives", force: :cascade do |t|
-    t.text "introduction"
     t.string "live_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "status", default: 0, null: false
+    t.text "introduction"
     t.integer "amount"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.integer "live_house_id"
-    t.boolean "registered_person"
     t.string "color"
+    t.integer "live_house_id"
     t.string "live_image_id"
+    t.integer "status", default: 0
+    t.boolean "registered_person"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "members", force: :cascade do |t|
@@ -168,11 +168,11 @@ ActiveRecord::Schema.define(version: 2021_07_09_163738) do
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
+    t.integer "band_id"
+    t.string "profile_image_id"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "band_id"
-    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -32,9 +32,19 @@ class AddDeviseToLiveHouses < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
-      # Uncomment below if timestamps were not included in your original model.
-      # t.timestamps null: false
+      t.integer :price
+      t.string :house_name
+      t.string :postal_code
+      t.string :address
+      t.string :website
+      t.float :branches, :latitude
+      t.float :branches, :longitude
+      t.string :telephone_number
+      t.string :image_id
+      t.text :detail
+      t.boolean :is_active, default: false, null: false
+  
+      t.timestamps null: false
     end
 
     add_index :live_houses, :email,                unique: true
