@@ -20,12 +20,9 @@ class Public::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-        # 追加
-        format.js { @status = "success" }
+        flash[:success] = "プロフィール情報を更新しました。"
+        format.js { render js: "window.location='#{mypage_path(@user)}'"}
       else
-        format.html { render :new }
         format.js { render :errors }
       end
     end
