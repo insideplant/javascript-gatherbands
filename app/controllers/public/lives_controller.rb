@@ -55,7 +55,7 @@ class Public::LivesController < ApplicationController
     @host_band = Band.find(@live_organization.band_id)
 
     # participants
-    @live_organization_participants = LiveOrganization.where(live_id: @live.id, host: false)
+    @live_organization_participants = LiveOrganization.includes(band: :user).where(live_id: @live.id, host: false)
   end
 
   private

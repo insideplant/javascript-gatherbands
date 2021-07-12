@@ -57,9 +57,8 @@
     </div>
 
     <div class="col-sm-6">
-      <% notifications = @notifications.where.not(visitor_id: current_user.band.id) %>
-      <% if notifications.exists? %>
-        <%= render notifications %>
+      <% if @notifications.present? %>
+        <%= render @notifications %>
       <% else %>
         通知はありません
       <% end %>

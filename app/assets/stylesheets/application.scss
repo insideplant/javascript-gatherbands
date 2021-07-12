@@ -20,12 +20,20 @@
  @import "fullcalendar.min";
 
 
- /*layout崩れ*/
+ /*form bootsrapによるlayout崩れを直す*/
 .field_with_errors {
   display: contents;
   input {
     @extend .is-invalid;
   }
+}
+
+/* top(lives)の画像*/
+.jumbotron {
+  background-image: image-url("live_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
 }
 
 /* registration */

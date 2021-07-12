@@ -1,0 +1,54 @@
+<div class="jumbotron">
+  <h1 class="display-4">Hello, Bands!</h1>
+  <p class="lead">This is a Gather Bands, you can gather bands.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
+</div>
+
+  <div class="container">
+    <div class="row my-md-5">
+      <% @lives_4.each do |live| %>
+      <div class="card-list">
+
+          <div class="col-2">
+            <div class="card" style="width: 15rem;">
+              <%= link_to life_path(live) do%>
+                <%= attachment_image_tag live, :live_image, size: "180x100", fallback: "no_image.png", size: "100%x100%", class:"card-img-top" %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= live.live_name %></h5>
+                <p class="card-text"><%= host_band(live).band_name %></p>
+                <p class="card-text"><%= live.introduction.truncate(10) %></p>
+                <%= link_to "Live info",life_path(live),class: "btn btn-dark" %>
+              </div>
+            </div>
+          </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <table class="table table-dark table-sm">
+       <thead class="thead-dark">
+        <tr>
+         <th>Live name</th>
+         <th>Host</th>
+         <th>Scadule</th>
+         <th>Live House</th>
+        </tr>
+       </thead>
+       <thody>
+        <% @lives.each do |live| %>
+         <tr>
+          <td><%= link_to live.live_name, life_path(live) %></td>
+          <td><%= link_to host_band(live.id).band_name, admin_user_path(host_band(live.id).user) %></td>
+          <td>live.start_time</td>
+          <td><%= link_to live.live_house.house_name, live_house_life_path(live.live_house) %></td>
+        </tr>
+        <% end %>
+       </thody>
+      </table>
+      <%= paginate @lives %>
+    </div>
+  </div>

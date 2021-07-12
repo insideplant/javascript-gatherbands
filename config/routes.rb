@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
+    get 'home_lives' => 'homes#lives'
     resources :live_houses, only: [:index, :show]
     resources :favorites, only: [:create, :destroy]
     resources :live_organizations, only: [:create]

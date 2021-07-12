@@ -4,7 +4,7 @@ class Public::ArticlesController < ApplicationController
     @band = current_user.band
     @article = Article.find(params[:id])
     @new_article = Article.new
-    @comments = @article.comments.includes(:band)
+    @comments = @article.comments.includes(band: :user)
     @comment = @band.comments.build
 
     # 募集中のlive情報
