@@ -4,7 +4,6 @@ class Public::UsersController < ApplicationController
     @band = @user.band
     @article = Article.new
     @articles = Article.includes(band: :user).page(params[:page]).reverse_order
-
     # live情報
     @gather_bands = @band.lives
   end
@@ -21,7 +20,7 @@ class Public::UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:success] = "プロフィール情報を更新しました。"
-        format.js { render js: "window.location='#{mypage_path(@user)}'"}
+        format.js { render js: "window.location='#{mypage_path(@user)}'" }
       else
         format.js { render :errors }
       end

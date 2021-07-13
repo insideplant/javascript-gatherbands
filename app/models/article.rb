@@ -11,7 +11,10 @@ class Article < ApplicationRecord
 
   def create_notification_iine!(current_band)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and article_id = ? and action = ? ", current_band.id, band_id, id, 'iine'])
+    temp = Notification.where([
+                               "visitor_id = ? and visited_id = ? and article_id = ? and action = ? ",
+                               current_band.id, band_id, id, 'iine',
+                               ])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_band.active_notifications.new(

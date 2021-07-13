@@ -43,7 +43,7 @@
          <tr>
           <td><%= link_to live.live_name, life_path(live) %></td>
           <td><%= link_to host_band(live.id).band_name, admin_user_path(host_band(live.id).user) %></td>
-          <td>live.start_time</td>
+          <td><%= live.start_time %></td>
           <td><%= link_to live.live_house.house_name, live_house_life_path(live.live_house) %></td>
         </tr>
         <% end %>

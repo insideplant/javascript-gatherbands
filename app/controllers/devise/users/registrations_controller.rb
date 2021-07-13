@@ -6,9 +6,9 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-  # super
-   @user = User.new
-   @band = @user.build_band
+    # super
+    @user = User.new
+    @band = @user.build_band
   end
 
   # POST /resource

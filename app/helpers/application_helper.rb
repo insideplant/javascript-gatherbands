@@ -12,7 +12,7 @@ module ApplicationHelper
     "〒#{number.to_s.insert(3, "-")}"
   end
 
-  def live_participate?(band,live_participants)
+  def live_participate?(band, live_participants)
     live_participants.where(band_id: band)
   end
 end

@@ -18,7 +18,8 @@ class LiveHouse::LivesController < ApplicationController
     @lives = Live.where(live_house_id: current_live_house.id)
     @live_insert = false
     @lives.each do |compare_live|
-      if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)||params[:live][:end_at].between?(compare_live.start_at, compare_live.end_at)
+      if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at) ||
+        params[:live][:end_at].between?(compare_live.start_at, compare_live.end_at)
         @live_insert = true
       end
     end

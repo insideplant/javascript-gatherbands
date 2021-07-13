@@ -46,14 +46,7 @@
 
   <div class="row">
     <div class="col-3">
-      <%= form_with model:@article,local:true do |f| %>
-      <div class="form-group">
-        <%= f.label :content, @band_name %>
-        <%= f.text_area :content, class:"form-control" %>
-        <%= f.hidden_field :band_id, :value => @band.id %>
-      </div>
-      <%= f.submit "投稿", class:"btn btn-primary"%>
-      <% end %>
+      <%= render 'public/users/article_content', band: @band,article: @article %>
     </div>
 
     <div class="col-6">
@@ -96,49 +89,7 @@
     </div>
 
     <div class="col-3">
-      <div class="row card border-primary mb-3 bg-transparent">
-        <div class="card-header"><h3>Live History</h3></div>
-        <div class="card-body text-primary">
-          <% @gather_bands.finish_live.each do |gathered| %>
-            <h5 class="card-title"><%= gathered.live_name %></h5>
-            <%= gathered.start_time %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="row card border-primary mb-3 bg-transparent">
-        <div class="card-header bg-transparent"><h3>New live</h3></div>
-        <div class="card-body text-primary">
-          <% @gather_bands.waiting_live.each do |waiting_live| %>
-            <h5 class="card-title"><%= waiting_live.live_name %></h5>
-            <%= waiting_live.start_at %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="row card border-primary mb-3 bg-transparent">
-        <div class="card-header"><h3>Gathering Bands</h3></div>
-        <div class="card-body text-primary">
-          <% @gather_bands.gathering.each do |gathering| %>
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <%= link_to life_path(gathering) do%>
-                      <%= gathering.start_time %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to life_path(gathering) do%>
-                      <%= gathering.live_name %>
-                    <% end %>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'public/lives/live_info', gather_bands: @gather_bands %>
     </div>
   </div>
 

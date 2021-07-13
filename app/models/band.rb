@@ -40,7 +40,7 @@ class Band < ApplicationRecord
   end
 
   def create_notification_follow!(current_band)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_band.id, id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_band.id, id, 'follow'])
     if temp.blank?
       notification = current_band.active_notifications.new(
         visited_id: id,

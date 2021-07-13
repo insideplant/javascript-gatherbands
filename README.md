@@ -1,4 +1,4 @@
-# <Gather Bands>
+# Gather Bands
 
 ### OverView
 - ライブを行いたいバンドがライブイベントを企画・募集できるアプリケーション。
