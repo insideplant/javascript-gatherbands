@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     case resource
     when Admin
-      admin_root_path
+      root_path
     when User
       root_path
     when LiveHouse
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-      admin_root_path
+      root_path
     when User
       root_path
     when LiveHouse
@@ -26,10 +26,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    if resource == :user
-      new_user_session_path # ログアウト後に遷移するpathを設定
-    else
-      new_admin_session_path
-    end
+    root_path
   end
 end
