@@ -1,4 +1,5 @@
 class Public::HomesController < ApplicationController
+  skip_before_action :authenticate_user!
   def top
     @lives = Live.where(status: 2).limit(4)
   end

@@ -11,10 +11,12 @@ class Article < ApplicationRecord
 
   def create_notification_iine!(current_band)
     # すでに「いいね」されているか検索
-    temp = Notification.where([
-                               "visitor_id = ? and visited_id = ? and article_id = ? and action = ? ",
-                               current_band.id, band_id, id, 'iine',
-                               ])
+    temp = Notification.where(
+      [
+        "visitor_id = ? and visited_id = ? and article_id = ? and action = ? ",
+        current_band.id, band_id, id, 'iine',
+      ]
+    )
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_band.active_notifications.new(
@@ -30,6 +32,7 @@ class Article < ApplicationRecord
     end
   end
 
+  # コメントにおける通知機能
   def create_notification_comment!(current_band, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Comment.select(:band_id).where(article_id: id).where.not(band_id: current_band.id).distinct
@@ -40,6 +43,7 @@ class Article < ApplicationRecord
     save_notification_comment!(current_band, comment_id, band_id) if temp_ids.blank?
   end
 
+  # 上記より呼び出し（まだ誰もコメントしていない場合は、投稿者に通知）
   def save_notification_comment!(current_band, comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_band.active_notifications.new(

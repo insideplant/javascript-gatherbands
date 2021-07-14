@@ -2,6 +2,9 @@
 
 class Devise::LiveHouses::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  skip_before_action :authenticate_user!
+  before_action :basic_auth
+  protect_from_forgery with: :exception
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -60,4 +63,10 @@ class Devise::LiveHouses::RegistrationsController < Devise::RegistrationsControl
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
+  end
 end

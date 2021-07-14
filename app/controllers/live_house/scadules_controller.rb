@@ -1,4 +1,7 @@
 class LiveHouse::ScadulesController < ApplicationController
+  skip_before_action :authenticate_user!
+  before_action :authenticate_live_house!
+
   def index
     @lives = Live.all
     @band_lives = Live.where(registered_person: true)

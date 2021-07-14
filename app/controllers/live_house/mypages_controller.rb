@@ -1,4 +1,7 @@
 class LiveHouse::MypagesController < ApplicationController
+  skip_before_action :authenticate_user!
+  before_action :authenticate_live_house!
+
   def show
     @live_house = LiveHouse.find(params[:id])
     @live = Live.new

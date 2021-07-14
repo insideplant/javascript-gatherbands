@@ -14,9 +14,9 @@
               <tr>
                 <td>メンバー</td>
                 <td>
-                ：<% live_organization_participant.band.members.includes(band: :member).each do |member| %>
-                 <%= member.name%>
-                 <% end %>
+                ：<% live_organization_participant.band.members.includes(band: :members).each do |member| %>
+                    <%= member.name%>(<%= member.role %>),
+                  <% end %>
                 </td>
               </tr>
             </tbody>

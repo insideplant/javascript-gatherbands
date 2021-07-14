@@ -49,10 +49,12 @@
         </div>
       </div>
       <div class="col-12 text-right">
-        <% unless current_live_house || current_admin || (current_user.band.id == @host_band.id) %>
+        <% unless current_live_house || current_admin || (user_signed_in? && current_user.band.id == @host_band.id) %>
           <%= form_with model: @live_new_organization, url:live_organizations_path, local:true do |f| %>
             <%= f.hidden_field :live_id, :value => @live.id%>
-            <%= f.hidden_field :band_id, :value => current_user.band.id %>
+            <% if user_signed_in? %>
+              <%= f.hidden_field :band_id, :value => current_user.band.id %>
+            <% end %>
             <% if @live_organization_participants.count < @live.amount&&live_participate?(current_user.band,@live_organization_participants).empty? %>
               <%= f.submit "参加", class: "btn btn-primary" %>
             <% end %>

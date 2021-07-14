@@ -1,9 +1,12 @@
 class Public::LivesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
+  before_action :set_live_house_all, only: [:create, :new]
+
   def create
-    @live_houses = LiveHouse.all
     @live = Live.new
     @lives = Live.where(live_house_id: params[:live][:live_house_id])
 
+    # 1.日程が選択されているか、2.ライブスケジュールの日程が予約可能かを判断
     @live_insert = false
     @lives.each do |compare_live|
       if params[:live][:start_at].present?
@@ -11,12 +14,13 @@ class Public::LivesController < ApplicationController
           @live_insert = true
         end
       else
-        flash.now[:danger] = "liveのgatherに失敗しました"
+        flash.now[:danger] = "日付を選択してください"
         render :new
         return
       end
     end
 
+    # 予約済みの日程の場合エラー、予約可能であればNew Liveをクリエイト
     if @live_insert
       flash.now[:danger] = "liveのgatherに失敗しました"
       render :new
@@ -36,7 +40,6 @@ class Public::LivesController < ApplicationController
   end
 
   def new
-    @live_houses = LiveHouse.all
     @live = Live.new
     @lives = Live.includes(:live_organization)
 
@@ -62,5 +65,9 @@ class Public::LivesController < ApplicationController
 
   def live_params
     params.require(:live).permit(:live_image, :start_at, :end_at, :live_name, :amount, :introduction, :status, :live_house_id)
+  end
+
+  def set_live_house_all
+    @live_houses = LiveHouse.all
   end
 end

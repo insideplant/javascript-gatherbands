@@ -10,7 +10,7 @@ class Public::NotificationsController < ApplicationController
     # 未確認の通知を自身が起こしたアクション以外で取得
     @notifications = current_user.band.passive_notifications.
       includes(:live).includes(:visitor).includes(:visited).includes(article: { band: [:user] }).
-      where(checked: false).where.not(visitor_id: current_user.band.id).to_a
+      where(checked: false).where.not(visitor_id: current_user.band.id).order(created_at: "DESC").to_a
 
     # 通知を確認後checkedをtrueに変更
     current_user.band.passive_notifications.includes(:live).where(checked: false).each do |notification|

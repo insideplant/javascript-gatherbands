@@ -1,4 +1,7 @@
 class LiveHouse::LivesController < ApplicationController
+  skip_before_action :authenticate_user!
+  before_action :authenticate_live_house!
+
   def new
     @live_houses = LiveHouse.all
     @live_house = current_live_house

@@ -1,4 +1,7 @@
 class Admin::LivesController < ApplicationController
+  skip_before_action :authenticate_user!
+  before_action :authenticate_admin!
+
   def index
     @lives = Live.where(registered_person: true)
   end
