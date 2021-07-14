@@ -29,8 +29,12 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     root_path
   end
-  
+
   private
+
+  def production?
+    Rails.env.production?
+  end
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
