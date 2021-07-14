@@ -24,7 +24,7 @@ class Public::ArticlesController < ApplicationController
 
   def destroy
     article = Article.find(params[:id])
-    if article.delete
+    if article.destroy
       redirect_to mypage_path(article.band.user)
     else
       render :"users/show"

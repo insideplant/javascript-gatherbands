@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
   belongs_to :band
   has_many :favorites, dependent: :destroy
-  has_many :comments
+  has_many :comments, foreign_key: :article_id, dependent: :destroy
   has_many :notifications, dependent: :destroy
   validates:content, presence: true, length: { maximum: 140 }
 
