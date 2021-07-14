@@ -1,14 +1,13 @@
 <div class="container">
-
-<h2>Live Houses</h2>
-
-<div class="row">
-    <% @live_houses.each do |live_house|%>
-        <div class="col-sm-2">
-        　<%= link_to live_house_path(live_house) do %>
-           <%= attachment_image_tag live_house, :image, size: "180x180", fallback: "no_image.png", size: "180x180", class:"img-fulid" %>
-          <% end %>
-          <%= live_house.house_name %>
-        </div>
-    <% end %>
+	<h2>Live Houses</h2>
+	<div class="row">
+		<% @live_houses.each do |live_house|%>
+			<div class="col-sm-2">
+				<%= link_to live_house_path(live_house) do %>
+				 <%= attachment_image_tag live_house, :image, size: "180x180", fallback: "no_image.png", size: "180x180", class:"img-fulid" %>
+				<% end %>
+				<%= live_house.house_name %>
+			</div>
+		<% end %>
+	</div>
 </div>

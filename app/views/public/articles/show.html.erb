@@ -87,7 +87,7 @@
                 <%= attachment_image_tag comment.band.user, :profile_image, size: "30x30", fallback: "no_image.png", size: "30x30", class:"rounded-circle" %>
               </div>
               <div class="row">
-                <%= comment.band.user.user_name %>
+                <%= link_to comment.band.user.user_name, mypage_path(comment.band.user) %>
               </div>
             </div>
             <div class="col-10">

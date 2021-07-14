@@ -3,7 +3,9 @@
   <p class="lead">This is a Gather Bands, you can gather bands.</p>
   <hr class="my-4">
   <p> Life is one grand sweet song so start the music..</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
+  <% unless user_signed_in? %>
+    <%= link_to "Sign up", new_user_registration_path, class:"btn btn-primary btn-lg" %>
+  <% end %>
 </div>
 
   <div class="container">

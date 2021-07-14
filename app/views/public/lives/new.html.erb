@@ -95,59 +95,57 @@
 </div>
 
 <script>
-
-
-$(function($) {
-  $('select#live_live_house_id').change(function() {
-    if ($(this).val() != '') {
-      $('#calendar').remove();  // 大本の<div id="calendar">を削除
-      var el = document.createElement('div'); // divタグを作成(<div>)
-      el.id = 'calendar';// 作成したDivタグにIDを割り振る<div id="calendar">
-      parent = document.getElementById("calendar_wrapper"); // 挿入先の親となるDivタグ(<div id="calendar_wrapper">)を取得
-      parent.appendChild(el); // <div id="calendar_wrapper"><div id="calendar"></div></div>という形になるように追加
-      draw_calendar(); // カレンダーの描画
-
-      var current_id = document.getElementById("live_live_house_id").value; // 選択されたLiveHouseのIDを取得する
-      var docs = document.getElementsByClassName("live_house_price"); // class="live_house_price"が設定されているエレメントを取得する
-      Array.from(docs).forEach(function(element) {
-        if (element.id == "price_area_" + current_id) {
-          element.style.display = "block";
-        } else {
-          element.style.display = "none";
-        }
-      });
-    }
+  $(function($) {
+    $('select#live_live_house_id').change(function() {
+      if ($(this).val() != '') {
+        $('#calendar').remove();  // 大本の<div id="calendar">を削除
+        var el = document.createElement('div'); // divタグを作成(<div>)
+        el.id = 'calendar';// 作成したDivタグにIDを割り振る<div id="calendar">
+        parent = document.getElementById("calendar_wrapper"); // 挿入先の親となるDivタグ(<div id="calendar_wrapper">)を取得
+        parent.appendChild(el); // <div id="calendar_wrapper"><div id="calendar"></div></div>という形になるように追加
+        draw_calendar(); // カレンダーの描画
+  
+        var current_id = document.getElementById("live_live_house_id").value; // 選択されたLiveHouseのIDを取得する
+        var docs = document.getElementsByClassName("live_house_price"); // class="live_house_price"が設定されているエレメントを取得する
+        Array.from(docs).forEach(function(element) {
+          if (element.id == "price_area_" + current_id) {
+            element.style.display = "block";
+          } else {
+            element.style.display = "none";
+          }
+        });
+      }
+    });
   });
-});
-
-draw_calendar();
-function draw_calendar() {
-   var current_id = document.getElementById("live_live_house_id").value;
-
-   $('#calendar').fullCalendar({
-     selectable: true,
-     header: {
-       left: 'prev',
-       center: 'title',
-     },
-     events: "/live_houses/" + current_id + ".json",//"lives/new.json"
-
-     eventOverlap: false,
-     validRange: function(nowDate){
-       return {
-       start: nowDate.clone().add(6, 'months'),
-       end: nowDate.clone().add(24, 'months')
-       };
-     },
-
-     color: 'yellow',
-     textColor: 'black',
-
-     select: function(startDate, endDate) {
-       $('#new_live').modal('show');
-       $(".input-start").val(moment(startDate).format("YYYY-MM-DD"));
-       //$(".input-end").val(moment(endDate).format("YYYY-MM-DD"));
-     }
-   });
-}
+  
+  draw_calendar();
+  function draw_calendar() {
+     var current_id = document.getElementById("live_live_house_id").value;
+  
+     $('#calendar').fullCalendar({
+       selectable: true,
+       header: {
+         left: 'prev',
+         center: 'title',
+       },
+       events: "/live_houses/" + current_id + ".json",//"lives/new.json"
+  
+       eventOverlap: false,
+       validRange: function(nowDate){
+         return {
+         start: nowDate.clone().add(6, 'months'),
+         end: nowDate.clone().add(24, 'months')
+         };
+       },
+  
+       color: 'yellow',
+       textColor: 'black',
+  
+       select: function(startDate, endDate) {
+         $('#new_live').modal('show');
+         $(".input-start").val(moment(startDate).format("YYYY-MM-DD"));
+         //$(".input-end").val(moment(endDate).format("YYYY-MM-DD"));
+       }
+     });
+  }
 </script>

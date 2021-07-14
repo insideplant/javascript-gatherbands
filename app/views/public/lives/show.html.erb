@@ -1,67 +1,65 @@
-<div class="container">
-  <div class="card-list">
-    <div class="card mx-auto mt-4 shadou-lg">
-      <div class="card-body row">
-        <div class="col-3 text-center">
-          <%= attachment_image_tag @host_band.user, :profile_image, size: "150x150", fallback: "no_image.png", size: "150x150", class:"rounded-circle" %>
+<div class="card-list">
+  <div class="card mx-auto mt-4 shadou-lg">
+    <div class="card-body row">
+      <div class="col-3 text-center">
+        <%= attachment_image_tag @host_band.user, :profile_image, size: "150x150", fallback: "no_image.png", size: "150x150", class:"rounded-circle" %>
+      </div>
+      <div class="col-9">
+        <div class="row">
+          <h1><%= @live.live_name%></h1>
         </div>
-        <div class="col-9">
-          <div class="row">
-            <h1><%= @live.live_name%></h1>
-          </div>
-          <div class="row">
-            <table>
-              <tbody>
-                <tr>
-                  <td>ホスト名</td>
-                  <td>：<%= link_to @host_band.band_name, mypage_path(@host_band.user)%></td>
-                </tr>
-                <tr>
-                  <td>メンバー</td>
-                  <td>
-                  ：<% @host_band.members.each do |member| %>
-                    <%= member.name%>(<%= member.role %>)
-                   <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td>募集人数</td>
-                  <td>：<%= @live.amount %>バンド</td>
-                </tr>
-                <tr>
-                  <td>一人あたり費用</td>
-                  <td>：<%= converting_to_jpy(@live.price_per_person) %></td>
-                </tr>
-                <tr>
-                  <td>開催場所</td>
-                  <td>：<%= link_to @live.live_house.house_name, live_house_path(@live.live_house) %></td>
-                </tr>
-                <tr>
-                  <td>開催日時</td>
-                  <td>：<%= @live.start_time %>
-                  </td>
-                </tr>
-                <tr>
-                  <td>info</td>
-                  <td>：<%= @live.introduction %></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="row">
+          <table>
+            <tbody>
+              <tr>
+                <td>ホスト名</td>
+                <td>：<%= link_to @host_band.band_name, mypage_path(@host_band.user)%></td>
+              </tr>
+              <tr>
+                <td>メンバー</td>
+                <td>
+                ：<% @host_band.members.each do |member| %>
+                  <%= member.name%>(<%= member.role %>)
+                 <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>募集人数</td>
+                <td>：<%= @live.amount %>バンド</td>
+              </tr>
+              <tr>
+                <td>一人あたり費用</td>
+                <td>：<%= converting_to_jpy(@live.price_per_person) %></td>
+              </tr>
+              <tr>
+                <td>開催場所</td>
+                <td>：<%= link_to @live.live_house.house_name, live_house_path(@live.live_house) %></td>
+              </tr>
+              <tr>
+                <td>開催日時</td>
+                <td>：<%= @live.start_time %>
+                </td>
+              </tr>
+              <tr>
+                <td>info</td>
+                <td>：<%= @live.introduction %></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="col-12 text-right">
-          <% unless current_live_house || current_admin || (current_user.band.id == @host_band.id) %>
-            <%= form_with model: @live_new_organization, url:live_organizations_path, local:true do |f| %>
-              <%= f.hidden_field :live_id, :value => @live.id%>
-              <%= f.hidden_field :band_id, :value => current_user.band.id %>
-              <% if @live_organization_participants.count < @live.amount&&live_participate?(current_user.band,@live_organization_participants).empty? %>
-                <%= f.submit "参加", class: "btn btn-primary" %>
-              <% end %>
+      </div>
+      <div class="col-12 text-right">
+        <% unless current_live_house || current_admin || (current_user.band.id == @host_band.id) %>
+          <%= form_with model: @live_new_organization, url:live_organizations_path, local:true do |f| %>
+            <%= f.hidden_field :live_id, :value => @live.id%>
+            <%= f.hidden_field :band_id, :value => current_user.band.id %>
+            <% if @live_organization_participants.count < @live.amount&&live_participate?(current_user.band,@live_organization_participants).empty? %>
+              <%= f.submit "参加", class: "btn btn-primary" %>
             <% end %>
           <% end %>
-        </div>
-        <%= render "participants" %>
+        <% end %>
       </div>
+      <%= render "participants" %>
     </div>
   </div>
 </div>

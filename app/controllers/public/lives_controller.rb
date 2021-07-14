@@ -2,7 +2,7 @@ class Public::LivesController < ApplicationController
   def create
     @live_houses = LiveHouse.all
     @live = Live.new
-    @lives = Live.where(params[:live][:live_house_id])
+    @lives = Live.where(live_house_id: params[:live][:live_house_id])
 
     @live_insert = false
     @lives.each do |compare_live|

@@ -12,28 +12,28 @@
     <nav class="navbar navbar-expand-md  fixed-top navbar-dark" style="background-color: black;">
       <div class="container">
         <%= link_to GatherBands,root_path, class:"navbar-brand color-red" %>
-    　  <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-         <li><%= link_to "New",notifications_path, class:"nav-link" %></li>
-         <li><%= link_to "Lives",home_lives_path, class:"nav-link" %></li>
-         <li><%= link_to "Live House",live_houses_path, class:"nav-link" %></li>
-         <li><%= link_to "mypage",mypage_path(current_user), class:"nav-link" %></li>
-         <li><%= link_to "bands",bands_path, class:"nav-link" %></li>
-         <li><%= link_to "Log out",destroy_user_session_path, method: :delete, class:"nav-link" %></li>
-        <% elsif admin_signed_in? %>
-         <li><%= link_to "Users",admin_users_path, class:"nav-link"%></li>
-         <li><%= link_to "Live House",admin_live_houses_path, class:"nav-link"%></li>
-         <li><%= link_to "Lives",admin_lives_path, class:"nav-link"%></li>
-         <li><%= link_to "Log out",destroy_user_session_path, method: :delete, class:"nav-link"%></li>
-        <% elsif live_house_signed_in? %>
-         <li><%= link_to "Live Scadule",live_house_scadules_path, class:"nav-link"%></li>
-         <li><%= link_to "My house",live_house_mypage_path(current_live_house), class:"nav-link"%></li>
-         <li><%= link_to "Log out",destroy_live_house_session_path, method: :delete, class:"nav-link"%></li>
-        <% else %>
-         <li><%= link_to "Sign up",new_user_registration_path, class:"nav-link" %></li>
-         <li><%= link_to "Log in",new_user_session_path, class:"nav-link" %></li>
-         <li><%= link_to "Lives",home_lives_path, class:"nav-link" %></li>
-        <% end %>
+      　<ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li><%= link_to "New",notifications_path, class:"nav-link" %></li>
+            <li><%= link_to "Lives",home_lives_path, class:"nav-link" %></li>
+            <li><%= link_to "Live House",live_houses_path, class:"nav-link" %></li>
+            <li><%= link_to "mypage",mypage_path(current_user), class:"nav-link" %></li>
+            <li><%= link_to "bands",bands_path, class:"nav-link" %></li>
+            <li><%= link_to "Log out",destroy_user_session_path, method: :delete, class:"nav-link" %></li>
+          <% elsif admin_signed_in? %>
+            <li><%= link_to "Users",admin_users_path, class:"nav-link"%></li>
+            <li><%= link_to "Live House",admin_live_houses_path, class:"nav-link"%></li>
+            <li><%= link_to "Lives",admin_lives_path, class:"nav-link"%></li>
+            <li><%= link_to "Log out",destroy_user_session_path, method: :delete, class:"nav-link"%></li>
+          <% elsif live_house_signed_in? %>
+            <li><%= link_to "Live Scadule",live_house_scadules_path, class:"nav-link"%></li>
+            <li><%= link_to "My house",live_house_mypage_path(current_live_house), class:"nav-link"%></li>
+            <li><%= link_to "Log out",destroy_live_house_session_path, method: :delete, class:"nav-link"%></li>
+          <% else %>
+            <li><%= link_to "Sign up",new_user_registration_path, class:"nav-link" %></li>
+            <li><%= link_to "Log in",new_user_session_path, class:"nav-link" %></li>
+            <li><%= link_to "Lives",home_lives_path, class:"nav-link" %></li>
+          <% end %>
         </ul>
       </div>
     </nav>
@@ -47,14 +47,14 @@
 
     <div class="container">
       <footer class="footer">
-          <small>
-            Gather Bands by <a>Zhong Zhi</a>
-          </small>
-          <nav>
-            <ul class="navbar-nav ml-auto">
-              <li><%= link_to "Live House",new_live_house_session_path, class:"nav-link" %></li>
-            </ul>
-          </nav>
+        <small>
+          Gather Bands by <a>Zhong Zhi</a>
+        </small>
+        <nav>
+          <ul class="navbar-nav ml-auto">
+            <li><%= link_to "Live House",new_live_house_session_path, class:"nav-link" %></li>
+          </ul>
+        </nav>
       </footer>
     </div>
   </body>

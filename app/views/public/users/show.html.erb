@@ -1,96 +1,92 @@
-<div class="container">
+<div class="modal fade" id="user-modal"></div>
 
-  <div class="modal fade" id="user-modal"></div>
-
-  <div class="row mb-4">
-    <div class="col-sm-4 text-center">
-      <div class="row mb-3">
-        <div class="co-sm-4 offset-sm-4">
-          <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100", class:"rounded-circle" %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4 offset-2"><%= @band.followings.count.to_s%>フォロー中</div>
-        <div class="col-4"><%= @band.follower_ids.count%>フォロワー</div>
+<div class="row mb-4">
+  <div class="col-sm-4 text-center">
+    <div class="row mb-3">
+      <div class="co-sm-4 offset-sm-4">
+        <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100", class:"rounded-circle" %>
       </div>
     </div>
-  　<div class="col-sm-4">
-  　   <table>
-        <tbody>
-          <tr>
-            <td><%= User.human_attribute_name(:user_name)%></td>
-            <td> : <%= @user.user_name%></td>
-          </tr>
-          <tr>
-            <td><%= User.human_attribute_name(:email)%></td>
-            <td> : <%= @user.email%></td>
-          </tr>
-          <tr>
-            <td><%= Band.human_attribute_name(:band_name)%></td>
-            <td> : <%= @band.band_name%></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-sm-1">
-
-    </div>
-    <div class="col-sm-2">
-      <% if current_live_house || current_admin || @user.current_user?(current_user) %>
-        <%= link_to "Edit",edit_mypage_path(@user), remote: true, class: "btn btn-lg, btn-primary" %>
-      <% else %>
-        <%= render 'public/relationships/follow_button', band: @band %>
-      <% end %>
+    <div class="row">
+      <div class="col-4 offset-2"><%= @band.followings.count.to_s%>フォロー中</div>
+      <div class="col-4"><%= @band.follower_ids.count%>フォロワー</div>
     </div>
   </div>
+　<div class="col-sm-4">
+　   <table>
+      <tbody>
+        <tr>
+          <td><%= User.human_attribute_name(:user_name)%></td>
+          <td> : <%= @user.user_name%></td>
+        </tr>
+        <tr>
+          <td><%= User.human_attribute_name(:email)%></td>
+          <td> : <%= @user.email%></td>
+        </tr>
+        <tr>
+          <td><%= Band.human_attribute_name(:band_name)%></td>
+          <td> : <%= @band.band_name%></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-1">
 
-  <div class="row">
-    <div class="col-3">
-      <%= render 'public/users/article_content', band: @band,article: @article %>
-    </div>
+  </div>
+  <div class="col-sm-2">
+    <% if current_live_house || current_admin || @user.current_user?(current_user) %>
+      <%= link_to "Edit",edit_mypage_path(@user), remote: true, class: "btn btn-lg, btn-primary" %>
+    <% else %>
+      <%= render 'public/relationships/follow_button', band: @band %>
+    <% end %>
+  </div>
+</div>
 
-    <div class="col-6">
-      <div class="card-list">
-          <% @articles.each do |article| %>
-            <%= link_to article_path(article), class:"card-link" do%>
-            <div class="card w-auto mx-auto mt-4 shadou-lg">
-              <div class="card-body row">
-                <div class="col-3">
-                  <%= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
-                    size: "60x60" , class:"mt-2 rounded-circle"%>
-                </div>
-                <div class="col-9">
-                  <div class="row">
-                    <%= article.band.band_name%>
-                  </div>
-                  <div class="row">
-                    <%= article.content%>
-                  </div>
-                </div>
+<div class="row">
+  <div class="col-3">
+    <%= render 'public/users/article_content', band: @band,article: @article %>
+  </div>
+
+  <div class="col-6">
+    <div class="card-list">
+        <% @articles.each do |article| %>
+          <%= link_to article_path(article), class:"card-link" do%>
+          <div class="card w-auto mx-auto mt-4 shadou-lg">
+            <div class="card-body row">
+              <div class="col-3">
+                <%= attachment_image_tag article.band.user, :profile_image, size: "60x60" , fallback: "no_image.png" ,
+                  size: "60x60" , class:"mt-2 rounded-circle"%>
               </div>
-              <div class="row">
-                <div id="iine<%= article.id %>" class="col-3 offset-1">
-                  <%= render "public/articles/favorite", article: article %>
+              <div class="col-9">
+                <div class="row">
+                  <%= article.band.band_name%>
                 </div>
-                <div class="col-3">
-                  <%= article.comments.count %>コメント
-                </div>
-                <div class="col-3">
-                  <% if current_live_house || current_admin || @user.current_user?(article.band.user) %>
-                   <%= link_to "削除", article_path(article),method: :delete%>
-                  <% end %>
+                <div class="row">
+                  <%= article.content%>
                 </div>
               </div>
             </div>
-            <% end %>
+            <div class="row">
+              <div id="iine<%= article.id %>" class="col-3 offset-1">
+                <%= render "public/articles/favorite", article: article %>
+              </div>
+              <div class="col-3">
+                <%= article.comments.count %>コメント
+              </div>
+              <div class="col-3">
+                <% if current_live_house || current_admin || @user.current_user?(article.band.user) %>
+                 <%= link_to "削除", article_path(article),method: :delete%>
+                <% end %>
+              </div>
+            </div>
+          </div>
           <% end %>
-          <%= paginate @articles %>
-      </div>
-    </div>
-
-    <div class="col-3">
-      <%= render 'public/lives/live_info', gather_bands: @gather_bands %>
+        <% end %>
+        <%= paginate @articles %>
     </div>
   </div>
 
+  <div class="col-3">
+    <%= render 'public/lives/live_info', gather_bands: @gather_bands %>
+  </div>
 </div>
