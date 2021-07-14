@@ -48,6 +48,7 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
   context "メソッドのテスト" do
     let(:fullname) { build(:user, first_name: 'zhongzhi', last_name: 'jianguang') }
     let(:fullname_kana) { build(:user) }
+
     it "ユーザーの名前がフルネームでリターン" do
       expect(fullname.name).to eq "zhongzhi jianguang"
     end
