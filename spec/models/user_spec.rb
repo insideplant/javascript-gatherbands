@@ -22,12 +22,11 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
       expect(user_without_name.errors[:user_name]).to include("を入力してください")
     end
 
-    # let(:user_not_katakana_name) { build(:user, first_name_kana: 'zhongzhi') }
-    # it "ユーザー名が無ければ無効である" do
-    #   user_not_katakana_name.valid?
-    #   p user_not_katakana_name.errors
-    #   expect(user_not_katakana_name.errors[:last_name_kana]).to include("全角カタカナのみで入力して下さい")
-    # end
+    let(:user_not_katakana_name) { create(:user, first_name_kana: 'zhongzhi') }
+    it "ユーザー名が無ければ無効である" do
+      user_not_katakana_name.valid?
+      expect(user_not_katakana_name.errors[:first_name_kana]).to include("全角カタカナのみで入力して下さい")
+    end
 
     it "メールアドレスがない場合、無効である"  do
       user_without_email.valid?

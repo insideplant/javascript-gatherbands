@@ -1,4 +1,5 @@
 class Public::LiveHousesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
   def index
     @live_houses = LiveHouse.all
   end

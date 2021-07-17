@@ -7,7 +7,7 @@ class Public::LivesController < ApplicationController
     @lives = Live.where(live_house_id: params[:live][:live_house_id])
 
     # 1.日程が選択されているか、2.ライブスケジュールの日程が予約可能かを判断
-    @live_insert = false
+    live_insert = false
     @lives.each do |compare_live|
       if params[:live][:start_at].present?
         if params[:live][:start_at].between?(compare_live.start_at, compare_live.end_at)
@@ -21,7 +21,7 @@ class Public::LivesController < ApplicationController
     end
 
     # 予約済みの日程の場合エラー、予約可能であればNew Liveをクリエイト
-    if @live_insert
+    if live_insert
       flash.now[:danger] = "liveのgatherに失敗しました"
       render :new
     else

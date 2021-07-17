@@ -15,7 +15,7 @@
      <th>Delete</th>
     </tr>
    </thead>
-   <thody>
+   <tbody>
     <% @live_houses.each do |live_house| %>
      <tr>
       <td><%= live_house.id %></td>
@@ -27,7 +27,7 @@
       <td><%= link_to "Delete",admin_live_house_path(live_house), method: :delete, class:"btn btn-danger btn-sm" %></td>
     </tr>
     <% end %>
-   </thody>
+   </tbody>
   </table>
  </div>
 </div>

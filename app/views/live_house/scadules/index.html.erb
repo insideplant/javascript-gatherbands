@@ -16,7 +16,7 @@
 					<th>status</th>
 				</tr>
 			</thead>
-			<thody>
+			<tbody>
 				<% @band_lives.each do |live| %>
 					<tr>
 						<td><%= live.id %></td>
@@ -26,7 +26,7 @@
 						<td><%= live.status %></td>
 				</tr>
 				<% end %>
-			</thody>
+			</tbody>
 		</table>
 		</div>
 		<div class="col-6">
