@@ -10,11 +10,10 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
     let!(:one_email) { create(:user, email: 'same@same') }
     let(:same_email) { build(:user, email: 'same@same') }
     let(:user_without_password) { build(:user, password: nil) }
+    let(:user_not_katakana_name) { create(:user, first_name_kana: 'zhongzhi') }
 
-    describe '実際に保存してみる' do
-      it "有効な投稿内容の場合は保存されるか" do
-        expect(user).to be_valid
-      end
+    it "有効な投稿内容の場合は保存されるか" do
+      expect(user).to be_valid
     end
 
     it "ユーザー名が無ければ無効である" do
@@ -22,8 +21,7 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
       expect(user_without_name.errors[:user_name]).to include("を入力してください")
     end
 
-    let(:user_not_katakana_name) { create(:user, first_name_kana: 'zhongzhi') }
-    it "ユーザー名が無ければ無効である" do
+    it "カタカナ入力でないとき、無効である" do
       user_not_katakana_name.valid?
       expect(user_not_katakana_name.errors[:first_name_kana]).to include("全角カタカナのみで入力して下さい")
     end

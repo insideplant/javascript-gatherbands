@@ -1,35 +1,35 @@
 <div class="container">
 
-<h1>Lives</h1>
+	<h1>Lives</h1>
 
- <div class="row">
-  <table class="table table-dark table-sm">
-   <tbead class="thead-dark">
-    <tr>
-     <th>live ID</th>
-     <th>name</th>
-     <th>Host</th>
-     <th>Scadule</th>
-     <th>Status</th>
-     <th>Arrangment</th>
-    </tr>
-   </thead>
-   <tbody>
-    <% @lives.each do |live| %>
-     <tr>
-      <td><%= live.id %></td>
-      <td><%= link_to live.live_name, life_path(live) %></td>
-      <td><%= link_to host_band(live.id).band_name, admin_user_path(host_band(live.id).user) %></td>
-      <td>scadule</td>
-      <td><%= live.status %></td>
-      <td>
-       <% if live.status == "gathered" %>
-        <%= link_to "confirmation", admin_life_path(live), method: :patch %>
-       <% end %>
-      </td>
-    </tr>
-    <% end %>
-   </tbody>
-  </table>
- </div>
+	<div class="row">
+		<table class="table table-dark table-sm">
+			<thead class="thead-dark">
+				<tr>
+				　<th>live ID</th>
+					<th>name</th>
+					<th>Host</th>
+					<th>Scadule</th>
+					<th>Status</th>
+					<th>Arrangment</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @lives.each do |live| %>
+					<tr>
+						<td><%= live.id %></td>
+						<td><%= link_to live.live_name, life_path(live) %></td>
+						<td><%= link_to host_band(live.id).band_name, admin_user_path(host_band(live.id).user) %></td>
+						<td>scadule</td>
+						<td><%= live.status %></td>
+						<td>
+						 <% if live.status == "gathered" %>
+							<%= link_to "confirmation", admin_life_path(live), method: :patch %>
+						 <% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 </div>

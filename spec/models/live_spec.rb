@@ -51,3 +51,4 @@ RSpec.describe Live, "モデルに関するテスト", type: :model do
   #    expect(fullname_kana.kana_name).to eq "カタカナ カタカナ"
   #  end
   # end
+end

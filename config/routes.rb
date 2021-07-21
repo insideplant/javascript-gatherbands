@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   }
 
   namespace :live_house do
-    root to: 'homes#top'
     get 'calendar' => 'lives#calendar'
     resources :mypages, only:[:new, :show, :edit]
     resources :scadules, only:[:index]
