@@ -22,7 +22,7 @@ class Public::LivesController < ApplicationController
 
     # 予約済みの日程の場合エラー、予約可能であればNew Liveをクリエイト
     if @live_insert
-      flash.now[:danger] = "liveのgatherに失敗しました"
+      flash.now[:danger] = "liveのgatherに失敗しました、予約の無い日付を選択してください"
       render :new
     else
       @live = Live.new(live_params)
