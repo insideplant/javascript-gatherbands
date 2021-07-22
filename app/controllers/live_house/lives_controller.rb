@@ -28,7 +28,7 @@ class LiveHouse::LivesController < ApplicationController
     end
 
     if @live_insert
-      flash.now[:danger] = "liveのgatherに失敗しました"
+      flash.now[:danger] = "予定の作成に失敗しました"
       @live = Live.new
       render :new
     else
@@ -40,6 +40,7 @@ class LiveHouse::LivesController < ApplicationController
       if live.save
         redirect_to live_house_scadules_path
       else
+        flash.now[:danger] = "予定の作成に失敗しました"
         @live = Live.new
         render :new
       end
