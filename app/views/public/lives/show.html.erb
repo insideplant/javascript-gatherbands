@@ -18,9 +18,7 @@
               <tr>
                 <td>メンバー</td>
                 <td>
-                ：<% @host_band.members.each do |member| %>
-                  <%= member.name%>(<%= member.role %>)
-                 <% end %>
+                ：<%= @host_band.member_name_role %>
                 </td>
               </tr>
               <tr>

@@ -76,13 +76,11 @@
                       <tr>
                         <td>現在の参加バンド</td>
                         <td>：
-                        　<% if live.live_organizations.where(host: false).present? %>
-                            <% live.live_organizations.where(host: false).includes(:band).each do |participant_band| %>
-                              <%= participant_band.band.band_name%>
-                            <% end %>
-                          <% else %>
-                            No Band
-                          <% end %>
+                        <% if live.live_organizations.where(host: false).present? %>
+                          <%= live.participant_band_name %>
+                        <% else %>
+                          No Band
+                        <% end %>
                         </td>
                       </tr>
                       <tr>

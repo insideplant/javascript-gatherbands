@@ -24,6 +24,16 @@ class Public::RelationshipsController < ApplicationController
     end
   end
 
+  def followings
+    user = User.find(params[:user_id])
+    @user = user.followings
+  end
+  
+  def followers
+    user = User.find(params[:user_id])
+    @user = user.followings
+  end
+
   private
 
   def set_band

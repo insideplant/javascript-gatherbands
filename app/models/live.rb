@@ -49,6 +49,11 @@ class Live < ApplicationRecord
   def price_per_person
     live_house.price /= (amount + 1)
   end
+  
+  def participant_band_name
+    band_name_array = live_organizations.where(host: false).map{|x| x.band.band_name}
+    band_name_array.join(' , ')
+  end
 
   enum status: { gathering: 0, gathered: 1, waiting_live: 2, finish_live: 3, live_house: 4 }
 end

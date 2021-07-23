@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     resources :notifications, only: :index
 
     resources :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+
     resources :bands, only:[:index, :edit, :update]
     resources :articles, only:[:show, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
