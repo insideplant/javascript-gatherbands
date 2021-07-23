@@ -5,8 +5,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4 offset-2"><%= link_to followings_path do %><%= band.followings.count %>フォロー中<% end %></div>
-    <div class="col-4"><%= link_to followers_path do %><%= band.follower_ids.count %>フォロワー<% end %></div>
+    <div class="col-4 offset-2"><%= link_to followings_path(id: band.user.id) do %><%= band.followings.count %>フォロー中<% end %></div>
+    <div class="col-4"><%= link_to followers_path(id: band.user.id) do %><%= band.follower_ids.count %>フォロワー<% end %></div>
   </div>
 </div>
 　<div class="col-sm-4">
