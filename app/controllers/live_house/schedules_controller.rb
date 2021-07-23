@@ -1,4 +1,4 @@
-class LiveHouse::ScadulesController < ApplicationController
+class LiveHouse::SchedulesController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :authenticate_live_house!
 

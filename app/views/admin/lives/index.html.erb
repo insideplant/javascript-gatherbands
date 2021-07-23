@@ -9,7 +9,7 @@
 				　<th>live ID</th>
 					<th>name</th>
 					<th>Host</th>
-					<th>Scadule</th>
+					<th>Schedule</th>
 					<th>Status</th>
 					<th>Arrangment</th>
 				</tr>
@@ -20,7 +20,7 @@
 						<td><%= live.id %></td>
 						<td><%= link_to live.live_name, life_path(live) %></td>
 						<td><%= link_to host_band(live.id).band_name, admin_user_path(host_band(live.id).user) %></td>
-						<td>scadule</td>
+						<td><%= live.start_time %></td>
 						<td><%= live.status %></td>
 						<td>
 						 <% if live.status == "gathered" %>

@@ -30,7 +30,7 @@
               <li><%= link_to "Lives",admin_lives_path, class:"nav-link"%></li>
               <li><%= link_to "Log out",destroy_user_session_path, method: :delete, class:"nav-link"%></li>
             <% elsif live_house_signed_in? %>
-              <li><%= link_to "Live Scadule",live_house_scadules_path, class:"nav-link"%></li>
+              <li><%= link_to "Live Schedule",live_house_schedules_path, class:"nav-link"%></li>
               <li><%= link_to "My house",live_house_mypage_path(current_live_house), class:"nav-link"%></li>
               <li><%= link_to "Log out",destroy_live_house_session_path, method: :delete, class:"nav-link"%></li>
             <% else %>

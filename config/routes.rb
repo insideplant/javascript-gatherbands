@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :live_house do
     get 'calendar' => 'lives#calendar'
     resources :mypages, only:[:new, :show, :edit]
-    resources :scadules, only:[:index]
+    resources :schedules, only:[:index]
     resources :lives, only:[:new, :create, :show]
     resources :user, only:[:show]
   end
