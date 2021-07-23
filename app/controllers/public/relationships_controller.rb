@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-  before_action :set_band
+  before_action :set_band, only: [:create, :destroy]
 
   def create
     following = current_user.band.follow(@band)
@@ -25,13 +25,17 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def followings
-    user = User.find(params[:user_id])
-    @user = user.followings
+    @user = current_user
+    @band = @user.band
+    @bands = @band.followings
+    @gather_bands = @band.lives
   end
-  
+
   def followers
-    user = User.find(params[:user_id])
-    @user = user.followings
+    @user = current_user
+    @band = @user.band
+    @bands = @band.followers
+    @gather_bands = @band.lives
   end
 
   private

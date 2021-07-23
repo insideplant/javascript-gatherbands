@@ -1,0 +1,41 @@
+<div class="modal fade" id="user-modal"></div>
+
+<div class="row mb-4">
+  <%= render 'public/users/user_header', user: @user,band: @band %>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <%= render 'public/users/article_content', band: @band,article: @article %>
+  </div>
+
+  <div class="col-sm-6">
+    <h2>Followers Users</h2>
+    <% if @bands.exists? %>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bands.each do |band| %>
+          <tr>
+            <td><%= band.band_name %></td>
+            <td>フォロー数: <%= band.followings.count %></td>
+            <td>フォロワー数: <%= band.followers.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <p>ユーザーはいません</p>
+    <% end %>
+  </div>
+
+  <div class="col-3">
+    <%= render 'public/lives/live_info', gather_bands: @gather_bands %>
+  </div>
+</div>

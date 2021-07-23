@@ -31,10 +31,10 @@
     </div>
     <div class="row">
       <div class="col-sm-2">
-        フォロー中 <%= @band.followings.count%>
+        <%= link_to followings_path do %><%= @band.followings.count %>フォロー中<% end %>
       </div>
       <div class="col-sm-2">
-        フォロワー <%= @band.follower_ids.count%>
+        <%= link_to followers_path do %><%= @band.follower_ids.count %>フォロワー<% end %>
       </div>
     </div>
   </div>

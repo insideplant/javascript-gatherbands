@@ -49,9 +49,9 @@ class Live < ApplicationRecord
   def price_per_person
     live_house.price /= (amount + 1)
   end
-  
+
   def participant_band_name
-    band_name_array = live_organizations.where(host: false).map{|x| x.band.band_name}
+    band_name_array = live_organizations.where(host: false).map { |x| x.band.band_name }
     band_name_array.join(' , ')
   end
 

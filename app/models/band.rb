@@ -57,7 +57,7 @@ class Band < ApplicationRecord
   end
 
   def member_name_role
-    member_array = members.map{|member| member.name+"(#{member.role})"}
+    member_array = members.map { |member| member.name + "(#{member.role})" }
     member_array.join(" , ")
   end
 end
