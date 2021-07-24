@@ -1,7 +1,6 @@
 <div id="registrations">
-  <div class="container">
   <div class="row" id="registrations-new" >
-    <div class="col-sm-6 col-md-6 col-xs-12 left-content">
+    <div class="col-md-6 left-content">
       <h1> Sign Up </h1>
       <div>
         <p>当サイトはBand Man同士で新たな繋がり、新たな価値の創出をお手伝い致します。</br>
@@ -10,7 +9,7 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-6 right-content">
+    <div class="col-md-6 right-content">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/users/shared/error_messages", resource: resource %>
 
@@ -51,6 +50,5 @@
         <%= render "devise/users/shared/links",class: "text-right"%>
       <% end %>
     </div>
-  </div>
   </div>
 </div>
