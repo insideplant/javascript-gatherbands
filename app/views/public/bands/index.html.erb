@@ -39,10 +39,10 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-md-3">
       <%= link_to "new live", new_life_path, class: "btn btn-primary" %>
     </div>
-    <div class="col-sm-9">
+    <div class="col-md-9">
       <div class="card-list">
         <% @lives.each do |live| %>
         <%= link_to life_path(live), class: "card-link" do%>
@@ -54,10 +54,10 @@
               </div>
               <div class="col-9">
                 <div class="row">
-                  <div class="col-10">
+                  <div class="col-8">
                     <h1><%= live.live_name%></h1>
                   </div>
-                  <div class="col-2">
+                  <div class="col-4">
                     残り<span><%= live.rest_amount %></span>
                   </div>
                 </div>
@@ -73,7 +73,7 @@
                         <td>：<%= live.amount %>バンド</td>
                       </tr>
                       <tr>
-                        <td>現在の参加バンド</td>
+                        <td>参加バンド</td>
                         <td>：
                         <% if live.live_organizations.where(host: false).present? %>
                           <%= live.participant_band_name %>
@@ -84,7 +84,7 @@
                       </tr>
                       <tr>
                         <td>開催予定日</td>
-                        <td>：Open <%= live.start_at.strftime("%Y/%m/%d(%a) %H:%M") %></td>
+                        <td>：<%= live.start_time %></td>
                       </tr>
                     </tbody>
                   </table>
