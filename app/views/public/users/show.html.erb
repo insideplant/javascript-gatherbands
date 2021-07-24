@@ -1,15 +1,24 @@
 <div class="modal fade" id="user-modal"></div>
 
-<div class="row mb-4">
+<% unless current_live_house || current_admin || @user.current_user?(current_user) %>
+  <div class="row offset-10 mb-3">
+    <%= render 'public/relationships/follow_button', band: @band %>
+  </div>
+<% end %>
+
+<div class="row mb-4 mx-auto">
   <%= render 'public/users/user_header', user: @user,band: @band %>
 </div>
 
 <div class="row">
-  <div class="col-3">
+  <div class="col-lg-3">
     <%= render 'public/users/article_content', band: @band,article: @article %>
+    <% if current_live_house || current_admin || @user.current_user?(current_user) %>
+      <%= render 'public/users/user_info', band: @band,user: @user %>
+    <% end %>
   </div>
 
-  <div class="col-6">
+  <div class="col-lg-6 col-md-8">
     <div class="card-list">
         <% @articles.each do |article| %>
           <%= link_to article_path(article), class:"card-link" do%>
@@ -48,7 +57,7 @@
     </div>
   </div>
 
-  <div class="col-3">
+  <div class="col-lg-3 col-md-4 my-3">
     <%= render 'public/lives/live_info', gather_bands: @gather_bands %>
   </div>
 </div>
