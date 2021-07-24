@@ -2,13 +2,13 @@
   <div class="card mx-auto mt-4 shadou-lg">
     <div class="card-body row">
       <div class="col-3 text-center">
-        <%= attachment_image_tag @host_band.user, :profile_image, size: "150x150", fallback: "no_image.png", size: "150x150", class:"rounded-circle" %>
+        <%= attachment_image_tag @host_band.user, :profile_image, fallback: "no_image.png", class:"rounded-circle img-fluid" %>
       </div>
       <div class="col-9">
         <div class="row">
           <h1><%= @live.live_name%></h1>
         </div>
-        <div class="row">
+        <div>
           <table>
             <tbody>
               <tr>
