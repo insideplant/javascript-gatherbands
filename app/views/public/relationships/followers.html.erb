@@ -1,11 +1,11 @@
 <div class="modal fade" id="user-modal"></div>
 
-<div class="row mb-4 mx-auto">
+<div class="row mb-4 mx-auto d-none d-md-block">
   <%= render 'public/users/user_header', user: @user,band: @band %>
 </div>
 
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-lg-3 d-none d-md-block">
     <%= render 'public/users/article_content', band: @band,article: @article %>
     <% if current_live_house || current_admin || @user.current_user?(current_user) %>
       <%= render 'public/users/user_info', band: @band,user: @user %>
@@ -38,7 +38,7 @@
     <% end %>
   </div>
 
-  <div class="col-lg-3 col-md-4 my-3">
+  <div class="col-lg-3 col-md-4 my-3 d-none d-md-block">
     <%= render 'public/lives/live_info', gather_bands: @gather_bands %>
   </div>
 </div>
