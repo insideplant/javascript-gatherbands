@@ -30,12 +30,11 @@
       </tbody>
     </table>
   </div>
-  <div class="col-md-6 col-lg-4 mt-3">
+  <div class="col-md-6 col-lg-4 mt-3 mx-auto">
     <%= attachment_image_tag @live_house, :image, size: "300x300", fallback: "no_image.png", size: "300x300"%>
   </div>
   <div id='map' class="col-md-6 col-lg-4 mt-3 mx-auto" >
   </div>
-  <%= ENV['API_KEY'] %>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>" async defer></script>
