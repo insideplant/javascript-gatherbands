@@ -31,4 +31,14 @@ class User < ApplicationRecord
   def kana_name
     [first_name_kana, last_name_kana].join(' ')
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.user_name = 'guest'
+      user.password = SecureRandom.urlsafe_base64
+      user.band = Band.find_or_create_by(band_name: 'guest')
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+    end
+  end
 end

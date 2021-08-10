@@ -5,10 +5,21 @@ Rails.application.routes.draw do
     registrations: "devise/live_houses/registrations"
   }
 
-  devise_for :users, controllers: {
-    sessions: "devise/users/sessions",
-    registrations: "devise/users/registrations"
-  }
+  devise_for :users, skip: [:registrations, :sessions ]
+
+  devise_scope :user do
+    get 'signin' => 'devise/users/sessions#new', as: :new_user_session
+    post 'signin' => 'devise/users/sessions#create', as: :user_session
+    delete 'sign_out' => 'devise/users/sessions#destroy', as: :destroy_user_session
+    get 'signup' => 'devise/users/registrations#new', as: :new_user_registration
+    post 'signup' => 'devise/users/registrations#create', as: :user_registration
+    post 'guest_sign_in' => 'devise/users/sessions#guest_sign_in', as: :user_guest_sign
+  end
+
+  #devise_for :users, controllers: {
+  #  sessions: "devise/users/sessions",
+  #  registrations: "devise/users/registrations"
+  #}
 
   devise_for :admins, controllers: {
     sessions: "devise/admins/sessions",

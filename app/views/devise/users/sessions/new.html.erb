@@ -19,6 +19,10 @@
           </div>
         <% end %>
 
+        <div class="form-group">
+          <%= link_to 'Guset Login（閲覧用）', user_guest_sign_path, method: :post, class: "btn btn-light" %>
+        </div>
+
         <div class="actions">
           <%= f.submit "Log in", class: "btn btn-primary" %>
         </div>

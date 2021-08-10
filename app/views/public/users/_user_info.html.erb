@@ -1,10 +1,11 @@
 <div class="card border-primary my-3 d-none d-lg-block mx-auto">
-  <div class="card-header text-dark"><h3>User info</h3></div>
-  <div class="row card-body text-dark">
-    <h5 class="card-title"><%= user.user_name %></h5>
+  <div class="card-header text-dark">
+    <h3>User info</h3>
     <div class="offset-lg-8 col-lg-1">
       <%= link_to "Edit",edit_mypage_path(user), remote: true, class: "btn btn-sm btn-primary" %>
     </div>
+  </div>
+  <div class="row card-body text-dark">
     <table>
       <tbody class="table-font-size">
         <tr>
@@ -13,7 +14,7 @@
         </tr>
         <tr>
           <td>name</td>
-          <td>：<%= user.name%></td>
+          <td>：<%= user.user_name%></td>
         </tr>
         <tr>
           <td>Kana name</td>
@@ -25,7 +26,7 @@
         </tr>
         <tr>
           <td>Postal code</td>
-          <td>：<%= band.band_name%></td>
+          <td>：<%= user.postal_code%></td>
         </tr>
         <tr>
           <td>Address</td>
