@@ -6,12 +6,12 @@
     </div>
   <% end %>
 
-  <div class="row mb-4 mx-auto d-none d-md-block">
+  <div class="row mb-4 mx-auto">
     <%= render 'public/users/user_header', user: @user,band: @band %>
   </div>
 
   <div class="row">
-    <div class="col-lg-3 d-none d-md-block"> 
+    <div class="col-lg-3 d-none d-md-block">
       <%= render 'public/users/article_content', band: @band,article: @article %>
       <% if current_live_house || current_admin || @user.current_user?(current_user) %>
         <%= render 'public/users/user_info', band: @band,user: @user %>
