@@ -1,0 +1,9 @@
+<% unless current_live_house || current_admin || @user.current_user?(current_user) %>
+<div class="row offset-10 mb-3" id="follow_form">
+  <% if current_user.band.following?(band) %>
+    <%= render 'public/relationships/unfollow', band: band %>
+  <% else %>
+    <%= render 'public/relationships/follow', band: band %>
+  <% end %>
+</div>
+<% end %>
