@@ -2,7 +2,7 @@
 
 <% unless current_live_house || current_admin || @user.current_user?(current_user) %>
   <div class="row offset-10 mb-3">
-    <%= render 'public/relationships/follow_button', band: @band %>
+    <%= render 'follow_form' if user_signed_in? %>
   </div>
 <% end %>
 

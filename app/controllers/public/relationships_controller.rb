@@ -1,31 +1,21 @@
 class Public::RelationshipsController < ApplicationController
-  before_action :set_band, only: [:create, :destroy]
   before_action :set_user, only: [:followings, :followers]
 
   def create
-    following = current_user.band.follow(@band)
-    if following.save
-      flash[:info] = 'ユーザーをフォローしました'
-      @band.create_notification_follow!(current_user.band)
-      redirect_to mypage_path(@band)
-    else
-      flash.now[:danger] = 'ユーザーのフォローに失敗しました'
-      redirect_to mypage_path(@band)
-    end
+    user = User.find(params[:follow_id])
+    current_user.follow(user)
+    flash[:info] = 'ユーザーをフォローしました'
+    redirect_to user # mypage_path(@band)
   end
 
   def destroy
-    following = current_user.band.unfollow(@band)
-    if following.destroy
-      flash[:info] = 'ユーザーのフォローを解除しました'
-      redirect_to mypage_path(@band)
-    else
-      flash.now[:danger] = 'ユーザーのフォロー解除に失敗しました'
-      redirect_to mypage_path(@band)
-    end
+    user = Relationship.find(params[:id]).followed
+    current_user.unfollow(user)
+    flash.now[:danger] = 'ユーザーのフォロー解除に失敗しました'
+    redirect_to user # redirect_to mypage_path(@band)
   end
 
-  def followings
+  def following
     @band = @user.band
     @bands = @band.followings
     @gather_bands = @band.lives

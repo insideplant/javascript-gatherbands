@@ -13,26 +13,27 @@
   </div>
 
   <div class="col-sm-6">
-    <h2>Follow Users</h2>
-    <% if @bands.exists? %>
-      <table>
-        <thead>
+    <h2>Followers Users</h2>
+    <% if @users.exists? %>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
           <tr>
-            <th>name</th>
-            <th></th>
-            <th></th>
+            <td><%= user.user_name %></td>
+            <td>フォロー数: <%= user.followings.count %></td>
+            <td>フォロワー数: <%= user.followers.count %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @bands.each do |band| %>
-            <tr>
-              <td><%= band.band_name %></td>
-              <td>フォロー数: <%= band.followings.count %></td>
-              <td>フォロワー数: <%= band.follower_ids.count %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <% end %>
+        <%= paginate @users %>
+      </tbody>
+    </table>
     <% else %>
       <p>ユーザーはいません</p>
     <% end %>

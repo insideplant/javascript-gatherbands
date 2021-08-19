@@ -16,11 +16,6 @@ Rails.application.routes.draw do
     post 'guest_sign_in' => 'devise/users/sessions#guest_sign_in', as: :user_guest_sign
   end
 
-  #devise_for :users, controllers: {
-  #  sessions: "devise/users/sessions",
-  #  registrations: "devise/users/registrations"
-  #}
-
   devise_for :admins, controllers: {
     sessions: "devise/admins/sessions",
     registrations: "devise/admins/registrations"
@@ -43,11 +38,7 @@ Rails.application.routes.draw do
     resources :lives, only: [:new, :create, :show]
     get 'calendar' => 'lives#calendar'
     resources :notifications, only: :index
-
     resources :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
-
     resources :bands, only:[:index, :edit, :update]
     resources :articles, only:[:show, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
@@ -57,6 +48,11 @@ Rails.application.routes.draw do
     get 'users/:id/edit' => 'users#edit' ,as: 'edit_mypage'
     get 'users/:id' => 'users#show', as: 'mypage'
     patch 'users/mypage/update' => 'users#update'
+    resources :users do
+      member do
+        get :following, :followers
+      end
+    end
   end
 
   namespace :admin do

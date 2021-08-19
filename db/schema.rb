@@ -146,13 +146,13 @@ ActiveRecord::Schema.define(version: 2021_08_14_052152) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "band_id"
-    t.integer "follow_id"
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["band_id", "follow_id"], name: "index_relationships_on_band_id_and_follow_id", unique: true
-    t.index ["band_id"], name: "index_relationships_on_band_id"
-    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|

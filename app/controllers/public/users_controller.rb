@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
     @band = @user.band
@@ -33,6 +34,22 @@ class Public::UsersController < ApplicationController
       email: params[:email],
       image_name: 'default_user.png'
     )
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @band = @user.band
+    @gather_bands = @band.lives
+    @users = @user.following.page(params[:page])
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @band = @user.band
+    @gather_bands = @band.lives
+    @users = @user.following.page(params[:page])
   end
 
   private
