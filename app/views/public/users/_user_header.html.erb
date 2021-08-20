@@ -9,28 +9,28 @@
   </div>
 </div>
 
-<div class="col-lg-6 mt-3">
-  <div class="row float-right">
-    <div class="col-2">
-      <%= link_to "Edit",edit_band_path(@band), class:"text-right" %>
-    </div>
-  </div>
-  <div class="row">
-  　<table>
-      <tbody>
-        <tr>
-          <td><%= User.human_attribute_name(:user_name)%></td>
-          <td> : <%= @user.user_name%></td>
-        </tr>
-        <tr>
-          <td>メンバー</td>
-          <td> : <%= @user.band.member_name_role %></td>
-        </tr>
-        <tr>
-          <td><%= @user.band.band_name %></td>
-          <td> : <%= @user.band.band_name%></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<!--<div class="col-lg-6 mt-3">-->
+<!--  <div class="row float-right">-->
+<!--    <div class="col-2">-->
+<!--      <%#= link_to "Edit",edit_band_path(@band), class:"text-right" %>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--  　<table>-->
+<!--      <tbody>-->
+<!--        <tr>-->
+<!--          <td><%#= User.human_attribute_name(:user_name)%></td>-->
+<!--          <td> : <%#= @user.user_name%></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td>メンバー</td>-->
+<!--          <td> : <%#= @user.band.member_name_role %></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td><%#= @user.band.band_name %></td>-->
+<!--          <td> : <%#= @user.band.band_name%></td>-->
+<!--        </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->
