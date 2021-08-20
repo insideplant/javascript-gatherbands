@@ -5,7 +5,7 @@
   </div>
   <div class="row">
     <div class="col-6"><%= link_to following_user_path(@user) do %><%= @user.following.count %>フォロー中<% end %></div>
-    <div class="col-6"><%= link_to followers_user_path(@user) do %><%= @user.follower.count %>フォロワー<% end %></div>
+    <div class="col-6"><%= link_to followers_user_path(@user) do %><%= @user.followers.count %>フォロワー<% end %></div>
   </div>
 </div>
 

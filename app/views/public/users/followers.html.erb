@@ -27,7 +27,7 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= user.user_name %></td>
-            <td>フォロー数: <%= user.followings.count %></td>
+            <td>フォロー数: <%= user.following.count %></td>
             <td>フォロワー数: <%= user.followers.count %></td>
           </tr>
         <% end %>
