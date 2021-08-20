@@ -4,8 +4,8 @@
       <%= attachment_image_tag user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100", class:"rounded-circle mx-auto" %>
   </div>
   <div class="row">
-    <%= link_to following_user_path(@user) do %><%#= @user.following.count %>フォロー中<% end %>
-    <%= link_to followers_user_path(@user) do %><%#= @user.followers.count %>フォロワー<% end %>
+    <%= link_to following_user_path(@user) do %><%= @user.following.count %><% end %>フォロー中
+    <%= link_to followers_user_path(@user) do %><%= @user.followers.count %><% end %>フォロワー
   </div>
 </div>
 
