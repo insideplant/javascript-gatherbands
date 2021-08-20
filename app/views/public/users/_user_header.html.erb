@@ -20,15 +20,15 @@
       <tbody>
         <tr>
           <td><%= User.human_attribute_name(:user_name)%></td>
-          <td> : <%= user.user_name%></td>
+          <td> : <%= @user.user_name%></td>
         </tr>
         <tr>
           <td>メンバー</td>
-          <td> : <%= user.band.member_name_role %></td>
+          <td> : <%= @user.band.member_name_role %></td>
         </tr>
         <tr>
-          <td><%= Band.human_attribute_name(:band_name)%></td>
-          <td> : <%= band.band_name%></td>
+          <td><%= @user.band.band_name %></td>
+          <td> : <%= @user.band.band_name%></td>
         </tr>
       </tbody>
     </table>
