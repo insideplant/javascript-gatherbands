@@ -49,7 +49,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @band = @user.band
     @gather_bands = @band.lives
-    @users = @user.following.page(params[:page])
+    @users = @user.followers.page(params[:page])
   end
 
   private
