@@ -4,33 +4,33 @@
       <%= attachment_image_tag user, :profile_image, size: "100x100", fallback: "no_image.png", size: "100x100", class:"rounded-circle mx-auto" %>
   </div>
   <div class="row">
-    <div><%= link_to following_user_path(@user) do %><%= @user.following.count %><% end %>フォロー中</div>
-    <div><%= link_to followers_user_path(@user) do %><%= @user.followers.count %><% end %>フォロワー</div>
+    <div class="col-6"><%= link_to following_user_path(@user) do %><%#= @user.following.count %>フォロー中<% end %></div>
+    <div class="col-6"><%= link_to followers_user_path(@user) do %><%#= @user.follower.count %>フォロワー<% end %></div>
   </div>
 </div>
 
-<!--<div class="col-lg-6 mt-3">-->
-<!--  <div class="row float-right">-->
-<!--    <div class="col-2">-->
-<!--      <%#= link_to "Edit",edit_band_path(@band), class:"text-right" %>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-<!--  　<table>-->
-<!--      <tbody>-->
-<!--        <tr>-->
-<!--          <td><%#= User.human_attribute_name(:user_name)%></td>-->
-<!--          <td> : <%#= @user.user_name%></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>メンバー</td>-->
-<!--          <td> : <%#= @user.band.member_name_role %></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td><%#= @user.band.band_name %></td>-->
-<!--          <td> : <%#= @user.band.band_name%></td>-->
-<!--        </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="col-lg-6 mt-3">
+  <div class="row float-right">
+    <div class="col-2">
+      <%= link_to "Edit",edit_band_path(@band), class:"text-right" %>
+    </div>
+  </div>
+  <div class="row">
+  　<table>
+      <tbody>
+        <tr>
+          <td><%= User.human_attribute_name(:user_name)%></td>
+          <td> : <%= user.user_name%></td>
+        </tr>
+        <tr>
+          <td>メンバー</td>
+          <td> : <%= user.band.member_name_role %></td>
+        </tr>
+        <tr>
+          <td><%= Band.human_attribute_name(:band_name)%></td>
+          <td> : <%= band.band_name%></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
