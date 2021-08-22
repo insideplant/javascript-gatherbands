@@ -38,7 +38,7 @@ class LiveHouse::LivesController < ApplicationController
       live.status = "live_house"
       live.color = "gray"
       if live.save
-        redirect_to live_house_scadules_path
+        redirect_to live_house_schedules_path
       else
         flash.now[:danger] = "予定の作成に失敗しました"
         @live = Live.new

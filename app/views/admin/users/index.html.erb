@@ -15,7 +15,7 @@
         <% @users.each do |user| %>
         <tr>
           <td><%= user.id %></td>
-          <td><%= link_to user.user_name, admin_user_path(user) %></td>
+          <td><%= user.user_name %></td>
           <td><%= user.band.band_name %></td>
           <td><%= user.is_active %></td>
           <td></td>
