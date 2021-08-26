@@ -4,6 +4,15 @@ class Band < ApplicationRecord
   has_many :comments
   has_many :members
 
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
+  has_many :passive_relationships, class_name: "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:  :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
   # iine機能
   has_many :favorites, dependent: :destroy
 
@@ -19,6 +28,21 @@ class Band < ApplicationRecord
   accepts_nested_attributes_for :members, allow_destroy: true
 
   validates_associated :members
+
+  # 自身では無い時follow
+  def follow(other_band)
+    following << other_band
+  end
+
+  # followの解除
+  def unfollow(other_band)
+    active_relationships.find_by(followed_id: other_band.id).destroy
+  end
+
+  # 既にfollowをしているか？
+  def following?(other_band)
+    following.include?(other_band)
+  end
 
   # followに関する通知を作成
   def create_notification_follow!(current_band)

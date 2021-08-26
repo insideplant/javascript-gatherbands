@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     get 'users/:id/edit' => 'users#edit' ,as: 'edit_mypage'
     get 'users/:id' => 'users#show', as: 'mypage'
     patch 'users/mypage/update' => 'users#update'
-    resources :users do
+    resources :bands do
       member do
         get :following, :followers
       end

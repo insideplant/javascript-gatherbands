@@ -36,22 +36,6 @@ class Public::UsersController < ApplicationController
     )
   end
 
-  def following
-    @title = "Following"
-    @user = User.find(params[:id])
-    @band = @user.band
-    @gather_bands = @band.lives
-    @users = @user.following.page(params[:page])
-  end
-
-  def followers
-    @title = "Followers"
-    @user = User.find(params[:id])
-    @band = @user.band
-    @gather_bands = @band.lives
-    @users = @user.followers.page(params[:page])
-  end
-
   private
 
   def user_params

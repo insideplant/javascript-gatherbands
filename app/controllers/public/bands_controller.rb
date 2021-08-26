@@ -23,6 +23,22 @@ class Public::BandsController < ApplicationController
     end
   end
 
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @band = @user.band
+    @gather_bands = @band.lives
+    @bands = @user.band.following.page(params[:page])
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @band = @user.band
+    @gather_bands = @band.lives
+    @bands = @user.band.followers.page(params[:page])
+  end
+
   private
 
   def band_params

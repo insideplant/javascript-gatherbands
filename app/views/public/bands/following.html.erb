@@ -14,7 +14,7 @@
 
   <div class="col-sm-6">
     <h2>Follow Users</h2>
-    <% if @users.exists? %>
+    <% if @bands.exists? %>
       <table>
         <thead>
           <tr>
@@ -24,14 +24,14 @@
           </tr>
         </thead>
         <tbody>
-          <% @users.each do |user| %>
+          <% @bands.each do |band| %>
             <tr>
-              <td><%= user.user_name %></td>
-              <td>フォロー数: <%= user.following.count %></td>
-              <td>フォロワー数: <%= user.followers.count %></td>
+              <td><%= band.user.user_name %></td>
+              <td>フォロー数: <%= band.following.count %></td>
+              <td>フォロワー数: <%= band.followers.count %></td>
             </tr>
           <% end %>
-          <%= paginate @users %>
+          <%= paginate @bands %>
         </tbody>
       </table>
     <% else %>
