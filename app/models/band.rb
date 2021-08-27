@@ -31,7 +31,7 @@ class Band < ApplicationRecord
 
   # 自身では無い時follow
   def follow(other_band)
-    following << other_band
+    self.following << other_band
   end
 
   # followの解除
