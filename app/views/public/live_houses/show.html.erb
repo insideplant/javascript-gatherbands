@@ -37,10 +37,9 @@
   </div>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>" async defer></script>
 <script>
-  let map
-  function initMap(){
+  window.onload = function initMap(){
     const geocoder = new google.maps.Geocoder()
 
     const map = new google.maps.Map(document.getElementById('map'), {

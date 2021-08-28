@@ -88,6 +88,7 @@ gem 'kaminari','~> 1.2.1' # study(2)
 gem 'whenever', require: false
 
 gem 'dotenv-rails'
+
 group :production do
   gem 'mysql2'
 end
