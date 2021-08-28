@@ -2,7 +2,7 @@
 
 class Devise::LiveHouses::SessionsController < Devise::SessionsController
   skip_before_action :authenticate_user!
-  before_action :basic_auth
+  # before_action :basic_auth
   protect_from_forgery with: :exception
   # before_action :configure_sign_in_params, only: [:create]
 
