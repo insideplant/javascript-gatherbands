@@ -2,8 +2,9 @@
   <div class="card-header"><h3>Live History</h3></div>
   <div class="row card-body text-primary">
     <% gather_bands.finish_live.each do |gathered| %>
-      <h5 class="card-title"><%= gathered.live_name %></h5>
-      <%= gathered.start_time.strftime("%Y-%m-%d") %>
+      <div class="card-title">
+        <%= gathered.start_time %> <%= gathered.live_name %>
+      </div>
     <% end %>
   </div>
 </div>

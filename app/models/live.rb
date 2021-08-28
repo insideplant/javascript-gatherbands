@@ -1,5 +1,5 @@
 class Live < ApplicationRecord
-  validates :live_name, presence: true, length: { maximum: 15 }
+  validates :live_name, presence: true, length: { maximum: 25 }
   validates :introduction, presence: true
   validates :start_at, presence: true
   validates :end_at, presence: true

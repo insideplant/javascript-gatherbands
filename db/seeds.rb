@@ -115,6 +115,39 @@
         live_image: File.open("./app/assets/images/live_image3.jpg"),
         status: "finish_live",
         registered_person: true,
+      },
+      {
+        live_name: "20th anniversary live",
+        introduction: "20周年記念ライブ",
+        amount: "3",
+        start_at: "2022-01-24 00:00:00",
+        end_at: "2022-01-24 00:00:00",
+        live_house_id: "2",
+        live_image: File.open("./app/assets/images/live_image4.jpg"),
+        status: "waiting_live",
+        registered_person: true,
+      },
+      {
+        live_name: "大阪ライブ",
+        introduction: "大阪でライブします",
+        amount: "3",
+        start_at: "2022-02-24 00:00:00",
+        end_at: "2022-02-24 00:00:00",
+        live_house_id: "3",
+        live_image: File.open("./app/assets/images/live_image5.jpg"),
+        status: "waiting_live",
+        registered_person: true,
+      },
+      {
+        live_name: "basist live",
+        introduction: "ベーシストのみ参加可能なライブです。",
+        amount: "3",
+        start_at: "2022-11-24 00:00:00",
+        end_at: "2022-11-24 00:00:00",
+        live_house_id: "2",
+        live_image: File.open("./app/assets/images/live_image6.jpg"),
+        status: "waiting_live",
+        registered_person: true,
       }
     ]
   )
@@ -160,6 +193,66 @@
         band_id: 4,
         live_id: 3,
         host: false,
-      }
+      },
+      {
+        band_id: 3,
+        live_id: 4,
+        host: true,
+      },
+      {
+        band_id: 2,
+        live_id: 4,
+        host: false,
+      },
+      {
+        band_id: 4,
+        live_id: 4,
+        host: false,
+      },
+      {
+        band_id: 5,
+        live_id: 4,
+        host: false,
+      },
+      {
+        band_id: 3,
+        live_id: 5,
+        host: true,
+      },
+      {
+        band_id: 2,
+        live_id: 5,
+        host: false,
+      },
+      {
+        band_id: 4,
+        live_id: 5,
+        host: false,
+      },
+      {
+        band_id: 5,
+        live_id: 5,
+        host: false,
+      },
+      {
+        band_id: 3,
+        live_id: 6,
+        host: true,
+      },
+      {
+        band_id: 2,
+        live_id: 6,
+        host: false,
+      },
+      {
+        band_id: 4,
+        live_id: 6,
+        host: false,
+      },
+      {
+        band_id: 5,
+        live_id: 6,
+        host: false,
+      },
     ]
   )
