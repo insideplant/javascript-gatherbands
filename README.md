@@ -29,9 +29,9 @@ https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#G16zsNO
 https://docs.google.com/spreadsheets/d/1E6yjGa7ux_Ymr5YRCvkr3iLtn-Guq9zbe-Ob_gOLZH4/edit?usp=sharing
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux(Amazon linux)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- 仮想環境：Vagrant,VirtualBox
+
 
