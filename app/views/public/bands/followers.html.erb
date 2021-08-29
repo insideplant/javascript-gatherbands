@@ -15,25 +15,10 @@
   <div class="col-sm-6">
     <h2>Followers Users</h2>
     <% if @bands.exists? %>
-    <table>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @bands.each do |band| %>
-          <tr>
-            <td><%= band.user.user_name %></td>
-            <td>フォロー数: <%= band.following.count %></td>
-            <td>フォロワー数: <%= band.followers.count %></td>
-          </tr>
-        <% end %>
-        <%= paginate @bands %>
-      </tbody>
-    </table>
+      <ul>
+        <%= render @bands %>
+      </ul>
+      <%= paginate @bands %>
     <% else %>
       <p>ユーザーはいません</p>
     <% end %>

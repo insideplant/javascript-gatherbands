@@ -1,0 +1,6 @@
+<li class="py-3 border-bottom overflow-auto">
+  <%= attachment_image_tag band.user, :profile_image, size: "50x50" , fallback: "no_image.png" ,size: "50x50" , class:"rounded-circle" %>
+  <%= link_to band.user.user_name, mypage_path(band.user), class: "ml-3" %>
+  | フォロー数: <%= band.following.count %>
+  /  フォロワー数: <%= band.followers.count %>
+</li>
