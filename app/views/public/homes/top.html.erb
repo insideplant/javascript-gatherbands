@@ -12,9 +12,9 @@
   <div class="card-list mx-auto">
     <div class="col-md-2 col-sm-5">
       <div class="card my-3" style="width: 15rem;">
-        <%= link_to life_path(live) do %>
-          <%= attachment_image_tag live, :live_image, size: "180x100", fallback: "no_image.png", size: "100%x100%", class:"card-img-top" %>
-        <% end %>
+        <%#= link_to life_path(live) do %>
+          <%#= attachment_image_tag live, :live_image, size: "180x100", fallback: "no_image.png", size: "100%x100%", class:"card-img-top" %>
+        <%# end %>
         <div class="card-body">
           <h5 class="card-title"><%= live.live_name %></h5>
           <p class="card-text"><%= host_band(live).band_name %></p>
