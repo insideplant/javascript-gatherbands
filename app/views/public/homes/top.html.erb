@@ -1,14 +1,32 @@
-<div class="live_image_top">
-  <div id="images">
-      <div class="live1"></div>
-      <div class="live2"></div>
-      <div class="live3"></div>
-      <div class="live4"></div>
-  </div>
+<div class="container">
+  <h1 id="hello">Hello World</h1>
+    <div class="prev"></div>
+    <div class="sliderbox">
+        <ul class="sliderlist">
+          <li class="sliderlist__item sliderlist__item1"><%= image_tag 'live1.jpg', width: '100%', height: '100%' %></li>
+          <li class="sliderlist__item sliderlist__item2"><%= image_tag 'live2.jpg', width: '100%', height: '100%' %></li>
+          <li class="sliderlist__item sliderlist__item3"><%= image_tag 'live3.jpg', width: '100%', height: '100%' %></li>
+        </ul>
+    </div>
+    <div class="next"></div>
 </div>
 
-<div class="row">
-  <% @lives.each do |live| %>
+
+<section id="modal" class="hidden">
+  <p>test</p>
+  <%= link_to "Log in",new_user_session_path %>
+  <div id="close">
+    閉じる
+  </div>
+</section>
+
+<div id="mask" class="hidden">
+  
+</div>
+
+
+
+<% @lives.each do |live| %>
   <div class="card-list mx-auto">
     <div class="col-md-2 col-sm-5">
       <div class="card my-3" style="width: 15rem;">
@@ -25,4 +43,3 @@
     </div>
   </div>
   <% end %>
-</div>

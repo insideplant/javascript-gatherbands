@@ -10,65 +10,50 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg  fixed-top navbar-dark" style="background-color: black;">
-      <div class="container">
-        <%= link_to GatherBands,root_path, class:"navbar-brand color-red" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        　<ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
-              <li><%= link_to "New",notifications_path, class:"nav-link" %></li>
-              <div class="dropdown">
-                <a class="dropdown-toggle nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Live info
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <%= link_to "Lives",home_lives_path, class:"dropdown-item" %>
-                  <%= link_to "Live Houses",live_houses_path, class:"dropdown-item" %>
-                </div>
-              </div>
-              <li><%= link_to "Mypage",mypage_path(current_user), class:"nav-link" %></li>
-              <li><%= link_to "Bands",bands_path, class:"nav-link" %></li>
-              <li><%= link_to "Log out",destroy_user_session_path, method: :delete, class:"nav-link" %></li>
-            <% elsif admin_signed_in? %>
-              <li><%= link_to "Users",admin_users_path, class:"nav-link"%></li>
-              <li><%= link_to "Live House",admin_live_houses_path, class:"nav-link"%></li>
-              <li><%= link_to "Lives",admin_lives_path, class:"nav-link"%></li>
-              <li><%= link_to "Log out",destroy_user_session_path, method: :delete, class:"nav-link"%></li>
-            <% elsif live_house_signed_in? %>
-              <li><%= link_to "Live Schedule",live_house_schedules_path, class:"nav-link"%></li>
-              <li><%= link_to "My house",live_house_mypage_path(current_live_house), class:"nav-link"%></li>
-              <li><%= link_to "Log out",destroy_live_house_session_path, method: :delete, class:"nav-link"%></li>
-            <% else %>
-              <li><%= link_to "Sign up",new_user_registration_path, class:"nav-link" %></li>
-              <li><%= link_to "Log in",new_user_session_path, class:"nav-link" %></li>
-              <li><%= link_to "Lives",home_lives_path, class:"nav-link" %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+    <header>
+      <h1>
+        <%= link_to GatherBands,root_path %>
+      </h1>
+      <nav>
+        <ul>
+          <% if user_signed_in? %>
+            <li><%= link_to "New",notifications_path %></li>
+            <li><%= link_to "Lives",home_lives_path %></li>
+            <li><%= link_to "Live Houses",live_houses_path %><li>
+            <li><%= link_to "Mypage",mypage_path(current_user) %></li>
+            <li><%= link_to "Bands",bands_path %></li>
+            <li><%= link_to "Log out",destroy_user_session_path, method: :delete %>
+          <% elsif admin_signed_in? %>
+            <li><%= link_to "Users",admin_users_path %></li>
+            <li><%= link_to "Live House",admin_live_houses_path, class:"nav-link"%></li>
+            <li><%= link_to "Lives",admin_lives_path, class:"nav-link"%></li>
+            <li><%= link_to "Log out",destroy_user_session_path, method: :delete %></li>
+          <% elsif live_house_signed_in? %>
+            <li><%= link_to "Live Schedule",live_house_schedules_path %></li>
+            <li><%= link_to "My house",live_house_mypage_path(current_live_house) %></li>
+            <li><%= link_to "Log out",destroy_live_house_session_path, method: :delete %></li>
+          <% else %>
+            <li id="open">Log in</li>
+            <li><%= link_to "Sign up",new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
     <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
       <%= yield %>
     </div>
 
-    <div class="container">
-      <footer class="footer">
-        <small>
-          Gather Bands by <a>Zhong Zhi</a>
-        </small>
-        <nav>
-          <ul class="navbar-nav ml-auto">
-            <li><%= link_to "Live House",new_live_house_session_path, class:"nav-link" %></li>
-          </ul>
-        </nav>
-      </footer>
-    </div>
+    <!--<div class="container">-->
+    <!--  <footer class="footer">-->
+    <!--    <small>-->
+    <!--      Gather Bands by <a>Zhong Zhi</a>-->
+    <!--    </small>-->
+    <!--    <nav>-->
+    <!--      <ul>-->
+    <!--        <li><%#= link_to "Live House",new_live_house_session_path, class:"nav-link" %></li>-->
+    <!--      </ul>-->
+    <!--    </nav>-->
+    <!--  </footer>-->
+    <!--</div>-->
   </body>
 </html>

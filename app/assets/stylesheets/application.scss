@@ -14,264 +14,371 @@
  *= require_self
  *= require fullcalendar
  */
- @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @import "fullcalendar.min";
 
- /*form bootsrapによるlayout崩れを直す*/
-.field_with_errors {
-  display: contents;
-  input {
-    @extend .is-invalid;
-  }
+/*リセットCSS*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-/* top(lives)の画像*/
-.jumbotron {
-  background-image: image-url("live_background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 450px;
-}
-
-/* registration */
-
-#registrations {
-  background-image: image-url("live1.jpg");
-  background-position: center;
-  background-size: cover;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-color: #050911;
-
-  #registrations-new {
-    width: 100%;
-    height: 100%;
-    .left-content {
-      margin-top: 45px;
-      padding: 0px 45px;
-      color: #fff;
-      h1 {
-        font-size: 50px;
-        margin: 0px;
-        margin-top: 10px;
-      }
-      .ex {
-        font-size: 18px;
-        margin: 45px 0px;
-      }
-    }
-    .right-content {
-      padding: 0px 30px;
-      form {
-        margin: 45px 0px;
-        padding: 30px 35px;
-        border: 1px solid #fff;
-        border-radius: 6px;
-        background-color: rgba(0, 0, 0, 0.3);
-        color: #fff;
-      }
-      h2 {
-        margin: 0px 0px 20px 0px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-        padding-bottom: 10px;
-        font-size: 20px;
-      }
-      .control-label {
-        font-weight: 400;
-      }
-      .btn {
-        width: 100%;
-        padding: 12px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 16px;
-      }
-      .login {
-        color: #fff;
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-#registrations::before{
- background-color:rgba(0,0,0,0.5);
- position:absolute;
- top:0;
- right:0;
- left:0;
- content:' ';
-}
-
-
-/* universal */
 
 body {
- padding-top: 70px;
- background-color: black;
- color: #F8F8FF;
-
-.modal-content {
-   color: black;
- }
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
+  background-color: black;
+  color: #F8F8FF;
 }
 
 /* header */
+header {
+  width: 100%;
+  padding: 20px 4%;
+  background-color: black; 
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+} 
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #F8F8FF;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: #F8F8FF;
-    text-decoration: none;
-  }
-}
-
-
-/* body */
-.live_image_top{
-  height: 350px;
-}
-.live1 {
-  background-image: image-url("live1.jpg");
-  background-position:center bottom;
-}
-.live2 {
-  background-image: image-url("live2.jpg");
-  background-position:center top;
-}
-.live3 {
-  background-image: image-url("live3.jpg");
-}
-.live4 {
-  background-image: image-url("live4.jpg");
-}
-
-/*.recent-live {
-  width: 300px;
-  height: 200px;
-  background-color:red;
-  text-align: center;
-} */
-
-
-/* footer */
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: gray;
-  a {
-    color: #555;
-    &:hover {
-      color: #222;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-}
-
-/* article post*/
-
- aside {
-   section.band_info {
-     margin-top: 20px;
-   }
-
-   section {
-     padding: 10px;
-     margin-top:20px;
-     &:first-child {
-     border: 0;
-     padding-top: 0;
-   }
-   span {
-     display: block;
-     margin-bottom: 3px;
-     line-height:1;
-   }
-   h1 {
-     font-size: 1.4em;
-     text-align: left;
-     letter-spacing: -1px;
-     margin-bottom: 3px;
-     margin-top: 0px;
-    }
-   }
- }
-
-/*bands*/
-.bands-content {
-  padding: 0px 45px;
-  z-index: 1000;
-    margin: 45px 0px;
-    padding: 30px 35px;
-    border: 1px solid #fff;
-    border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: #fff;
-  h2 {
-    margin: 0px 0px 20px 0px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    padding-bottom: 10px;
-    font-size: 20px;
-  }
-  .control-label {
-    font-weight: 400;
-  }
-  .btn {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
-
-}
-
-/*card*/
-.card-link {
+header h1 a {
+  font-size: 20px;
+  color: yellow;
   text-decoration: none;
 }
 
-.card-list {
-  color: black;
+/*navbar*/
+nav {
+  margin: 0 0 0 auto;
 }
 
-/*table-font-sizi*/
-.table-font-size {
-  font-size: 10px;
+
+nav ul {
+  list-style: none;
+  display: flex;
 }
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+nav li:hover {
+  background-color: #f2f2f2;
+}
+
+/*slider*/
+.container{
+    position: relative;
+    width: 1100px;
+    height: 400px;
+    margin: 100px auto 0;
+}
+
+.sliderbox{
+    // border: 2px solid;
+    overflow: hidden;
+}
+
+.sliderlist{
+    display: flex;
+    list-style: none;
+}
+
+.sliderlist__item{
+    flex-shrink: 0;
+    width: 1100px;
+    height: 400px;
+}
+
+.sliderlist__item1{
+    background-color: rgb(245, 245, 245);
+}
+
+.sliderlist__item2{
+    background-color: rgb(225, 225, 225);
+}
+
+.sliderlist__item3{
+    background-color: rgb(205, 205, 205);
+}
+
+/* 矢印 */
+.prev{
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    display: none;
+    width: 30px;
+    height: 30px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    cursor: pointer;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.next{
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    width: 30px;
+    height: 30px;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    cursor: pointer;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+
+/* modal login */
+
+#open{
+  cursor: pointer;
+}
+
+#close{
+  cursor: pointer;
+  width: 200px;
+  border: 1px;
+}
+
+
+// /* registration */
+// #registrations {
+//   background-image: image-url("live1.jpg");
+//   background-position: center;
+//   background-size: cover;
+//   background-color: transparent;
+//   background-repeat: no-repeat;
+//   background-color: #050911;
+
+//   #registrations-new {
+//     width: 100%;
+//     height: 100%;
+//     .left-content {
+//       margin-top: 45px;
+//       padding: 0px 45px;
+//       color: #fff;
+//       h1 {
+//         font-size: 50px;
+//         margin: 0px;
+//         margin-top: 10px;
+//       }
+//       .ex {
+//         font-size: 18px;
+//         margin: 45px 0px;
+//       }
+//     }
+//     .right-content {
+//       padding: 0px 30px;
+//       form {
+//         margin: 45px 0px;
+//         padding: 30px 35px;
+//         border: 1px solid #fff;
+//         border-radius: 6px;
+//         background-color: rgba(0, 0, 0, 0.3);
+//         color: #fff;
+//       }
+//       h2 {
+//         margin: 0px 0px 20px 0px;
+//         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+//         padding-bottom: 10px;
+//         font-size: 20px;
+//       }
+//       .control-label {
+//         font-weight: 400;
+//       }
+//       .btn {
+//         width: 100%;
+//         padding: 12px;
+//         margin-top: 10px;
+//         margin-bottom: 10px;
+//         font-size: 16px;
+//       }
+//       .login {
+//         color: #fff;
+//         text-decoration: underline;
+//       }
+//     }
+//   }
+// }
+
+// #registrations::before{
+// background-color:rgba(0,0,0,0.5);
+// position:absolute;
+// top:0;
+// right:0;
+// left:0;
+// content:' ';
+// }
+
+
+// /* universal */
+
+
+// .modal-content {
+//   color: black;
+// }
+// }
+
+// section {
+//   overflow: auto;
+// }
+
+// textarea {
+//   resize: vertical;
+// }
+
+// .center {
+//   text-align: center;
+//   h1 {
+//     margin-bottom: 10px;
+//   }
+// }
+
+// /* header */
+
+// #logo {
+//   float: left;
+//   margin-right: 10px;
+//   font-size: 1.7em;
+//   color: #F8F8FF;
+//   text-transform: uppercase;
+//   letter-spacing: -1px;
+//   padding-top: 9px;
+//   font-weight: bold;
+//   &:hover {
+//     color: #F8F8FF;
+//     text-decoration: none;
+//   }
+// }
+
+
+// /* body */
+// .live_image_top{
+//   height: 350px;
+// }
+// .live1 {
+//   background-image: image-url("live1.jpg");
+//   background-position:center bottom;
+// }
+// .live2 {
+//   background-image: image-url("live2.jpg");
+//   background-position:center top;
+// }
+// .live3 {
+//   background-image: image-url("live3.jpg");
+// }
+// .live4 {
+//   background-image: image-url("live4.jpg");
+// }
+
+// /*.recent-live {
+//   width: 300px;
+//   height: 200px;
+//   background-color:red;
+//   text-align: center;
+// } */
+
+
+// /* footer */
+
+// footer {
+//   margin-top: 45px;
+//   padding-top: 5px;
+//   border-top: 1px solid #eaeaea;
+//   color: gray;
+//   a {
+//     color: #555;
+//     &:hover {
+//       color: #222;
+//     }
+//   }
+//   small {
+//     float: left;
+//   }
+//   ul {
+//     float: right;
+//     list-style: none;
+//     li {
+//       float: left;
+//       margin-left: 15px;
+//     }
+//   }
+// }
+
+// /* article post*/
+
+// aside {
+//   section.band_info {
+//     margin-top: 20px;
+//   }
+
+//   section {
+//     padding: 10px;
+//     margin-top:20px;
+//     &:first-child {
+//     border: 0;
+//     padding-top: 0;
+//   }
+//   span {
+//     display: block;
+//     margin-bottom: 3px;
+//     line-height:1;
+//   }
+//   h1 {
+//     font-size: 1.4em;
+//     text-align: left;
+//     letter-spacing: -1px;
+//     margin-bottom: 3px;
+//     margin-top: 0px;
+//     }
+//   }
+// }
+
+// /*bands*/
+// .bands-content {
+//   padding: 0px 45px;
+//   z-index: 1000;
+//     margin: 45px 0px;
+//     padding: 30px 35px;
+//     border: 1px solid #fff;
+//     border-radius: 6px;
+//     background-color: rgba(0, 0, 0, 0.3);
+//     color: #fff;
+//   h2 {
+//     margin: 0px 0px 20px 0px;
+//     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+//     padding-bottom: 10px;
+//     font-size: 20px;
+//   }
+//   .control-label {
+//     font-weight: 400;
+//   }
+//   .btn {
+//     width: 100%;
+//     padding: 12px;
+//     margin-top: 10px;
+//     margin-bottom: 10px;
+//     font-size: 16px;
+//   }
+
+// }
+
+// /*card*/
+// .card-link {
+//   text-decoration: none;
+// }
+
+// .card-list {
+//   color: black;
+// }
+
+// /*table-font-sizi*/
+// .table-font-size {
+//   font-size: 10px;
+// }

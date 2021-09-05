@@ -10,9 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
 
 //= require rails-ujs
 //= require activestorage
@@ -24,41 +21,59 @@
 //= require moment
 //= require fullcalendar
 
+'use-strict';
 
-$(document).ready(function () {
-  $("#images").skippr({
-    // スライドショーの変化 ("fade" or "slide")
-    transition : 'slide',
-    // 変化に係る時間(ミリ秒)
-    speed : 1000,
-    // easingの種類
-    easing : 'easeOutQuart',
-    // ナビゲーションの形("block" or "bubble")
-    navType : 'block',
-    // 子要素の種類("div" or "img")
-    childrenElementType : 'div',
-    // ナビゲーション矢印の表示(trueで表示)
-    arrows : true,
-    // スライドショーの自動再生(falseで自動再生なし)
-    autoPlay : true,
-    // 自動再生時のスライド切替間隔(ミリ秒)
-    autoPlayDuration : 3000,
-    // キーボードの矢印キーによるスライド送りの設定(trueで有効)
-    keyboardOnAlways : true,
-    // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
-    hidePrevious : false
+
+window.onload = function(){
+  // Next(Prev)ボタンの取得
+  const next = document.querySelector('.next');
+  const prev = document.querySelector(".prev");
+
+  // liタグのwidthを取得
+  const sliderwidth = document.querySelector(".sliderlist__item");
+  console.log(sliderwidth);
+
+  
+  let width = sliderwidth.clientWidth;
+  console.log(width);
+
+  // slider(ul要素、li要素一覧)の取得
+  const sliderlist = document.querySelector(".sliderlist");
+  const sliderlist_item = document.querySelectorAll(".sliderlist__item")
+  console.log(sliderlist_item);
+
+  // カウンターの設定
+  let counter = 0;
+
+  // イベントリスナー (next)
+  next.addEventListener("click", function(){
+    if(counter == sliderlist_item.length - 1) return; //ボタン連打対策
+    prev.style.display = "block";
+    sliderlist.style.transition = ".3s";
+    counter ++;
+    sliderlist.style.transform = "translateX("+ (- width * counter) + "px)";
+
+    sliderlist.addEventListener("transitionend", function(){
+      if(counter == sliderlist_item.length - 1){
+          sliderlist.style.transition = "none";
+          next.style.display = "none";
+      }
+    })
   });
-});
 
+  // イベントリスナー (prev)
+  prev.addEventListener("click", function(){
+    if(counter == sliderlist_item.length - sliderlist_item.length) return; //ボタン連打対策
+    next.style.display = "block";
+    sliderlist.style.transition = ".3s";
+    counter --;
+    sliderlist.style.transform = "translateX("+ (- width * counter) + "px)";
 
-//$(function($) {
-//  $('select#live_live_house_id').change(function() {
-//    if ($(this).val() != '') {
-//      console.log($(this).val());
-//      console.log( window.location.href)
-//      window.location.href = $(this).val();
-//    }
-//  });
-//});
-// <select name="live[live_house_id]" id="live_live_house_id"><option value="1">house1</option>
-// <option value="2">house2</option></select>
+    sliderlist.addEventListener("transitionend", function(){
+      if(counter == sliderlist_item.length - sliderlist_item.length){
+          sliderlist.style.transition = "none";
+          prev.style.display = "none";
+      }
+    })
+  });
+};
