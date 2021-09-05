@@ -31,16 +31,13 @@ window.onload = function(){
 
   // liタグのwidthを取得
   const sliderwidth = document.querySelector(".sliderlist__item");
-  console.log(sliderwidth);
 
   
   let width = sliderwidth.clientWidth;
-  console.log(width);
 
   // slider(ul要素、li要素一覧)の取得
   const sliderlist = document.querySelector(".sliderlist");
   const sliderlist_item = document.querySelectorAll(".sliderlist__item")
-  console.log(sliderlist_item);
 
   // カウンターの設定
   let counter = 0;
@@ -76,4 +73,21 @@ window.onload = function(){
       }
     })
   });
+  
+  const open = document.getElementById('open');
+  const close = document.getElementById('close');
+  const modal = document.getElementById('modal');
+  const mask = document.getElementById('mask');
+  
+  open.addEventListener('click',()=>{
+    modal.classList.remove('hidden');
+    mask.classList.remove('hidden')
+  });
+  
+  close.addEventListener('click',()=>{
+    modal.classList.add('hidden');
+    mask.classList.add('hidden');
+  });
+  
 };
+
