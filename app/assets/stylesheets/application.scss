@@ -115,8 +115,8 @@ nav li:hover {
     display: none;
     width: 30px;
     height: 30px;
-    border-bottom: 2px solid black;
-    border-left: 2px solid black;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
     cursor: pointer;
     transform: translateY(-50%) rotate(45deg);
 }
@@ -127,8 +127,8 @@ nav li:hover {
     right: -5%;
     width: 30px;
     height: 30px;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
     cursor: pointer;
     transform: translateY(-50%) rotate(-45deg);
 }
