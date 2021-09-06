@@ -3,7 +3,7 @@
 
 {
    const open = document.getElementById('open');
-  const close = document.getElementById('close');
+  const shut = document.getElementById('shut');
   const modal = document.getElementById('modal');
   const mask = document.getElementById('mask');
   
@@ -12,7 +12,7 @@
     mask.classList.remove('hidden')
   });
   
-  close.addEventListener('click',()=>{
+  shut.addEventListener('click',()=>{
     modal.classList.add('hidden');
     mask.classList.add('hidden');
   });

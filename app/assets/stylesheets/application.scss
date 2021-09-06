@@ -34,7 +34,7 @@ body {
 header {
   width: 100%;
   padding: 20px 4%;
-  // background: black; 
+  background: black; 
   position: fixed;
   top: 0;
   display: flex;
@@ -42,34 +42,81 @@ header {
 } 
 
 header h1 a {
-  font-size: 20px;
+  font-size: 32px;
+  line-height: 64px;
   color: yellow;
   text-decoration: none;
 }
 
 /*navbar*/
-nav {
+.pc-menu nav {
   margin: 0 0 0 auto;
 }
 
 
-nav ul {
+.pc-menu nav ul {
   list-style: none;
   display: flex;
 }
 
-nav ul li {
+.pc-menu nav ul li {
   margin: 0 10px;
 }
 
-nav ul li a {
+.pc-menu nav ul li a {
   text-decoration: none;
   color: white;
 }
 
-nav li:hover {
+.pc-menu nav li:hover {
   background-color: #f2f2f2;
 }
+
+
+.sp-menu {
+  margin-left: auto;
+}
+
+.sp-menu #open {
+  font-size: 32px;
+  font-height: 64px;
+  cursor: open;
+}
+
+.overlay {
+  color: black;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255,255,255,0.95);
+  text-align: center;
+  padding: 64px;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay #close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 32px;
+  cursor: pointer;
+  color: black;
+}
+
+.overlay ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay li {
+  margin-top : 24px;
+}
+
 
 /*slider*/
 .container{
@@ -140,7 +187,7 @@ nav li:hover {
   cursor: pointer;
 }
 
-#close{
+#shut{
   color: black;
   cursor: pointer;
   width: 200px;
