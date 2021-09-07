@@ -35,7 +35,7 @@
               <li><%= link_to "My house",live_house_mypage_path(current_live_house) %></li>
               <li><%= link_to "Log out",destroy_live_house_session_path, method: :delete %></li>
             <% else %>
-              <li id="open">Log in</li>
+              <li id="modalopen">Log in</li>
               <li><%= link_to "Sign up",new_user_registration_path %></li>
             <% end %>
           </ul>
@@ -71,7 +71,7 @@
             <li><%= link_to "My house",live_house_mypage_path(current_live_house) %></li>
             <li><%= link_to "Log out",destroy_live_house_session_path, method: :delete %></li>
           <% else %>
-            <li id="open">Log in</li>
+            <li id="modalopen">Log in</li>
             <li><%= link_to "Sign up",new_user_registration_path %></li>
           <% end %>
         </ul>
@@ -94,5 +94,8 @@
     <!--    </nav>-->
     <!--  </footer>-->
     <!--</div>-->
+    
+    
+    <%= javascript_include_tag 'humbarger-menu.js' %>
   </body>
 </html>
