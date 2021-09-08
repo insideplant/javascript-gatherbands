@@ -2,7 +2,7 @@
 
 
 {
-  const modalopen = document.getElementById('modalopen');
+  const modalopen = document.querySelectorAll('.modalopen');
   const shut = document.getElementById('shut');
   const modal = document.getElementById('modal');
   const mask = document.getElementById('mask');
