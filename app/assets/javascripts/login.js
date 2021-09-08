@@ -7,9 +7,11 @@
   const modal = document.getElementById('modal');
   const mask = document.getElementById('mask');
   
-  modalopen.addEventListener('click',()=>{
+  modalopen.forEach((moda) => {
+    moda.addEventListener('click',()=>{
     modal.classList.remove('hidden');
-    mask.classList.remove('hidden')
+    mask.classList.remove('hidden');
+    });
   });
   
   shut.addEventListener('click',()=>{
