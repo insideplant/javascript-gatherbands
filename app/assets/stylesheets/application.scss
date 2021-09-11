@@ -33,12 +33,13 @@ body {
 /* header */
 header {
   width: 100%;
-  padding: 20px 4%;
+  padding: 0px 4%;
   background: black; 
   position: fixed;
   top: 0;
   display: flex;
   align-items: center;
+  
 } 
 
 header h1 a {
@@ -55,23 +56,28 @@ header h1 a {
 
 
 .pc-menu nav ul {
-  list-style: none;
+  list-style-type: none;
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .pc-menu nav ul li {
   margin: 0 10px;
 }
 
-.pc-menu nav ul li a {
+.pc-menu nav ul li a,span {
+  display: block;
+  width: 80px;
   text-decoration: none;
   color: white;
+  text-align: center;
+  line-height: 64px;
 }
 
 .pc-menu nav li:hover {
   background-color: #f2f2f2;
 }
-
 
 .sp-menu {
   margin-left: auto;
@@ -124,8 +130,36 @@ header h1 a {
 
 .overlay li {
   margin-top : 24px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s, transform .3s;
 }
 
+.overlay.show li {
+  opacity: 1;
+  transform: none;
+}
+
+.overlay.show.li:nth-child(1) {
+  transition-delay: .1s;
+}
+.overlay.show.li:nth-child(2) {
+  transition-delay: .2s;
+}
+
+.pc-menu {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .pc-menu {
+    display: block;
+    margin-left: auto;
+  }
+  .sp-menu {
+    display: none;
+  }
+}
 
 /*slider*/
 .container{
