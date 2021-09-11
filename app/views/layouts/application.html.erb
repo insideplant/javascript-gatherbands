@@ -20,15 +20,24 @@
           <ul>
             <% if user_signed_in? %>
               <li><%= link_to "New",notifications_path %></li>
-              <li><%= link_to "Lives",home_lives_path %></li>
-              <li><%= link_to "Live Houses",live_houses_path %><li>
+              <li class="dropdown-child live-info">
+                <span>live info</span>
+                <ul class="dropdown_menu">
+                  <li><%= "Live House" %></li>
+                  <li><%= "Lives" %></li>
+                </ul>
+              </li>              
               <li><%= link_to "Mypage",mypage_path(current_user) %></li>
               <li><%= link_to "Bands",bands_path %></li>
               <li><%= link_to "Log out",destroy_user_session_path, method: :delete %>
             <% elsif admin_signed_in? %>
               <li><%= link_to "Users",admin_users_path %></li>
-              <li><%= link_to "Live House",admin_live_houses_path, class:"nav-link"%></li>
-              <li><%= link_to "Lives",admin_lives_path, class:"nav-link"%></li>
+              <li class="dropdown-child live-info">live info
+                <ul class="dropdown_menu">
+                  <li><%= link_to "Live House",admin_live_houses_path, class:"nav-link"%></li>
+                  <li><%= link_to "Lives",admin_lives_path, class:"nav-link"%></li>
+                </ul>
+              </li>
               <li><%= link_to "Log out",destroy_user_session_path, method: :delete %></li>
             <% elsif live_house_signed_in? %>
               <li><%= link_to "Live Schedule",live_house_schedules_path %></li>
@@ -98,5 +107,6 @@
     
     <%= javascript_include_tag 'humbarger-menu.js' %>
     <%= javascript_include_tag 'login.js' %>
+    <%= javascript_include_tag 'application.js' %>
   </body>
 </html>
