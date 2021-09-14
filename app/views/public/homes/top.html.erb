@@ -1,11 +1,11 @@
 <div class="container">
     <div class="prev"></div>
     <div class="sliderbox">
-        <ul class="sliderlist">
-          <li class="sliderlist__item sliderlist__item1"><%= image_tag 'live1.jpg', width: '100%', height: '100%' %></li>
-          <li class="sliderlist__item sliderlist__item2"><%= image_tag 'live2.jpg', width: '100%', height: '100%' %></li>
-          <li class="sliderlist__item sliderlist__item3"><%= image_tag 'live3.jpg', width: '100%', height: '100%' %></li>
-        </ul>
+      <ul class="sliderlist">
+        <li class="sliderlist__item sliderlist__item1"><%= image_tag 'live1.jpg', width: '100%', height: '100%' %></li>
+        <li class="sliderlist__item sliderlist__item2"><%= image_tag 'live2.jpg', width: '100%', height: '100%' %></li>
+        <li class="sliderlist__item sliderlist__item3"><%= image_tag 'live3.jpg', width: '100%', height: '100%' %></li>
+      </ul>
     </div>
     <div class="next"></div>
 </div>
@@ -18,7 +18,7 @@
   <% 4.times { %>
     <div class="live_info_image_child">
       <%#= attachment_image_tag live, :live_image, size: "180x100", fallback: "no_image.png", size: "100%x100%" %>
-      <%= image_tag 'no_image.png' %>
+      <%= image_tag 'no_image.png', :size => '220x170' %>
       <h2>ライブネーム</h2>
       <p>バンドネーム</p>
       <p>ライブイントロダクション</p>
@@ -26,6 +26,40 @@
   <% } %>
 </div>
 
+<div class="container">
+  <ul class="menu">
+    <li><a href="#"><a>サイトの概要</a></li>
+    <li><a href="#"><a>サービスの内容</a></li>
+    <li><a href="#"><a>お問い合わせ</a></li>
+  </ul>
+  
+  <section class="content">
+    <table>
+      <thead>
+        <tr>
+          Live name
+        </tr>
+        <tr>
+          Host
+        </tr>
+        <tr>
+          Schedule
+        </tr>
+        <tr>
+          Live House
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="content">
+  </section>
+  <section class="content">
+  </section>
+</div>
 
 
 
