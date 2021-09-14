@@ -13,25 +13,20 @@
  <%= render "public/homes/login_modal" %>
 
 
+<div class="container">
+  <div class="live_info_image">
+  <% 4.times { %>
+    <div class="live_info_image_child">
+      <%#= attachment_image_tag live, :live_image, size: "180x100", fallback: "no_image.png", size: "100%x100%" %>
+      <%= image_tag 'no_image.png' %>
+      <h2>ライブネーム</h2>
+      <p>バンドネーム</p>
+      <p>ライブイントロダクション</p>
+    </div>
+  <% } %>
+</div>
 
 
 
-<!--<%# @lives.each do |live| %>-->
-<!--  <div class="card-list mx-auto">-->
-<!--    <div class="col-md-2 col-sm-5">-->
-<!--      <div class="card my-3" style="width: 15rem;">-->
-<!--        <%#= link_to life_path(live) do %>-->
-<!--          <%#= attachment_image_tag live, :live_image, size: "180x100", fallback: "no_image.png", size: "100%x100%", class:"card-img-top" %>-->
-<!--        <%# end %>-->
-<!--        <div class="card-body">-->
-<!--          <h5 class="card-title"><%#= live.live_name %></h5>-->
-<!--          <p class="card-text"><%#= host_band(live).band_name %></p>-->
-<!--          <p class="card-text"><%#= live.introduction.truncate(10) %></p>-->
-<!--          <%#= link_to "Live info",life_path(live),class: "btn btn-dark" %>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<%# end %>
 
 <%= javascript_include_tag 'top.js' %>

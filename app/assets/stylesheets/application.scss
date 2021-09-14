@@ -30,6 +30,19 @@ body {
   color: #F8F8FF;
 }
 
+
+h1,
+h2,
+p{
+  margin: 0;
+}
+
+h1,
+h2,
+p{
+  padding: 0;
+}
+
 /* header */
 header {
   width: 100%;
@@ -286,6 +299,11 @@ header h1 a {
 
 #modal.hidden{
   transform: translate(0, -600px);
+}
+
+.live_info_image{
+  display: flex;
+  
 }
 
 
