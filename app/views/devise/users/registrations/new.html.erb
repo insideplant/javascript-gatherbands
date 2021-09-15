@@ -1,58 +1,54 @@
-<div id="registrations">
-  <div class="row mx-auto" id="registrations-new" >
-    <div class="col-lg-6 left-content">
-      <h1> Sign Up </h1>
-      <div class="mt-3">
-        <p>当サイトはBand Man同士で新たな繋がり、新たな価値の創出をお手伝い致します。</br>
-         LIVEを開催したい、新たな地域でまだ見知らぬバンドと出会いたいというあなた</br>
-        さあ、BandをGatherしよう！！</p>
-      </div>
-    </div>
-
-    <div class="col-lg-6 right-content">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/users/shared/error_messages", resource: resource %>
-
-        <div class="form-group">
-          <%= f.label :user_name, class: "control-label" %><br />
-          <%= f.text_field :user_name, autofocus: true, class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.fields_for :band do |b| %>
-            <%= b.label :band_name, class: "control-label" %><br />
-            <%= b.text_field :band_name, autofocus: true, class: "form-control"  %>
-          <% end %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :email, class: "control-label" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"  %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password, class: "control-label" %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control"  %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password_confirmation, class: "control-label" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"  %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Sign up", class: "btn btn-primary" %>
-        </div>
-
-        <%= render "devise/users/shared/links",class: "text-right"%>
-      <% end %>
-    </div>
-    
-    <%= render "public/homes/login_modal" %>
+<div id="registrations-new">
+  <div class="left-content">
+    <h1> Sign Up </h1>
+    <p>当サイトはBand Man同士で新たな繋がり、新たな価値の創出をお手伝い致します。</br>
+     LIVEを開催したい、新たな地域でまだ見知らぬバンドと出会いたいというあなた</br>
+    さあ、BandをGatherしよう！！</p>
   </div>
+
+  <div class="right-content">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/users/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :user_name, class: "control-label" %><br />
+        <%= f.text_field :user_name, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.fields_for :band do |b| %>
+          <%= b.label :band_name, class: "control-label" %><br />
+          <%= b.text_field :band_name, autofocus: true, class: "form-control"  %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, class: "control-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: "control-label" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "control-label" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"  %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
+      </div>
+
+      <%= render "devise/users/shared/links",class: "text-right"%>
+    <% end %>
+  </div>
+  
+  <%= render "public/homes/login_modal" %>
 </div>
 
 <%= javascript_include_tag 'login.js' %>

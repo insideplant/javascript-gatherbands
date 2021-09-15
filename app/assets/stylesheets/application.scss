@@ -298,7 +298,7 @@ header h1 a {
 }
 
 #modal.hidden{
-  transform: translate(0, -600px);
+  transform: translate(0, -800px);
 }
 
 .live_info_image{
@@ -363,74 +363,73 @@ table td {
 
 
 
-// /* registration */
-// #registrations {
-//   background-image: image-url("live1.jpg");
-//   background-position: center;
-//   background-size: cover;
-//   background-color: transparent;
-//   background-repeat: no-repeat;
-//   background-color: #050911;
+/* registration */
+#registrations-new {
+  background-image: image-url("live1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-color: #050911;
+  display: flex;
+  justify-content: center;
+}
 
-//   #registrations-new {
-//     width: 100%;
-//     height: 100%;
-//     .left-content {
-//       margin-top: 45px;
-//       padding: 0px 45px;
-//       color: #fff;
-//       h1 {
-//         font-size: 50px;
-//         margin: 0px;
-//         margin-top: 10px;
-//       }
-//       .ex {
-//         font-size: 18px;
-//         margin: 45px 0px;
-//       }
-//     }
-//     .right-content {
-//       padding: 0px 30px;
-//       form {
-//         margin: 45px 0px;
-//         padding: 30px 35px;
-//         border: 1px solid #fff;
-//         border-radius: 6px;
-//         background-color: rgba(0, 0, 0, 0.3);
-//         color: #fff;
-//       }
-//       h2 {
-//         margin: 0px 0px 20px 0px;
-//         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-//         padding-bottom: 10px;
-//         font-size: 20px;
-//       }
-//       .control-label {
-//         font-weight: 400;
-//       }
-//       .btn {
-//         width: 100%;
-//         padding: 12px;
-//         margin-top: 10px;
-//         margin-bottom: 10px;
-//         font-size: 16px;
-//       }
-//       .login {
-//         color: #fff;
-//         text-decoration: underline;
-//       }
-//     }
-//   }
-// }
+.left-content {
+  margin-top: 45px;
+  color: #fff;
+}
 
-// #registrations::before{
-// background-color:rgba(0,0,0,0.5);
-// position:absolute;
-// top:0;
-// right:0;
-// left:0;
-// content:' ';
-// }
+.left-content p {
+  text-shadow:2px 0 0 black;
+}
+
+.left-content h1 {
+  font-size: 50px;
+  margin-top: 10px;
+}
+
+.right-content {
+  margin: 0px 10px;
+}
+
+form {
+  margin: 45px 0px;
+  padding: 30px 35px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+h2 {
+  margin: 0px 0px 20px 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+.control-label {
+  font-weight: 400;
+}
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.login {
+  color: #fff;
+  text-decoration: underline;
+}
+
+#registrations::before{
+background-color:rgba(0,0,0,0.5);
+position:absolute;
+top:0;
+right:0;
+left:0;
+content:' ';
+}
 
 
 // /* universal */
