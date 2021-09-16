@@ -27,6 +27,7 @@
 
 body {
   background-color: black;
+  height: 100%;
   color: #F8F8FF;
 }
 
@@ -401,6 +402,7 @@ form {
   background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
 }
+
 h2 {
   margin: 0px 0px 20px 0px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -430,6 +432,82 @@ right:0;
 left:0;
 content:' ';
 }
+
+/* footer */
+
+footer {
+  width: 100%;
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: gray;
+  position: absolute;
+  bottom: 0;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer li {
+  float: left;
+  margin-left: 15px;
+}
+
+
+/* profile */
+
+.background {
+  margin-top: 100px;
+  padding: 30px;
+  background-color: white;
+}
+
+.profile-box {
+  width: 400px;
+  margin: 0 auto;
+  border: solid 1px blue;
+  background-color: #FFFFCC;
+  color: black;
+  border-radius: 10%;
+}
+
+.profile {
+  display: flex;
+  padding: 32px;
+  align-items: center;
+}
+
+.profile-box .profile div + div {
+  margin-left: 32px;
+}
+
+.profile-box h1 {
+  font-size: 24px;
+}
+
+.profile-box ul {
+  list-style: none;
+  display: flex;
+}
+
+.profile .icon {
+  border-radius: 50%;
+}
+
 
 
 // /* universal */
@@ -473,24 +551,6 @@ content:' ';
 // }
 
 
-// /* body */
-// .live_image_top{
-//   height: 350px;
-// }
-// .live1 {
-//   background-image: image-url("live1.jpg");
-//   background-position:center bottom;
-// }
-// .live2 {
-//   background-image: image-url("live2.jpg");
-//   background-position:center top;
-// }
-// .live3 {
-//   background-image: image-url("live3.jpg");
-// }
-// .live4 {
-//   background-image: image-url("live4.jpg");
-// }
 
 // /*.recent-live {
 //   width: 300px;
@@ -500,31 +560,7 @@ content:' ';
 // } */
 
 
-// /* footer */
 
-// footer {
-//   margin-top: 45px;
-//   padding-top: 5px;
-//   border-top: 1px solid #eaeaea;
-//   color: gray;
-//   a {
-//     color: #555;
-//     &:hover {
-//       color: #222;
-//     }
-//   }
-//   small {
-//     float: left;
-//   }
-//   ul {
-//     float: right;
-//     list-style: none;
-//     li {
-//       float: left;
-//       margin-left: 15px;
-//     }
-//   }
-// }
 
 // /* article post*/
 
