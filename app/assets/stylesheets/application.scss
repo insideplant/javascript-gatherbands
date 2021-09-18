@@ -25,6 +25,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   background-color: black;
   height: 100%;
@@ -43,6 +44,24 @@ h2,
 p{
   padding: 0;
 }
+
+
+/*material icon*/
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
 
 /* header */
 header {
@@ -470,10 +489,11 @@ footer li {
 
 /* profile */
 
-.background {
+.mypage {
   margin-top: 100px;
   padding: 30px;
   background-color: white;
+  display: flex;
 }
 
 .profile-box {
@@ -499,14 +519,72 @@ footer li {
   font-size: 24px;
 }
 
-.profile-box ul {
+.profile ul {
   list-style: none;
   display: flex;
+}
+
+.profile ul li {
+  width: 50px;
+}
+
+.profile ul li span {
+  text-align: start;
+  width: 50px;
 }
 
 .profile .icon {
   border-radius: 50%;
 }
+
+.profile-box .follow-link ul {
+  list-style: none;
+  display: flex;
+}
+
+.profile-box .follow-link ul li{
+  margin: 20px;
+}
+
+
+/* album */
+
+.album {
+  width: 300px;
+  margin: 0 auto;
+}
+
+#main-image {
+  width: 300px;
+  height: 200px;
+  vertical-align: bottom;
+  margin-bottom: 8px;
+}
+
+.album ul {
+  list-style: none;
+}
+
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(5,56px);
+  gap: 5px;
+}
+
+.thumbnails li {
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.thumbnails li:hover,
+.thumbnails li.current {
+  opacity: 1;
+}
+
+.thumbnails img {
+  width: 56px;
+}
+
 
 
 
